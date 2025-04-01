@@ -128,6 +128,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SharedPtr.cpp" />
+    <ClCompile Include="StudentScoreManager.cpp" />
+    <ClCompile Include="UniquePtr.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyCalc.h" />
+    <ClInclude Include="SharedPtr.h" />
+    <ClInclude Include="StudentScoreManager.h" />
+    <ClInclude Include="UniquePtr.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
