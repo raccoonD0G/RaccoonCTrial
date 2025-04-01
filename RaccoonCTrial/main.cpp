@@ -118,6 +118,11 @@ void TestMap()
 
 	for (int Index0 = 1; Index0 < 6; Index0++)
 	{
+		for (int Index2 = 0; Index2 < 6 - Index0; Index2++)
+		{
+			cout << "  ";
+		}
+
 		for (int Index1 = 0; Index1 < Index0; Index1++)
 		{
 			cout << "*" << " ";
