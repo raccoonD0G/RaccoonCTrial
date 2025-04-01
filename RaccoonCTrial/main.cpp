@@ -95,7 +95,38 @@ void TestSharedPtr()
 	}
 }
 
+void TestMap()
+{
+	int Map[10][10] = { 0 };
+
+	for (int Index0 = 1; Index0 < 9; Index0++)
+	{
+		for (int Index1 = 1; Index1 < 9; Index1++)
+		{
+			Map[Index0][Index1] = 1;
+		}
+	}
+
+	for (int Index0 = 0; Index0 < 10; Index0++)
+	{
+		for (int Index1 = 0; Index1 < 10; Index1++)
+		{
+			cout << Map[Index0][Index1] << " ";
+		}
+		cout << endl;
+	}
+
+	for (int Index0 = 1; Index0 < 6; Index0++)
+	{
+		for (int Index1 = 0; Index1 < Index0; Index1++)
+		{
+			cout << "*" << " ";
+		}
+		cout << endl;
+	}
+}
+
 int main()
 {
-	TestSharedPtr();
+	TestMap();
 }
