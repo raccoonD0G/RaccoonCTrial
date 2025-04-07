@@ -1,6 +1,6 @@
 #pragma once
+
 #include "vector"
-#include "iostream"
 #include "string"
 
 using namespace std;
@@ -25,13 +25,12 @@ public:
 public:
 	inline Suit GetCurrentSuit() const { return CurrentSuit;} 
 	inline int GetCurrentNum() const { return CurrentNum; }
+	string GetAsString();
 
 private:
 	Suit CurrentSuit;
 	int CurrentNum;
 };
-
-ostream& operator<<(ostream& OS, const Card& Card);
 
 class CardDeck
 {

@@ -26,9 +26,9 @@ void CardGameTable::Play()
 	DrawCardFromDeck(PlayerCard);
 	DrawCardFromDeck(PlayerCard);
 
-	cout << "ComputerCard : " << endl << ComputerCard[0] << endl << ComputerCard[1] << endl;
+	cout << "ComputerCard : " << endl << ComputerCard[0].GetAsString() << endl << ComputerCard[1].GetAsString() << endl;
 
-	cout << "PlayerCard : " << endl << PlayerCard[0] << endl << PlayerCard[1] << endl;
+	cout << "PlayerCard : " << endl << PlayerCard[0].GetAsString() << endl << PlayerCard[1].GetAsString() << endl;
 
 	int ComputerScore = ComputerCard[0].GetCurrentNum() + ComputerCard[1].GetCurrentNum() + 2;
 	int PlayerScore = PlayerCard[0].GetCurrentNum() + PlayerCard[1].GetCurrentNum() + 2;

@@ -7,11 +7,12 @@
 
 using namespace std;
 
-ostream& operator<<(ostream& OS, const Card& P)
+string Card::GetAsString()
 {
 	string str = string();
 	str.append("Suit : ");
-	switch (P.GetCurrentSuit())
+
+	switch (CurrentSuit)
 	{
 	case Suit::Spades:
 		str.append("Spades");
@@ -30,7 +31,7 @@ ostream& operator<<(ostream& OS, const Card& P)
 	}
 
 	str.append(", Number : ");
-	switch (P.GetCurrentNum())
+	switch (CurrentNum)
 	{
 	case 0:
 		str.append("A");
@@ -45,12 +46,11 @@ ostream& operator<<(ostream& OS, const Card& P)
 		str.append("K");
 		break;
 	default:
-		str.append(to_string(P.GetCurrentNum()));
+		str.append(to_string(CurrentNum));
 		break;
 	}
 
-	OS << str;
-	return OS;
+	return str;
 }
 
 
