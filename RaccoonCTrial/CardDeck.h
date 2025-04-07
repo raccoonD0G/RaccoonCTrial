@@ -5,10 +5,10 @@
 
 using namespace std;
 
-enum class Suit;
+enum class Suit : uint8_t;
 struct Card;
 
-enum class Suit
+enum class Suit : uint8_t
 {
 	Spades,
 	Hearts,
