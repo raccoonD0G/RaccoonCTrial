@@ -64,8 +64,9 @@ public:
 		
 		int HashNum = Hash(NewIndex) % BucketSize;
 		SetIndex<T>* CheckingIndex = Container[HashNum];
-		SetIndex<T>** BeforeCheckingIndex = nullptr;
+		SetIndex<T>* BeforeCheckingIndex = nullptr;
 
+		// No first index.
 		if (CheckingIndex == nullptr)
 		{
 			return;
@@ -79,17 +80,18 @@ public:
 				{
 					break;
 				}
-				BeforeCheckingIndex = &(CheckingIndex->NextIndex);
+				BeforeCheckingIndex = CheckingIndex;
 				CheckingIndex = CheckingIndex->NextIndex;
 			}
 
 			if (BeforeCheckingIndex != nullptr)
 			{
-				*BeforeCheckingIndex = CheckingIndex->NextIndex;
+				BeforeCheckingIndex->NextIndex = CheckingIndex->NextIndex;
 				delete CheckingIndex;
 			}
 			else
 			{
+				// First index is what we find.
 				delete CheckingIndex;
 				Container[HashNum] = nullptr;
 			}
@@ -97,7 +99,7 @@ public:
 		}
 	}
 
-	bool Contain(T InIndex)
+	bool Contain(T InIndex) const
 	{
 		SetIndex<T>* NewSetIndex = new SetIndex<T>(InIndex);
 		SetIndex<T>* CheckingIndex = Container[Hash(InIndex)];

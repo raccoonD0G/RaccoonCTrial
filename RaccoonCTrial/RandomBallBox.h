@@ -1,9 +1,10 @@
+#pragma once
+
 #include "UnorderedSet.h"
 #include "string"
 
 using namespace std;
 
-#pragma once
 class RandomBallBox
 {
 

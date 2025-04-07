@@ -146,6 +146,7 @@ void TestUnorderedSet()
 
 	TestSet.Remove(2);
 	cout << TestSet.Contain(2);
+	cout << TestSet.Contain(1);
 	TestSet.Remove(1);
 	cout << TestSet.Contain(1);
 }
@@ -164,5 +165,5 @@ void TestRandomBallBox()
 
 int main()
 {
-	TestRandomBallBox();
+	TestUnorderedSet();
 }
