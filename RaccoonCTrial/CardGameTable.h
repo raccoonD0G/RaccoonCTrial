@@ -1,9 +1,10 @@
 #pragma once
 
 #include "CardDeck.h"
+#include "vector"
+
 class CardGameTable
 {
-	
 public:
 	CardGameTable();
 	~CardGameTable();
@@ -13,5 +14,7 @@ private:
 
 public:
 	void Play();
+	void DrawCardFromDeck(vector<Card>& TargetHand);
+
 };
 

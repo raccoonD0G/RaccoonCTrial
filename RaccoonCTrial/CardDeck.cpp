@@ -64,6 +64,13 @@ CardDeck::CardDeck()
 	}
 }
 
+const Card CardDeck::Draw()
+{
+	Card card = Deck.back();
+	Deck.pop_back();
+	return card;
+}
+
 void CardDeck::Shuffle(int ShuffleCount)
 {
 	random_device Rd;
@@ -78,11 +85,4 @@ void CardDeck::Shuffle(int ShuffleCount)
 
 		SwapCard(RandIndex0, RandIndex1);
 	}
-}
-
-const Card CardDeck::Draw()
-{
-	Card card = Deck.back();
-	Deck.pop_back();
-	return card;
 }

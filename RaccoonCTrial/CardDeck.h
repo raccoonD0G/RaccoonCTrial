@@ -25,6 +25,7 @@ public:
 public:
 	inline Suit GetCurrentSuit() const { return CurrentSuit;} 
 	inline int GetCurrentNum() const { return CurrentNum; }
+
 private:
 	Suit CurrentSuit;
 	int CurrentNum;
@@ -42,6 +43,7 @@ private:
 
 public:
 	void Shuffle(int ShuffleCount = 100);
+	inline int LeftCardCount() const { return Deck.size(); }
 	const Card Draw();
 
 private:

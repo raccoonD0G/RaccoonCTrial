@@ -1,5 +1,6 @@
 #include "CardGameTable.h"
 #include "iostream"
+
 using namespace std;
 
 CardGameTable::CardGameTable()
@@ -15,18 +16,18 @@ CardGameTable::~CardGameTable()
 
 void CardGameTable::Play()
 {
-	Card ComputerCard[2];
-	Card PlayerCard[2];
+	vector<Card> ComputerCard;
+	vector<Card> PlayerCard;
 
-	ComputerCard[0] = CurrentDeck->Draw();
-	ComputerCard[1] = CurrentDeck->Draw();
+	DrawCardFromDeck(ComputerCard);
+	DrawCardFromDeck(ComputerCard);
 
-	PlayerCard[0] = CurrentDeck->Draw();
-	PlayerCard[1] = CurrentDeck->Draw();
+	DrawCardFromDeck(PlayerCard);
+	DrawCardFromDeck(PlayerCard);
 
-	cout << "ComputerCard : " << ComputerCard[0] << " + " << ComputerCard[1] << endl;
+	cout << "ComputerCard : " << endl << ComputerCard[0] << endl << ComputerCard[1] << endl;
 
-	cout << "PlayerCard : " << PlayerCard[0] << " + " << PlayerCard[1] << endl;
+	cout << "PlayerCard : " << endl << PlayerCard[0] << endl << PlayerCard[1] << endl;
 
 	int ComputerScore = ComputerCard[0].GetCurrentNum() + ComputerCard[1].GetCurrentNum() + 2;
 	int PlayerScore = PlayerCard[0].GetCurrentNum() + PlayerCard[1].GetCurrentNum() + 2;
@@ -50,5 +51,13 @@ void CardGameTable::Play()
 	else
 	{
 		cout << "Draw";
+	}
+}
+
+void CardGameTable::DrawCardFromDeck(vector<Card>& TargetHand)
+{
+	if (CurrentDeck->LeftCardCount() > 0)
+	{
+		TargetHand.push_back(CurrentDeck->Draw());
 	}
 }
