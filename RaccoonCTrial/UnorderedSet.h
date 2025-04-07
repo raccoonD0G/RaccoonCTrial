@@ -113,42 +113,6 @@ public:
 		return false;
 	}
 
-	T GetRandomIndex() const
-	{
-		srand(time(nullptr));
-
-		if (IsEmpty())
-		{
-			return NULL;
-		}
-
-		while (true)
-		{
-			int BucketIndex = rand() % BucketSize;
-			SetIndex<T>* Node = Container[BucketIndex];
-
-			if (Node != nullptr)
-			{
-				int Count = 0;
-				SetIndex<T>* Temp = Node;
-				while (Temp)
-				{
-					++Count;
-					Temp = Temp->NextIndex;
-				}
-
-				int RandomIndex = rand() % Count;
-
-				for (int i = 0; i < RandomIndex; ++i)
-				{
-					Node = Node->NextIndex;
-				}
-
-				return Node->Index;
-			}
-		}
-	}
-
 	int Hash(const T& key) const
 	{
 		return static_cast<int>(std::hash<T>{}(key) % BucketSize);

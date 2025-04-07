@@ -154,7 +154,7 @@ void TestRandomBallBox()
 {
 	RandomBallBox* Box = new RandomBallBox();
 
-	for (int Index = 0; Index < 55; Index++)
+	for (int Index = 0; Index < 10; Index++)
 	{
 		cout << Box->PickBall() << endl;
 	}
