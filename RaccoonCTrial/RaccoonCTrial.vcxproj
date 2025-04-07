@@ -128,14 +128,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RandomBallBox.cpp" />
+    <ClCompile Include="UnorderedSet.cpp" />
     <ClCompile Include="SharedPtr.cpp" />
     <ClCompile Include="StudentScoreManager.cpp" />
+    <ClCompile Include="TempleteTrial.cpp" />
     <ClCompile Include="UniquePtr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyCalc.h" />
+    <ClInclude Include="RandomBallBox.h" />
+    <ClInclude Include="UnorderedSet.h" />
     <ClInclude Include="SharedPtr.h" />
     <ClInclude Include="StudentScoreManager.h" />
+    <ClInclude Include="TempleteTrial.h" />
     <ClInclude Include="UniquePtr.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

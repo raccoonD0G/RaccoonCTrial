@@ -5,6 +5,8 @@
 #include "MyCalc.h"
 #include "StudentScoreManager.h"
 #include "SharedPtr.h"
+#include "UnorderedSet.h"
+#include "RandomBallBox.h"
 
 using namespace std;
 
@@ -131,7 +133,36 @@ void TestMap()
 	}
 }
 
+void TestUnorderedSet()
+{
+	UnorderedSet<int> TestSet;
+
+	TestSet.Add(1);
+	cout << TestSet.Contain(1);
+	TestSet.Add(2);
+	cout << TestSet.Contain(2);
+	TestSet.Add(3);
+	cout << TestSet.Contain(3);
+
+	TestSet.Remove(2);
+	cout << TestSet.Contain(2);
+	TestSet.Remove(1);
+	cout << TestSet.Contain(1);
+}
+
+void TestRandomBallBox()
+{
+	RandomBallBox* Box = new RandomBallBox();
+
+	for (int Index = 0; Index < 55; Index++)
+	{
+		cout << Box->PickBall() << endl;
+	}
+
+	delete Box;
+}
+
 int main()
 {
-	TestMap();
+	TestRandomBallBox();
 }
