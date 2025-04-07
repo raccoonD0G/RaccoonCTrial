@@ -7,6 +7,7 @@
 #include "SharedPtr.h"
 #include "UnorderedSet.h"
 #include "RandomBallBox.h"
+#include "CardGameTable.h"
 
 using namespace std;
 
@@ -163,7 +164,12 @@ void TestRandomBallBox()
 	delete Box;
 }
 
+void TestCardGame()
+{
+	CardGameTable* Table = new CardGameTable();
+	Table->Play();
+}
 int main()
 {
-	TestUnorderedSet();
+	TestCardGame();
 }

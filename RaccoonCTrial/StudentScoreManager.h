@@ -18,7 +18,7 @@ public:
 	StudentScoreManager();
 
 private:
-	unordered_map<int /* StudentID */, unordered_map<ESubjectType /* SubjectType */, int /*Score */>> StudentScores;
+	unordered_map<int /*StudentID*/, unordered_map<ESubjectType /*SubjectType*/, int /*Score*/>> StudentScores;
 
 public:
 	bool IsStudentExist(int InStudentID) const;

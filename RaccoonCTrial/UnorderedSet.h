@@ -66,7 +66,7 @@ public:
 		SetIndex<T>* CheckingIndex = Container[HashNum];
 		SetIndex<T>* BeforeCheckingIndex = nullptr;
 
-		// No first index.
+		// No index in vector.
 		if (CheckingIndex == nullptr)
 		{
 			return;
@@ -84,18 +84,17 @@ public:
 				CheckingIndex = CheckingIndex->NextIndex;
 			}
 
-			if (BeforeCheckingIndex != nullptr)
+			// First index is what we find.
+			if (BeforeCheckingIndex == nullptr)
+			{
+				delete CheckingIndex;
+				Container[HashNum] = nullptr;
+			}
+			else
 			{
 				BeforeCheckingIndex->NextIndex = CheckingIndex->NextIndex;
 				delete CheckingIndex;
 			}
-			else
-			{
-				// First index is what we find.
-				delete CheckingIndex;
-				Container[HashNum] = nullptr;
-			}
-			
 		}
 	}
 

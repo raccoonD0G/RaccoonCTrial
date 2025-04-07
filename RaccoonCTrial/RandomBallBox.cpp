@@ -22,10 +22,10 @@ string RandomBallBox::PickBall()
 		return "No Ball";
 	}
 
-	std::random_device Rd;
-	std::mt19937 Gen(Rd());
+	random_device Rd;
+	mt19937 Gen(Rd());
 
-	std::uniform_int_distribution<> Dist(MinNum, MaxNum);
+	uniform_int_distribution<> Dist(MinNum, MaxNum);
 
 	int RandomValue = Dist(Gen);
 
