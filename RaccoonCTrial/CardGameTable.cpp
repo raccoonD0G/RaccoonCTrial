@@ -1,4 +1,5 @@
 #include "CardGameTable.h"
+#include "CardDeck.h"
 #include "iostream"
 
 using namespace std;
@@ -59,5 +60,9 @@ void CardGameTable::DrawCardFromDeck(vector<Card>& TargetHand)
 	if (CurrentDeck->LeftCardCount() > 0)
 	{
 		TargetHand.push_back(CurrentDeck->Draw());
+	}
+	else
+	{
+		cout << "No More Card In Deck";
 	}
 }

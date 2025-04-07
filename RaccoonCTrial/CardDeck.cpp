@@ -2,6 +2,8 @@
 #include "random"
 #include "stdlib.h"
 #include "vector"
+#include "string"
+#include "iostream"
 
 using namespace std;
 
@@ -66,6 +68,11 @@ CardDeck::CardDeck()
 
 const Card CardDeck::Draw()
 {
+	if (Deck.empty())
+	{
+		throw out_of_range("CardDeck is empty. Cannot draw.");
+	}
+
 	Card card = Deck.back();
 	Deck.pop_back();
 	return card;

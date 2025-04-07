@@ -1,7 +1,8 @@
 #pragma once
-
-#include "CardDeck.h"
 #include "vector"
+#include "CardDeck.h"
+
+class Card;
 
 class CardGameTable
 {
