@@ -41,10 +41,9 @@ public:
 private:
 	vector<Card> Deck;
 
+// Util Section
 public:
-	void Shuffle(int ShuffleCount = 100);
 	inline int LeftCardCount() const { return Deck.size(); }
-	const Card Draw();
 
 private:
 	inline void SwapCard(int Index0, int Index1)
@@ -53,5 +52,12 @@ private:
 		Deck[Index0] = Deck[Index1];
 		Deck[Index1] = Temp;
 	}
+
+// Game Section
+public:
+	void Shuffle(int ShuffleCount = 100);
+	const Card Draw();
+
+
 };
 

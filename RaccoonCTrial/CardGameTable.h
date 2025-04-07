@@ -12,6 +12,7 @@ public:
 private:
 	CardDeck* CurrentDeck;
 
+// Game Section
 public:
 	void Play();
 	void DrawCardFromDeck(vector<Card>& TargetHand);
