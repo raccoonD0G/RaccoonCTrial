@@ -15,6 +15,12 @@ int main()
 	Player* Player0 = Printer->SpawnScreenPrintTarget<Player>(Vector2(1, 1));
 	Monster* Monster0 = Printer->SpawnScreenPrintTarget<Monster>(Vector2(1, 2));
 
+	Monster* Monster1 = Printer->SpawnScreenPrintTarget<Monster>(Vector2(4, 5));
+
+	Monster* Monster2 = Printer->SpawnScreenPrintTarget<Monster>(Vector2(1, 7));
+
+	Monster* Monster3 = Printer->SpawnScreenPrintTarget<Monster>(Vector2(3, 8));
+
 	while (true)
 	{
 		system("cls");
