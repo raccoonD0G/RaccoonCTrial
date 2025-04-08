@@ -116,7 +116,7 @@ public:
 
 	int Hash(const T& key) const
 	{
-		return static_cast<int>(std::hash<T>{}(key) % BucketSize);
+		return static_cast<int>(hash<T>{}(key) % BucketSize);
 	}
 
 	bool IsEmpty() const

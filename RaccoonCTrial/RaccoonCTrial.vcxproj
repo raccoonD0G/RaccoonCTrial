@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="CardDeck.cpp" />
     <ClCompile Include="CardGameTable.cpp" />
+    <ClCompile Include="LotteryGame.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RandomBallBox.cpp" />
     <ClCompile Include="UnorderedSet.cpp" />
@@ -140,6 +141,7 @@
   <ItemGroup>
     <ClInclude Include="CardDeck.h" />
     <ClInclude Include="CardGameTable.h" />
+    <ClInclude Include="LotteryGame.h" />
     <ClInclude Include="MyCalc.h" />
     <ClInclude Include="RandomBallBox.h" />
     <ClInclude Include="UnorderedSet.h" />

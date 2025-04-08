@@ -8,6 +8,7 @@
 #include "UnorderedSet.h"
 #include "RandomBallBox.h"
 #include "CardGameTable.h"
+#include "LotteryGame.h"
 
 using namespace std;
 
@@ -169,7 +170,14 @@ void TestCardGame()
 	CardGameTable* Table = new CardGameTable();
 	Table->Play();
 }
+
+void TestLottery()
+{
+	LotteryGame* Game = new LotteryGame();
+
+	Game->Play();
+}
 int main()
 {
-	TestCardGame();
+	TestLottery();
 }
