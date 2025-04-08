@@ -7,12 +7,7 @@ using namespace std;
 
 LotteryGame::LotteryGame()
 {
-	Balls.reserve(MaxNum - MinNum + 1);
-	for (int i = MinNum; i < MaxNum + 1; i++)
-	{
-		Balls.push_back(i);
-	}
-	Suffle();
+	ResetGame();
 }
 
 const vector<int> LotteryGame::GetAnswerBalls()
@@ -141,8 +136,20 @@ void LotteryGame::Play()
 	case 0:
 		cout << "꽝입니다" << endl;
 		break;
-
-
 	}
+
+	cout << "공을 다시 넣고 섞습니다.";
+	ResetGame();
+}
+
+void LotteryGame::ResetGame()
+{
+	Balls.clear();
+	Balls.reserve(MaxNum - MinNum + 1);
+	for (int i = MinNum; i < MaxNum + 1; i++)
+	{
+		Balls.push_back(i);
+	}
+	Suffle();
 }
 

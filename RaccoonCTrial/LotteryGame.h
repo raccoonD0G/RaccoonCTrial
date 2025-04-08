@@ -16,8 +16,12 @@ public:
 
 private:
 	vector<int> Balls;
+
 	void SwapBall(int& InRef0, int& InRef1);
 	void Suffle(int SuffleCount = 100);
+
 	const int GetBall();
+
+	void ResetGame();
 };
 
