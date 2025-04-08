@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DynamicArray.cpp" />
     <ClCompile Include="LotteryGame.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SmartPointer\SharedPtr.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="UnorderedSet\UnorderedSet.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="LotteryGame.h" />
     <ClInclude Include="SmartPointer\SharedPtr.h" />
     <ClInclude Include="SmartPointer\UniquePtr.h" />
