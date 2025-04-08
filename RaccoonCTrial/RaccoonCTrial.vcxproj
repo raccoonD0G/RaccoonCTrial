@@ -129,10 +129,14 @@
   <ItemGroup>
     <ClCompile Include="LotteryGame.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SmartPointer\SharedPtr.cpp" />
+    <ClCompile Include="SmartPointer\UniquePtr.cpp" />
     <ClCompile Include="UnorderedSet\UnorderedSet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LotteryGame.h" />
+    <ClInclude Include="SmartPointer\SharedPtr.h" />
+    <ClInclude Include="SmartPointer\UniquePtr.h" />
     <ClInclude Include="UnorderedSet\UnorderedSet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

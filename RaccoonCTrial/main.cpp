@@ -1,7 +1,4 @@
 #include "iostream"
-#include "vector"
-#include "random"
-
 #include "LotteryGame.h"
 
 using namespace std;
