@@ -102,14 +102,14 @@ void LotteryGame::Play()
 	}
 
 	cout << endl;
-	const vector<int> AnswerBallsTemp = this->GetAnswerBalls();
+	const vector<int> AnswerBalls = this->GetAnswerBalls();
 	int CorrectCount = 0;
 
 	cout << "정답은 ";
 	for (int i = 0; i < 6; i++)
 	{
-		cout << AnswerBallsTemp[i] << " ";
-		if (PickedNums.Contain(AnswerBallsTemp[i]))
+		cout << AnswerBalls[i] << " ";
+		if (PickedNums.Contain(AnswerBalls[i]))
 		{
 			CorrectCount++;
 		}
