@@ -92,6 +92,7 @@ void LotteryGame::Play()
 		else
 		{
 			cout << "이미 골랐던 숫자입니다. 다시 고르세요.\n";
+			--i;
 		}
 	}
 
