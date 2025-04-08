@@ -81,7 +81,7 @@ void LotteryGame::Play()
 		if (NumBuffer < 1 || NumBuffer > 45)
 		{
 			cout << "잘못된 입력입니다. 1부터 45 사이의 숫자를 입력해주세요.\n";
-			--i;
+			i++;
 		}
 
 		if (!PickedNums.Contain(NumBuffer))
@@ -92,7 +92,7 @@ void LotteryGame::Play()
 		else
 		{
 			cout << "이미 골랐던 숫자입니다. 다시 고르세요.\n";
-			--i;
+			i++;
 		}
 	}
 
