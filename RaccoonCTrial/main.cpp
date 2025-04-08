@@ -31,8 +31,6 @@ int main()
 
 	while (true)
 	{
-		
-		
 		if (_kbhit())
 		{
 			char Input = _getch();
