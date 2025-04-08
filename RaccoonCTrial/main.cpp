@@ -13,6 +13,11 @@ int main()
 	ScreenPrinter* Printer = new ScreenPrinter();
 
 	Player* Player0 = Printer->SpawnScreenPrintTarget<Player>(Vector2(1, 1));
+
+
+
+
+
 	Monster* Monster0 = Printer->SpawnScreenPrintTarget<Monster>(Vector2(1, 2));
 
 	Monster* Monster1 = Printer->SpawnScreenPrintTarget<Monster>(Vector2(4, 5));
@@ -21,11 +26,12 @@ int main()
 
 	Monster* Monster3 = Printer->SpawnScreenPrintTarget<Monster>(Vector2(3, 8));
 
+	system("cls");
+	Printer->PrintAllOnScrean();
+
 	while (true)
 	{
-		system("cls");
-
-		Printer->PrintAllOnScrean();
+		
 		
 		if (_kbhit())
 		{
@@ -45,6 +51,9 @@ int main()
 				Player0->SetLocation(Vector2(Player0->GetLocation().X + 1, Player0->GetLocation().Y));
 				break;
 			}
+
+			system("cls");
+			Printer->PrintAllOnScrean();
 		}
 	}
 }
