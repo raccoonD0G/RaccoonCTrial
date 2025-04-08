@@ -10,11 +10,11 @@ template<typename T>
 struct SetIndex
 {
 public:
-	T Index;
-	SetIndex<T>* NextIndex;
+	SetIndex(T NewIndex) : Index(NewIndex), NextIndex(nullptr) { ; };
 
 public:
-	SetIndex(T NewIndex) : Index(NewIndex), NextIndex(nullptr) { ; } ;
+	T Index;
+	SetIndex<T>* NextIndex;
 };
 
 

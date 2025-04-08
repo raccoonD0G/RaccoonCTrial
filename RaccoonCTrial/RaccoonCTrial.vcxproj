@@ -127,16 +127,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Character.cpp" />
     <ClCompile Include="DynamicArray.cpp" />
+    <ClCompile Include="ILocationInterface.cpp" />
+    <ClCompile Include="IScreenPrintInterface.cpp" />
     <ClCompile Include="LotteryGame.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="ScreenPrinter.cpp" />
     <ClCompile Include="SmartPointer\SharedPtr.cpp" />
     <ClCompile Include="SmartPointer\UniquePtr.cpp" />
     <ClCompile Include="UnorderedSet\UnorderedSet.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Character.h" />
     <ClInclude Include="DynamicArray.h" />
+    <ClInclude Include="ILocationInterface.h" />
+    <ClInclude Include="IScreenPrintInterface.h" />
     <ClInclude Include="LotteryGame.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="ScreenPrinter.h" />
     <ClInclude Include="SmartPointer\SharedPtr.h" />
     <ClInclude Include="SmartPointer\UniquePtr.h" />
     <ClInclude Include="UnorderedSet\UnorderedSet.h" />

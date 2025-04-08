@@ -13,6 +13,7 @@ CardGameTable::CardGameTable()
 CardGameTable::~CardGameTable()
 {
 	delete CurrentDeck;
+	CurrentDeck = nullptr;
 }
 
 void CardGameTable::Play()

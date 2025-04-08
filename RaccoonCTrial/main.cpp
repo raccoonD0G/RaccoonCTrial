@@ -1,38 +1,44 @@
 #include "iostream"
-#include "LotteryGame.h"
+#include "conio.h"
+#include "Player.h"
+#include "Monster.h"
+#include "IScreenPrintInterface.h"
+#include "ScreenPrinter.h"
 #include "DynamicArray.h"
 
 using namespace std;
 
-void TestLottery()
-{
-	LotteryGame* Game = new LotteryGame();
-
-	Game->Play();
-	Game->Play();
-	Game->Play();
-	Game->Play();
-
-}
-
-
 int main()
 {
-	DynamicArray<int> Arr;
+	ScreenPrinter* Printer = new ScreenPrinter();
 
-	for (int i = 0; i < 10; i++)
-	{
-		Arr.PushBack((i + 1) * 3);
-	}
-	
-	for (int i = 10; i < 20; i++)
-	{
-		Arr.PushBack((i - 9) * 4);
-	}
+	Player* Player0 = Printer->SpawnScreenPrintTarget<Player>(Vector2(1, 1));
+	Monster* Monster0 = Printer->SpawnScreenPrintTarget<Monster>(Vector2(1, 2));
 
-	for (int i = 0; i < 20; i++)
+	while (true)
 	{
-		cout << Arr[i] << ", ";
-	}
+		system("cls");
 
+		Printer->PrintAllOnScrean();
+		
+		if (_kbhit())
+		{
+			char Input = _getch();
+			switch (Input)
+			{
+			case 'w':
+				Player0->SetLocation(Vector2(Player0->GetLocation().X, Player0->GetLocation().Y - 1));
+				break;
+			case 'a':
+				Player0->SetLocation(Vector2(Player0->GetLocation().X - 1, Player0->GetLocation().Y));
+				break;
+			case 's':
+				Player0->SetLocation(Vector2(Player0->GetLocation().X, Player0->GetLocation().Y + 1));
+				break;
+			case 'd':
+				Player0->SetLocation(Vector2(Player0->GetLocation().X + 1, Player0->GetLocation().Y));
+				break;
+			}
+		}
+	}
 }
