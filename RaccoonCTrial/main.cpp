@@ -176,6 +176,10 @@ void TestLottery()
 	LotteryGame* Game = new LotteryGame();
 
 	Game->Play();
+	Game->Play();
+	Game->Play();
+	Game->Play();
+
 }
 int main()
 {

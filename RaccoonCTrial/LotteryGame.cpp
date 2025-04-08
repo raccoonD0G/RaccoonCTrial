@@ -138,7 +138,7 @@ void LotteryGame::Play()
 		break;
 	}
 
-	cout << "공을 다시 넣고 섞습니다.";
+	cout << "공을 다시 넣고 섞습니다.\n";
 	ResetGame();
 }
 
