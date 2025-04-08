@@ -131,7 +131,6 @@
     <ClCompile Include="DynamicArray.cpp" />
     <ClCompile Include="ILocationInterface.cpp" />
     <ClCompile Include="IScreenPrintInterface.cpp" />
-    <ClCompile Include="LotteryGame.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -145,7 +144,6 @@
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="ILocationInterface.h" />
     <ClInclude Include="IScreenPrintInterface.h" />
-    <ClInclude Include="LotteryGame.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="ScreenPrinter.h" />
