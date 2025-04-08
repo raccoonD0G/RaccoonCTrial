@@ -2,12 +2,12 @@
 #include "vector"
 #include "random"
 
-#include "MyCalc.h"
-#include "StudentScoreManager.h"
+#include "Lagacy/MyCalc.h"
+#include "Lagacy/StudentScoreManager.h"
 #include "SharedPtr.h"
 #include "UnorderedSet.h"
-#include "RandomBallBox.h"
-#include "CardGameTable.h"
+#include "Lagacy/RandomBallBox.h"
+#include "Lagacy/CardGameTable.h"
 #include "LotteryGame.h"
 
 using namespace std;
