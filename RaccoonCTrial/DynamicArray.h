@@ -4,8 +4,10 @@ class DynamicArray
 {
 private:
 	T* ArrPtr;
+
 	size_t Size;
 	size_t MemSize;
+
 public:
 	DynamicArray()
 	{
@@ -17,6 +19,7 @@ public:
 	~DynamicArray()
 	{
 		delete[] ArrPtr;
+		ArrPtr = nullptr;
 	}
 
 	inline size_t GetSize() { return Size; }
@@ -35,27 +38,19 @@ public:
 
 	void Reserve(size_t NewMemSize)
 	{
-		T* Tmp = new T[Size];
+		T* NewArrPtr = new T[NewMemSize];
 
 		for (int i = 0; i < Size; i++)
 		{
-			Tmp[i] = ArrPtr[i];
+			NewArrPtr[i] = ArrPtr[i];
 		}
 
 		delete[] ArrPtr;
 		ArrPtr = nullptr;
 
-		ArrPtr = new T[NewMemSize];
-
-		for (int i = 0; i < Size; i++)
-		{
-			ArrPtr[i] = Tmp[i];
-		}
-
+		ArrPtr = NewArrPtr;
+		
 		MemSize = NewMemSize;
-
-		delete[] Tmp;
-		Tmp = nullptr;
 	}
 
 	void Resize(size_t NewSize)
