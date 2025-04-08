@@ -1,7 +1,7 @@
 ﻿#include "LotteryGame.h"
 #include "random"
 #include "iostream"
-#include "UnorderedSet.h"
+#include "UnorderedSet/UnorderedSet.h"
 
 using namespace std;
 

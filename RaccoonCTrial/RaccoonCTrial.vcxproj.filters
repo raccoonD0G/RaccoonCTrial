@@ -13,75 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Lagacy">
-      <UniqueIdentifier>{77f85095-bad6-4c95-b39d-29912581099b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Lagacy">
-      <UniqueIdentifier>{28a201ce-32c1-4511-84e8-710863b114d4}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SharedPtr.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UniquePtr.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UnorderedSet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="LotteryGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Lagacy\CardDeck.cpp">
-      <Filter>Source Files\Lagacy</Filter>
-    </ClCompile>
-    <ClCompile Include="Lagacy\CardGameTable.cpp">
-      <Filter>Source Files\Lagacy</Filter>
-    </ClCompile>
-    <ClCompile Include="Lagacy\RandomBallBox.cpp">
-      <Filter>Source Files\Lagacy</Filter>
-    </ClCompile>
-    <ClCompile Include="Lagacy\StudentScoreManager.cpp">
-      <Filter>Source Files\Lagacy</Filter>
-    </ClCompile>
-    <ClCompile Include="Lagacy\TempleteTrial.cpp">
-      <Filter>Source Files\Lagacy</Filter>
+    <ClCompile Include="UnorderedSet\UnorderedSet.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SharedPtr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UniquePtr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UnorderedSet.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="LotteryGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Lagacy\CardDeck.h">
-      <Filter>Header Files\Lagacy</Filter>
-    </ClInclude>
-    <ClInclude Include="Lagacy\CardGameTable.h">
-      <Filter>Header Files\Lagacy</Filter>
-    </ClInclude>
-    <ClInclude Include="Lagacy\RandomBallBox.h">
-      <Filter>Header Files\Lagacy</Filter>
-    </ClInclude>
-    <ClInclude Include="Lagacy\MyCalc.h">
-      <Filter>Header Files\Lagacy</Filter>
-    </ClInclude>
-    <ClInclude Include="Lagacy\StudentScoreManager.h">
-      <Filter>Header Files\Lagacy</Filter>
-    </ClInclude>
-    <ClInclude Include="Lagacy\TempleteTrial.h">
-      <Filter>Header Files\Lagacy</Filter>
+    <ClInclude Include="UnorderedSet\UnorderedSet.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
