@@ -14,7 +14,7 @@ void URenderer::PrintOnScreen(IRenderInterface* InRenderInterface) const
 
 }
 
-void URenderer::PrintAllOnScrean() const
+void URenderer::PrintAllOnScreen() const
 {
     for (int i = 0; i < RenderTargets.GetSize(); i++)
     {

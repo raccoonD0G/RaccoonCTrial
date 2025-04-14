@@ -1,6 +1,7 @@
 #pragma once
 #include "IRenderInterface.h"
-#include "World.h"
+
+class UWorld;
 
 class AActor : public IRenderInterface
 {

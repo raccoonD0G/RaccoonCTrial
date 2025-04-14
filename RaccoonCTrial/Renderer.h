@@ -10,7 +10,7 @@ private:
 	void PrintOnScreen(IRenderInterface* InScreenPrintInterface) const;
 
 public:
-	void PrintAllOnScrean() const;
+	void PrintAllOnScreen() const;
 	inline TArray<IRenderInterface*>& GetScreenPrints() { return RenderTargets; }
 };
 

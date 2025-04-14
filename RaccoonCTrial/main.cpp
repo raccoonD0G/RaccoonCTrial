@@ -46,7 +46,7 @@ int main()
 
 
 	system("cls");
-	CurrentWorld->GetScreenPrinter()->PrintAllOnScrean();
+	CurrentWorld->GetScreenPrinter()->PrintAllOnScreen();
 
 	while (true)
 	{
@@ -86,7 +86,7 @@ int main()
 
 		// Render
 		system("cls");
-		CurrentWorld->GetScreenPrinter()->PrintAllOnScrean();
+		CurrentWorld->GetScreenPrinter()->PrintAllOnScreen();
 
 		Sleep(100);
 

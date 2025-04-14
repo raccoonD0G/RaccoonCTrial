@@ -1,5 +1,6 @@
 #include "Monster.h"
 #include "random"
+#include "World.h"
 
 string AMonster::GetScreenString()
 {

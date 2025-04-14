@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "World.h"
 
 string APlayer::GetScreenString()
 {
