@@ -1,6 +1,6 @@
 #pragma once
-#include "IRenderInterface.h"
-#include "Object.h"
+#include "Interfaces/IRenderInterface.h"
+#include "Core/Object.h"
 
 class UWorld;
 

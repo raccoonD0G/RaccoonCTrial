@@ -118,6 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Source</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,41 +128,47 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Actor.cpp" />
-    <ClCompile Include="Character.cpp" />
-    <ClCompile Include="Class.cpp" />
-    <ClCompile Include="DynamicArray.cpp" />
-    <ClCompile Include="EndPoint.cpp" />
-    <ClCompile Include="ILocationInterface.cpp" />
-    <ClCompile Include="IRenderIterface.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Monster.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="SmartPointer\SharedPtr.cpp" />
-    <ClCompile Include="SmartPointer\UniquePtr.cpp" />
-    <ClCompile Include="UnorderedSet.cpp" />
-    <ClCompile Include="Wall.cpp" />
-    <ClCompile Include="World.cpp" />
+    <ClCompile Include="Source\Character\Character.cpp" />
+    <ClCompile Include="Source\Components\ActorComponent.cpp" />
+    <ClCompile Include="Source\Components\PrimitiveComponent.cpp" />
+    <ClCompile Include="Source\Components\SceneComponent.cpp" />
+    <ClCompile Include="Source\Core\Class.cpp" />
+    <ClCompile Include="Source\Core\DynamicArray.cpp" />
+    <ClCompile Include="Source\Core\Object.cpp" />
+    <ClCompile Include="Source\Core\SharedPtr.cpp" />
+    <ClCompile Include="Source\Core\UniquePtr.cpp" />
+    <ClCompile Include="Source\Core\UnorderedSet.cpp" />
+    <ClCompile Include="Source\GameFramework\Actor.cpp" />
+    <ClCompile Include="Source\Interfaces\ILocationInterface.cpp" />
+    <ClCompile Include="Source\Interfaces\IRenderIterface.cpp" />
+    <ClCompile Include="Source\RaccoonCTrial\Character\Monster.cpp" />
+    <ClCompile Include="Source\RaccoonCTrial\Character\Player.cpp" />
+    <ClCompile Include="Source\RaccoonCTrial\Gimmick\EndPoint.cpp" />
+    <ClCompile Include="Source\RaccoonCTrial\Gimmick\Wall.cpp" />
+    <ClCompile Include="Source\RaccoonCTrial\main.cpp" />
+    <ClCompile Include="Source\Rendering\Renderer.cpp" />
+    <ClCompile Include="Source\World\World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actor.h" />
-    <ClInclude Include="Character.h" />
-    <ClInclude Include="Class.h" />
-    <ClInclude Include="DynamicArray.h" />
-    <ClInclude Include="EndPoint.h" />
-    <ClInclude Include="ILocationInterface.h" />
-    <ClInclude Include="IRenderInterface.h" />
-    <ClInclude Include="Monster.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="SmartPointer\SharedPtr.h" />
-    <ClInclude Include="SmartPointer\UniquePtr.h" />
-    <ClInclude Include="UnorderedSet.h" />
-    <ClInclude Include="Wall.h" />
-    <ClInclude Include="World.h" />
+    <ClInclude Include="Source\Character\Character.h" />
+    <ClInclude Include="Source\Components\ActorComponent.h" />
+    <ClInclude Include="Source\Components\PrimitiveComponent.h" />
+    <ClInclude Include="Source\Components\SceneComponent.h" />
+    <ClInclude Include="Source\Core\Class.h" />
+    <ClInclude Include="Source\Core\DynamicArray.h" />
+    <ClInclude Include="Source\Core\Object.h" />
+    <ClInclude Include="Source\Core\SharedPtr.h" />
+    <ClInclude Include="Source\Core\UniquePtr.h" />
+    <ClInclude Include="Source\Core\UnorderedSet.h" />
+    <ClInclude Include="Source\GameFramework\Actor.h" />
+    <ClInclude Include="Source\Interfaces\ILocationInterface.h" />
+    <ClInclude Include="Source\Interfaces\IRenderInterface.h" />
+    <ClInclude Include="Source\RaccoonCTrial\Character\Monster.h" />
+    <ClInclude Include="Source\RaccoonCTrial\Character\Player.h" />
+    <ClInclude Include="Source\RaccoonCTrial\Gimmick\EndPoint.h" />
+    <ClInclude Include="Source\RaccoonCTrial\Gimmick\Wall.h" />
+    <ClInclude Include="Source\Rendering\Renderer.h" />
+    <ClInclude Include="Source\World\World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

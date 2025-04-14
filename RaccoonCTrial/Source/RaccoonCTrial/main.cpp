@@ -1,12 +1,12 @@
 #include "iostream"
 #include "conio.h"
-#include "Player.h"
-#include "Monster.h"
-#include "Renderer.h"
-#include "Wall.h"
-#include "World.h"
-#include "EndPoint.h"
 #include "windows.h"
+#include "World/World.h"
+#include "RaccoonCTrial/Character/Player.h"
+#include "RaccoonCTrial/Character/Monster.h"
+#include "RaccoonCTrial/Gimmick/Wall.h"
+#include "RaccoonCTrial/Gimmick/EndPoint.h"
+
 
 
 using namespace std;

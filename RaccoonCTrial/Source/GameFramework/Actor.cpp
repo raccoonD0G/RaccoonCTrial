@@ -1,5 +1,5 @@
 #include "Actor.h"
-#include "World.h"
+#include "World/World.h"
 
 string AActor::GetScreenString()
 {

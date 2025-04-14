@@ -1,7 +1,7 @@
 #pragma once
-#include "DynamicArray.h"
-#include "IRenderInterface.h"
-#include "Renderer.h"
+#include "Core/DynamicArray.h"
+#include "Interfaces/IRenderInterface.h"
+#include "Rendering/Renderer.h"
 #include "iostream"
 
 using namespace std;
