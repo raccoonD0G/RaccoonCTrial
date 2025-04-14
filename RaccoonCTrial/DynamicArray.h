@@ -52,7 +52,7 @@ public:
 
 		ArrPtr = NewArrPtr;
 		
-		MemSize = NewMemSize;
+		MemSize = MemSize;
 	}
 
 	void Resize(size_t NewSize)
@@ -61,6 +61,7 @@ public:
 		for (int i = Size; i < NewSize; i++)
 		{
 			ArrPtr[i] = T();
+			Size++;
 		}
 	}
 

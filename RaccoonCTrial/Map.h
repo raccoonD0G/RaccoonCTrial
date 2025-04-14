@@ -12,19 +12,10 @@ public:
 	Map(size_t InSizeX, size_t InSizeY) : SizeX(InSizeX), SizeY(InSizeY)
 	{
 		Printer = new ScreenPrinter();
-		ScreenPrintInterfaces.Resize(SizeX);
+		ScreenPrintInterfaces.Reserve(SizeX);
 		for (int i = 0; i < SizeX; i++)
 		{
-			ScreenPrintInterfaces[i].Resize(SizeY);
-		}
-
-		for (int i = 0; i < SizeX; i++)
-		{
-			for (int j = 0; j < SizeY; j++)
-			{
-				delete ScreenPrintInterfaces[i][j];
-				ScreenPrintInterfaces[i][j] = nullptr;
-			}
+			ScreenPrintInterfaces[i].Reserve(SizeY);
 		}
 	}
 
