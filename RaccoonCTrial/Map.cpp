@@ -1,6 +1,6 @@
 #include "Map.h"
 
-void Map::MoveScreenPrintInterface(Vector2 Target, Vector2 Destination)
+void Map::MoveScreenPrintTarget(Vector2 Target, Vector2 Destination)
 {
 	if (IsEmpty(Destination.X, Destination.Y))
 	{

@@ -67,6 +67,6 @@ public:
 // Move Section
 public:
 	inline bool IsEmpty(int InX, int InY) { return (ScreenPrintInterfaces[InX][InY] == nullptr); }
-	void MoveScreenPrintInterface(Vector2 Target, Vector2 Destination);
+	void MoveScreenPrintTarget(Vector2 Target, Vector2 Destination);
 };
 

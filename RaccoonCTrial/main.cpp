@@ -12,20 +12,16 @@ using namespace std;
 
 int main()
 {
+	// Begin Play
 	Map* CurrentMap = new Map(10, 10);
 
 	Player* Player0 = CurrentMap->SpawnScreenPrintTarget<Player>(Vector2(1, 1));
-
 	Monster* Monster0 = CurrentMap->SpawnScreenPrintTarget<Monster>(Vector2(1, 2));
-
 	Monster* Monster1 = CurrentMap->SpawnScreenPrintTarget<Monster>(Vector2(4, 5));
-
 	Monster* Monster2 = CurrentMap->SpawnScreenPrintTarget<Monster>(Vector2(1, 7));
-
 	Monster* Monster3 = CurrentMap->SpawnScreenPrintTarget<Monster>(Vector2(3, 8));
 
 	
-
 	for (int i = 0; i < 10; i++)
 	{
 		for (int j = 0; j < 10; j++)
@@ -50,6 +46,7 @@ int main()
 
 	while (true)
 	{
+		// Input
 		if (_kbhit())
 		{
 			char Input = _getch();
@@ -71,10 +68,16 @@ int main()
 				break;
 			}
 			
-			CurrentMap->MoveScreenPrintInterface(Player0->GetLocation(), TargetVector);
+			CurrentMap->MoveScreenPrintTarget(Player0->GetLocation(), TargetVector);
 
-			system("cls");
-			CurrentMap->GetScreenPrinter()->PrintAllOnScrean();
 		}
+
+		// Tick
+
+		// Render
+		system("cls");
+		CurrentMap->GetScreenPrinter()->PrintAllOnScrean();
+
+
 	}
 }
