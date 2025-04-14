@@ -7,28 +7,10 @@ class ScreenPrinter
 private:
 	DynamicArray<IScreenPrintInterface*> ScreenPrints;
 
-	void PrintOnScreen(IScreenPrintInterface* InScreenPrintInterface);
+	void PrintOnScreen(IScreenPrintInterface* InScreenPrintInterface) const;
 
 public:
-	template<typename T>
-	T* SpawnScreenPrintTarget(const Vector2& SpawnLocation)
-	{
-		T* Target = new T();
-		IScreenPrintInterface* ScreenPrintInterface = static_cast<IScreenPrintInterface*>(Target);
-		if (ScreenPrintInterface)
-		{
-			ScreenPrintInterface->SetLocation(SpawnLocation);
-			ScreenPrints.PushBack(ScreenPrintInterface);
-			return Target;
-		}
-		else
-		{
-			delete Target;
-			Target = nullptr;
-			return nullptr;
-		}
-	}
-
-	void PrintAllOnScrean();
+	void PrintAllOnScrean() const;
+	inline DynamicArray<IScreenPrintInterface*>& GetScreenPrints() { return ScreenPrints; }
 };
 

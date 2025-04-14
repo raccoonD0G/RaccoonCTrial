@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void ScreenPrinter::PrintOnScreen(IScreenPrintInterface* InScreenPrintInterface)
+void ScreenPrinter::PrintOnScreen(IScreenPrintInterface* InScreenPrintInterface) const
 {
     COORD Pos;
     Pos.X = InScreenPrintInterface->GetLocation().X;
@@ -13,10 +13,10 @@ void ScreenPrinter::PrintOnScreen(IScreenPrintInterface* InScreenPrintInterface)
     cout << InScreenPrintInterface->GetScreenString();
 }
 
-void ScreenPrinter::PrintAllOnScrean()
+void ScreenPrinter::PrintAllOnScrean() const
 {
     for (int i = 0; i < ScreenPrints.GetSize(); i++)
     {
-        PrintOnScreen(ScreenPrints[i]);
+        PrintOnScreen(ScreenPrints.GetByIndex(i));
     }
 }

@@ -5,53 +5,79 @@
 #include "IScreenPrintInterface.h"
 #include "ScreenPrinter.h"
 #include "DynamicArray.h"
+#include "Wall.h"
+#include "Map.h"
 
 using namespace std;
 
 int main()
 {
-	ScreenPrinter* Printer = new ScreenPrinter();
+	Map* CurrentMap = new Map(10, 10);
 
-	Player* Player0 = Printer->SpawnScreenPrintTarget<Player>(Vector2(1, 1));
+	Player* Player0 = CurrentMap->SpawnScreenPrintTarget<Player>(Vector2(1, 1));
 
+	Monster* Monster0 = CurrentMap->SpawnScreenPrintTarget<Monster>(Vector2(1, 2));
 
+	Monster* Monster1 = CurrentMap->SpawnScreenPrintTarget<Monster>(Vector2(4, 5));
 
+	Monster* Monster2 = CurrentMap->SpawnScreenPrintTarget<Monster>(Vector2(1, 7));
 
+	Monster* Monster3 = CurrentMap->SpawnScreenPrintTarget<Monster>(Vector2(3, 8));
 
-	Monster* Monster0 = Printer->SpawnScreenPrintTarget<Monster>(Vector2(1, 2));
+	
 
-	Monster* Monster1 = Printer->SpawnScreenPrintTarget<Monster>(Vector2(4, 5));
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			if (i == 0 || i == 9)
+			{
+				CurrentMap->SpawnScreenPrintTarget<Wall>(Vector2(i, j));
+			}
 
-	Monster* Monster2 = Printer->SpawnScreenPrintTarget<Monster>(Vector2(1, 7));
-
-	Monster* Monster3 = Printer->SpawnScreenPrintTarget<Monster>(Vector2(3, 8));
+			if (i >= 1 && i <= 8)
+			{
+				if (j == 0 || j == 9)
+				{
+					CurrentMap->SpawnScreenPrintTarget<Wall>(Vector2(i, j));
+				}
+			}
+		}
+	}
 
 	system("cls");
-	Printer->PrintAllOnScrean();
+	CurrentMap->GetScreenPrinter()->PrintAllOnScrean();
 
 	while (true)
 	{
 		if (_kbhit())
 		{
 			char Input = _getch();
+			
+			Vector2 TargetVector;
 			switch (Input)
 			{
 			case 'w':
-				Player0->SetLocation(Vector2(Player0->GetLocation().X, Player0->GetLocation().Y - 1));
+				TargetVector = Vector2(Player0->GetLocation().X, Player0->GetLocation().Y - 1);
 				break;
 			case 'a':
-				Player0->SetLocation(Vector2(Player0->GetLocation().X - 1, Player0->GetLocation().Y));
+				TargetVector = Vector2(Player0->GetLocation().X - 1, Player0->GetLocation().Y);
 				break;
 			case 's':
-				Player0->SetLocation(Vector2(Player0->GetLocation().X, Player0->GetLocation().Y + 1));
+				TargetVector = Vector2(Player0->GetLocation().X, Player0->GetLocation().Y + 1);
 				break;
 			case 'd':
-				Player0->SetLocation(Vector2(Player0->GetLocation().X + 1, Player0->GetLocation().Y));
+				TargetVector = Vector2(Player0->GetLocation().X + 1, Player0->GetLocation().Y);
 				break;
+			}
+			
+			if (CurrentMap->IsEmpty(TargetVector.X, TargetVector.Y))
+			{
+				Player0->SetLocation(TargetVector);
 			}
 
 			system("cls");
-			Printer->PrintAllOnScrean();
+			CurrentMap->GetScreenPrinter()->PrintAllOnScrean();
 		}
 	}
 }

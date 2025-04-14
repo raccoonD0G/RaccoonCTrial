@@ -22,8 +22,10 @@ public:
 		ArrPtr = nullptr;
 	}
 
-	inline size_t GetSize() { return Size; }
-	inline size_t GetMemSize() { return MemSize; }
+	inline const T& GetByIndex(int Index) const { return ArrPtr[Index]; }
+
+	inline size_t GetSize() const { return Size; }
+	inline size_t GetMemSize() const { return MemSize; }
 	void PushBack(T NewIndex)
 	{
 		if (Size >= MemSize)
@@ -58,7 +60,7 @@ public:
 		Reserve(NewSize);
 		for (int i = Size; i < NewSize; i++)
 		{
-			ArrPtr[i] = new T();
+			ArrPtr[i] = T();
 		}
 	}
 
@@ -67,4 +69,34 @@ public:
 		return ArrPtr[Index];
 	}
 
+	DynamicArray(const DynamicArray& Other)
+	{
+		Size = Other.Size;
+		MemSize = Other.MemSize;
+		ArrPtr = new T[MemSize];
+
+		for (size_t i = 0; i < Size; i++)
+		{
+			ArrPtr[i] = Other.ArrPtr[i];
+		}
+	}
+
+	DynamicArray& operator=(const DynamicArray& Other)
+	{
+		if (this == &Other)
+			return *this;
+
+		delete[] ArrPtr;
+
+		Size = Other.Size;
+		MemSize = Other.MemSize;
+		ArrPtr = new T[MemSize];
+
+		for (size_t i = 0; i < Size; i++)
+		{
+			ArrPtr[i] = Other.ArrPtr[i];
+		}
+
+		return *this;
+	}
 };
