@@ -53,6 +53,7 @@ public:
 			{
 				Printer->GetScreenPrints().PushBack(ScreenPrintInterface);
 			}
+			ScreenPrintInterfaces[SpawnLocation.X][SpawnLocation.Y] = ScreenPrintInterface;
 			return Target;
 		}
 		else
@@ -66,5 +67,6 @@ public:
 // Move Section
 public:
 	inline bool IsEmpty(int InX, int InY) { return (ScreenPrintInterfaces[InX][InY] == nullptr); }
+	void MoveScreenPrintInterface(Vector2 Target, Vector2 Destination);
 };
 

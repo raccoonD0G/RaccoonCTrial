@@ -71,10 +71,7 @@ int main()
 				break;
 			}
 			
-			if (CurrentMap->IsEmpty(TargetVector.X, TargetVector.Y))
-			{
-				Player0->SetLocation(TargetVector);
-			}
+			CurrentMap->MoveScreenPrintInterface(Player0->GetLocation(), TargetVector);
 
 			system("cls");
 			CurrentMap->GetScreenPrinter()->PrintAllOnScrean();
