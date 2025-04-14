@@ -7,6 +7,7 @@
 #include "DynamicArray.h"
 #include "Wall.h"
 #include "World.h"
+#include "EndPoint.h"
 
 
 using namespace std;
@@ -14,14 +15,15 @@ using namespace std;
 int main()
 {
 	// Begin Play
-	UWorld* CurrentMap = new UWorld(10, 10);
+	UWorld* CurrentWorld = new UWorld(10, 10);
 
-	APlayer* Player0 = CurrentMap->SpawnScreenPrintTarget<APlayer>(FVector2(1, 1));
-	AMonster* Monster0 = CurrentMap->SpawnScreenPrintTarget<AMonster>(FVector2(1, 2));
-	AMonster* Monster1 = CurrentMap->SpawnScreenPrintTarget<AMonster>(FVector2(4, 5));
-	AMonster* Monster2 = CurrentMap->SpawnScreenPrintTarget<AMonster>(FVector2(1, 7));
-	AMonster* Monster3 = CurrentMap->SpawnScreenPrintTarget<AMonster>(FVector2(3, 8));
+	APlayer* Player0 = CurrentWorld->SpawnActor<APlayer>(FVector2(1, 1));
+	AMonster* Monster0 = CurrentWorld->SpawnActor<AMonster>(FVector2(1, 2));
+	AMonster* Monster1 = CurrentWorld->SpawnActor<AMonster>(FVector2(4, 5));
+	AMonster* Monster2 = CurrentWorld->SpawnActor<AMonster>(FVector2(1, 7));
+	AMonster* Monster3 = CurrentWorld->SpawnActor<AMonster>(FVector2(3, 8));
 
+	AEndPoint* EndPoint = CurrentWorld->SpawnActor<AEndPoint>(FVector2(8, 8));
 	
 	for (int i = 0; i < 10; i++)
 	{
@@ -29,14 +31,14 @@ int main()
 		{
 			if (i == 0 || i == 9)
 			{
-				CurrentMap->SpawnScreenPrintTarget<AWall>(FVector2(i, j));
+				CurrentWorld->SpawnActor<AWall>(FVector2(i, j));
 			}
 
 			if (i >= 1 && i <= 8)
 			{
 				if (j == 0 || j == 9)
 				{
-					CurrentMap->SpawnScreenPrintTarget<AWall>(FVector2(i, j));
+					CurrentWorld->SpawnActor<AWall>(FVector2(i, j));
 				}
 			}
 		}
@@ -45,7 +47,7 @@ int main()
 
 
 	system("cls");
-	CurrentMap->GetScreenPrinter()->PrintAllOnScrean();
+	CurrentWorld->GetScreenPrinter()->PrintAllOnScrean();
 
 	while (true)
 	{
@@ -85,7 +87,7 @@ int main()
 
 		// Render
 		system("cls");
-		CurrentMap->GetScreenPrinter()->PrintAllOnScrean();
+		CurrentWorld->GetScreenPrinter()->PrintAllOnScrean();
 
 
 	}

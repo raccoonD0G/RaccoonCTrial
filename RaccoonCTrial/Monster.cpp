@@ -30,5 +30,5 @@ void AMonster::RandomMove()
 		break;
 	}
 
-	OwningMap->MoveScreenPrintTarget(this->GetLocation(), TargetVector);
+	OwningMap->MoveRenderTarger(this->GetLocation(), TargetVector);
 }

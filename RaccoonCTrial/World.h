@@ -33,7 +33,7 @@ public:
 // Spawn Section
 public:
 	template<typename T>
-	T* SpawnScreenPrintTarget(const FVector2& SpawnLocation)
+	T* SpawnActor(const FVector2& SpawnLocation)
 	{
 		T* Target = new T();
 		IRenderInterface* RenderInterface = static_cast<IRenderInterface*>(Target);
@@ -59,6 +59,6 @@ public:
 // Move Section
 public:
 	inline bool IsEmpty(int InX, int InY) { return (RenderInterfaces[InX][InY] == nullptr); }
-	void MoveScreenPrintTarget(FVector2 Target, FVector2 Destination);
+	void MoveRenderTarger(FVector2 Target, FVector2 Destination);
 };
 

@@ -1,6 +1,6 @@
 #include "World.h"
 
-void UWorld::MoveScreenPrintTarget(FVector2 Target, FVector2 Destination)
+void UWorld::MoveRenderTarger(FVector2 Target, FVector2 Destination)
 {
 	if (IsEmpty(Destination.X, Destination.Y))
 	{

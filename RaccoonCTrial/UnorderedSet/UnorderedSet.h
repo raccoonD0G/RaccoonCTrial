@@ -19,10 +19,10 @@ public:
 
 
 template<typename T>
-class UnorderedSet
+class TSet
 {
 public:
-	UnorderedSet() : BucketSize(32)
+	TSet() : BucketSize(32)
 	{
 		Container.resize(BucketSize);
 	}

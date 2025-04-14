@@ -7,5 +7,5 @@ string APlayer::GetScreenString()
 
 void APlayer::Move(FVector2 Destination)
 {
-    OwningMap->MoveScreenPrintTarget(this->GetLocation(), Destination);
+    OwningMap->MoveRenderTarger(this->GetLocation(), Destination);
 }
