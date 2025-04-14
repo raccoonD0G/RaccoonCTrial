@@ -42,7 +42,7 @@ public:
 			RenderInterface->SetLocation(SpawnLocation);
 			if (Printer)
 			{
-				Printer->GetScreenPrints().PushBack(RenderInterface);
+				Printer->GetScreenPrints().Add(RenderInterface);
 			}
 			RenderInterfaces[SpawnLocation.X][SpawnLocation.Y] = RenderInterface;
 			RenderInterface->SetWorld(this);

@@ -55,11 +55,11 @@ public:
 		}
 	}
 
-	void Remove(T NewIndex)
+	bool Remove(T NewIndex)
 	{
 		if (this->Contain(NewIndex) == false)
 		{
-			return;
+			return false;
 		}
 
 		
@@ -70,7 +70,7 @@ public:
 		// No index in vector.
 		if (CheckingIndex == nullptr)
 		{
-			return;
+			return false;
 		}
 		else
 		{
@@ -96,12 +96,13 @@ public:
 				BeforeCheckingIndex->NextIndex = CheckingIndex->NextIndex;
 				delete CheckingIndex;
 			}
+
+			return true;
 		}
 	}
 
 	bool Contain(T InIndex) const
 	{
-		SetIndex<T>* NewSetIndex = new SetIndex<T>(InIndex);
 		SetIndex<T>* CheckingIndex = Container[Hash(InIndex)];
 		while (CheckingIndex != nullptr)
 		{
@@ -113,6 +114,28 @@ public:
 		}
 
 		return false;
+	}
+
+	T* Find(const T& InIndex)
+	{
+		if (!this->Contain(InIndex))
+		{
+			return nullptr;
+		}
+		
+		int HashNum = Hash(InIndex) % BucketSize;
+		SetIndex<T>* CheckingIndex = Container[HashNum];
+
+		while (CheckingIndex != nullptr)
+		{
+			if (CheckingIndex->Index == InIndex)
+			{
+				return &(CheckingIndex->Index);
+			}
+			CheckingIndex = CheckingIndex->NextIndex;
+		}
+
+		return nullptr;
 	}
 
 	int Hash(const T& key) const

@@ -7,47 +7,52 @@ class TMap
 {
 private:
 	TSet<TPair<Key, Value>> Pairs;
-	size_t IndexCount;
 
 public:
-	void Add(Key key, Value value)
+	void Add(Key InKey, Value InValue)
 	{
-
+		this->Remove(InKey);
+		this->Pairs.Add(TPair<Key, Value>(InKey, InValue));
 	}
 
-	bool Remove(Key key)
+	bool Remove(Key InKey)
 	{
-
+		return this->Pairs.Remove(TPair<Key, Value>(InKey, Value()));
 	}
 
-	bool Contains(Key key) const
+	bool Contains(Key InKey) const
 	{
-
+		return this->Pairs.Contain(TPair<Key, Value>(InKey, Value()));
 	}
 
-	Value* Find(Key key)
+	Value* Find(const Key& InKey)
 	{
-
+		return &(this->Pairs.Find(InKey)->CurrentValue);
 	}
 
-	Value& operator[](const Key& key)
+	Value& operator[](const Key& InKeykey)
 	{
+		if (!this->Pairs.Contain(InKeykey))
+		{
+			this->Add(TPair<Key, Value>(InKeykey, Value()));
+		}
 
+		return *(this->Pairs.Find(InKeykey));
 	}
 
 	bool IsEmpty() const
 	{
-
+		return this->Pairs.IsEmpty();
 	}
 
 	void Clear()
 	{
-
+		return this->Pairs.Clear();
 	}
 
 	int Num() const
 	{
-
+		return this->Pairs.Num();
 	}
 };
 

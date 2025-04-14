@@ -28,7 +28,8 @@ public:
 
 	inline size_t GetSize() const { return Size; }
 	inline size_t GetMemSize() const { return MemSize; }
-	void PushBack(T NewIndex)
+
+	void Add(T NewIndex)
 	{
 		if (Size >= MemSize)
 		{

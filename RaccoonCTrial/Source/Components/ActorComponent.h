@@ -1,7 +1,8 @@
 #pragma once
 #include "Core/Object.h"
-#include "GameFramework/Actor.h"
 #include "Interfaces/IWorldInterface.h"
+
+class AActor;
 
 class UActorComponent : public UObject, public IWorldInterface
 {
@@ -13,6 +14,6 @@ public:
 	inline AActor* GetOwner() const { return Owner; }
 
 // World Section
-	virtual UWorld* GetWorld() const { return Owner ? Owner->GetWorld() : nullptr; }
+	virtual UWorld* GetWorld() const;
 };
 
