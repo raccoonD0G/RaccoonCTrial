@@ -2,12 +2,11 @@
 #include "conio.h"
 #include "Player.h"
 #include "Monster.h"
-#include "IRenderInterface.h"
 #include "Renderer.h"
-#include "DynamicArray.h"
 #include "Wall.h"
 #include "World.h"
 #include "EndPoint.h"
+#include "windows.h"
 
 
 using namespace std;
@@ -89,6 +88,7 @@ int main()
 		system("cls");
 		CurrentWorld->GetScreenPrinter()->PrintAllOnScrean();
 
+		Sleep(100);
 
 	}
 }

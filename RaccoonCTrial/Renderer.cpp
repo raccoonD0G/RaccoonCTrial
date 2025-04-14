@@ -10,7 +10,8 @@ void URenderer::PrintOnScreen(IRenderInterface* InRenderInterface) const
     Pos.X = InRenderInterface->GetLocation().X;
     Pos.Y = InRenderInterface->GetLocation().Y;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
-    cout << InRenderInterface->GetScreenString();
+    cout << InRenderInterface->GetScreenString() << flush;
+
 }
 
 void URenderer::PrintAllOnScrean() const
