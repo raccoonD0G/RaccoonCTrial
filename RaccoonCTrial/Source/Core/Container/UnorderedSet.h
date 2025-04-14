@@ -30,7 +30,7 @@ public:
 
 	void Add(T NewIndex)
 	{
-		if (this->Contain(NewIndex))
+		if (this->Contains(NewIndex))
 		{
 			return;
 		}
@@ -57,7 +57,7 @@ public:
 
 	bool Remove(T NewIndex)
 	{
-		if (this->Contain(NewIndex) == false)
+		if (this->Contains(NewIndex) == false)
 		{
 			return false;
 		}
@@ -101,7 +101,7 @@ public:
 		}
 	}
 
-	bool Contain(T InIndex) const
+	bool Contains(T InIndex) const
 	{
 		SetIndex<T>* CheckingIndex = Container[Hash(InIndex)];
 		while (CheckingIndex != nullptr)
@@ -118,7 +118,7 @@ public:
 
 	T* Find(const T& InIndex)
 	{
-		if (!this->Contain(InIndex))
+		if (!this->Contains(InIndex))
 		{
 			return nullptr;
 		}

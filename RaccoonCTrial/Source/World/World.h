@@ -3,6 +3,9 @@
 #include "Interfaces/IRenderInterface.h"
 #include "Rendering/Renderer.h"
 #include "iostream"
+#include "CollisionSystem.h"
+#include "GameFramework/Actor.h"
+#include "Components/StaticMeshComponent.h"
 
 using namespace std;
 
@@ -11,8 +14,9 @@ class UWorld : public UObject
 public:
 	UWorld(size_t InSizeX, size_t InSizeY) : SizeX(InSizeX), SizeY(InSizeY)
 	{
+		CollisionSystem = new UCollisionSystem();
 		Printer = new URenderer();
-		RenderInterfaces.Reserve(SizeX);
+		RenderInterfaces.Resize(SizeX);
 		for (int i = 0; i < SizeX; i++)
 		{
 			RenderInterfaces[i].Reserve(SizeY);
@@ -35,24 +39,27 @@ public:
 	template<typename T>
 	T* SpawnActor(const FVector2& SpawnLocation)
 	{
+		static_assert(is_base_of<AActor, T>::value, "T must be derived from Actor");
+
 		T* Target = new T();
-		IRenderInterface* RenderInterface = static_cast<IRenderInterface*>(Target);
-		if (RenderInterface)
+
+		AActor* ActorTarget = dynamic_cast<AActor*>(Target);
+		ActorTarget->SetWorld(this);
+
+		UStaticMeshComponent* StaticMeshComponent = ActorTarget->GetComponentByClass<UStaticMeshComponent>();
+		if (StaticMeshComponent)
 		{
-			RenderInterface->SetLocation(SpawnLocation);
-			if (Printer)
+			IRenderInterface* RenderInterface = dynamic_cast<IRenderInterface*>(StaticMeshComponent);
+			if (RenderInterface)
 			{
-				Printer->GetScreenPrints().Add(RenderInterface);
+				RenderInterface->SetLocation(SpawnLocation);
+				if (Printer)
+				{
+					Printer->GetScreenPrints().Add(RenderInterface);
+				}
+				RenderInterfaces[SpawnLocation.X][SpawnLocation.Y] = RenderInterface;
+				return Target;
 			}
-			RenderInterfaces[SpawnLocation.X][SpawnLocation.Y] = RenderInterface;
-			RenderInterface->SetWorld(this);
-			return Target;
-		}
-		else
-		{
-			delete Target;
-			Target = nullptr;
-			return nullptr;
 		}
 	}
 
@@ -60,5 +67,14 @@ public:
 public:
 	inline bool IsEmpty(int InX, int InY) { return (RenderInterfaces[InX][InY] == nullptr); }
 	void MoveRenderTarger(FVector2 Target, FVector2 Destination);
+
+// Tick Section
+public:
+	void Tick(float DeltaSeconds);
+
+// Collison Section
+private:
+	UCollisionSystem* CollisionSystem;
+
 };
 

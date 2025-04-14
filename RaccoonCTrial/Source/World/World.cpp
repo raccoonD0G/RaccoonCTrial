@@ -9,3 +9,8 @@ void UWorld::MoveRenderTarger(FVector2 Target, FVector2 Destination)
 		RenderInterfaces[Target.X][Target.Y] = nullptr;
 	}	
 }
+
+void UWorld::Tick(float DeltaSeconds)
+{
+	CollisionSystem->PerformCollisionChecks();
+}

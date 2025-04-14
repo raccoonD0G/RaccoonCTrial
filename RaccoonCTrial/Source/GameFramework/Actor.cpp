@@ -1,19 +1,16 @@
 #include "Actor.h"
 #include "World/World.h"
 
-string AActor::GetScreenString()
+void AActor::PostInitializeComponents()
 {
-    return "A";
 }
 
-FVector2 AActor::GetLocation()
+void AActor::BeginPlay()
 {
-    return CurrentLocation;
 }
 
-void AActor::SetLocation(FVector2 NewLocation)
+void AActor::Tick(float DeltaSeconds)
 {
-    CurrentLocation = NewLocation;
 }
 
 void AActor::SetWorld(UWorld* InOwningMap)

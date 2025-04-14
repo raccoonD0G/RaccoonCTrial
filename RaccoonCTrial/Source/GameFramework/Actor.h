@@ -1,6 +1,7 @@
 #pragma once
 #include "Interfaces/IRenderInterface.h"
 #include "Interfaces/IWorldInterface.h"
+#include "Interfaces/IWorldServiceInterface.h"
 #include "Core/Object.h"
 #include "Core/DynamicArray.h"
 #include "Components/ActorComponent.h"
@@ -8,20 +9,16 @@
 
 class UWorld;
 
-class AActor : public UObject, public IRenderInterface, public IWorldInterface
+class AActor : public UObject, public IWorldInterface, public IWorldServiceInterface
 {
+public:
+    virtual void PostInitializeComponents();
+    virtual void BeginPlay() override;
+    virtual void Tick(float DeltaSeconds) override;
+
 protected:
     FVector2 CurrentLocation;
     UWorld* World;
-
-// Rendering Section
-public:
-    virtual string GetScreenString() override;
-
-// Location Section
-public:
-    virtual FVector2 GetLocation() override;
-    virtual void SetLocation(FVector2 NewLocation) override;
 
 // World Section
 public:
@@ -29,6 +26,9 @@ public:
     virtual UWorld* GetWorld() override;
 
 // Component Section
+protected:
+    USceneComponent* RootComponent = nullptr;
+
 private:
     TArray<UActorComponent*> ActorComponents;
     TArray<USceneComponent*> SceneComponents;
@@ -52,19 +52,23 @@ public:
     }
 
     template<typename T>
-    UActorComponent* GetComponentByClass()
+    T* GetComponentByClass()
     {
         static_assert(is_base_of<UActorComponent, T>::value, "T must be derived from UActorComponent");
 
-        for (UActorComponent* Comp : ActorComponents)
+        for (int i = 0; i < ActorComponents.Num(); ++i)
         {
-            if (T* Casted = dynamic_cast<T*>(Comp))
+            if (T* Casted = dynamic_cast<T*>(ActorComponents[i]))
             {
                 return Casted;
             }
         }
-
         return nullptr;
     }
+
+    // Location Section
+public:
+    inline FVector2 GetActorLocation() { return RootComponent->GetLocation(); }
+    inline void SetActorLocation(FVector2 NewLocation) { RootComponent->SetLocation(NewLocation); }
 };
 

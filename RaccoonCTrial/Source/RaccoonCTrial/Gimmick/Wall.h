@@ -4,9 +4,6 @@
 class AWall : public AActor
 {
 public:
-	AWall() { ; }
-
-public:
-	virtual string GetScreenString() override;
+	AWall();
 };
 

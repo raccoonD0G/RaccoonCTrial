@@ -1,6 +1,15 @@
 #include "EndPoint.h"
+#include "Components/StaticMeshComponent.h"
+#include "Components/BoxComponent.h"
 
-string AEndPoint::GetScreenString()
+AEndPoint::AEndPoint()
 {
-    return "E";
+	RootComponent = AddOwnedComponent<UStaticMeshComponent>();
+	AddOwnedComponent<UBoxComponent>();
+
+	UStaticMeshComponent* StaticMeshComponent = dynamic_cast<UStaticMeshComponent*>(RootComponent);
+	if (StaticMeshComponent)
+	{
+		StaticMeshComponent->SetScreenString("E");
+	}
 }

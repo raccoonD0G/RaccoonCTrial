@@ -48,6 +48,7 @@ int main()
 	system("cls");
 	CurrentWorld->GetScreenPrinter()->PrintAllOnScreen();
 
+	
 	while (true)
 	{
 		// Input
@@ -59,16 +60,16 @@ int main()
 			switch (Input)
 			{
 			case 'w':
-				TargetVector = FVector2(Player0->GetLocation().X, Player0->GetLocation().Y - 1);
+				TargetVector = FVector2(Player0->GetActorLocation().X, Player0->GetActorLocation().Y - 1);
 				break;
 			case 'a':
-				TargetVector = FVector2(Player0->GetLocation().X - 1, Player0->GetLocation().Y);
+				TargetVector = FVector2(Player0->GetActorLocation().X - 1, Player0->GetActorLocation().Y);
 				break;
 			case 's':
-				TargetVector = FVector2(Player0->GetLocation().X, Player0->GetLocation().Y + 1);
+				TargetVector = FVector2(Player0->GetActorLocation().X, Player0->GetActorLocation().Y + 1);
 				break;
 			case 'd':
-				TargetVector = FVector2(Player0->GetLocation().X + 1, Player0->GetLocation().Y);
+				TargetVector = FVector2(Player0->GetActorLocation().X + 1, Player0->GetActorLocation().Y);
 				break;
 			}
 			

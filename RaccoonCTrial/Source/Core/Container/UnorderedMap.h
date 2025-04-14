@@ -22,7 +22,7 @@ public:
 
 	bool Contains(Key InKey) const
 	{
-		return this->Pairs.Contain(TPair<Key, Value>(InKey, Value()));
+		return this->Pairs.Contains(TPair<Key, Value>(InKey, Value()));
 	}
 
 	Value* Find(const Key& InKey)
@@ -32,7 +32,7 @@ public:
 
 	Value& operator[](const Key& InKeykey)
 	{
-		if (!this->Pairs.Contain(InKeykey))
+		if (!this->Pairs.Contains(InKeykey))
 		{
 			this->Add(TPair<Key, Value>(InKeykey, Value()));
 		}

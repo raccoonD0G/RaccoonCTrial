@@ -6,11 +6,7 @@ using namespace std;
 class APlayer : public ACharacter
 {
 public:
-	APlayer() : ACharacter() { ; }
-
-// Screen Print Section
-public:
-	virtual string GetScreenString() override;
+	APlayer();
 
 // Move Section
 public:

@@ -5,10 +5,8 @@
 using namespace std;
 class AMonster : public ACharacter
 {
-
-// Screen Print Section
 public:
-	virtual string GetScreenString() override;
+	AMonster();
 
 // AI Section
 public:

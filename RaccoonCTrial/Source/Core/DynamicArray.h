@@ -26,8 +26,8 @@ public:
 
 	inline const T& GetByIndex(int Index) const { return ArrPtr[Index]; }
 
-	inline size_t GetSize() const { return Size; }
-	inline size_t GetMemSize() const { return MemSize; }
+	inline size_t Num() const { return Size; }
+	inline size_t Capacity() const { return MemSize; }
 
 	void Add(T NewIndex)
 	{
@@ -41,22 +41,51 @@ public:
 		Size++;
 	}
 
+	void Remove(T InIndex)
+	{
+		for (size_t i = 0; i < Size; ++i)
+		{
+			if (ArrPtr[i] == InIndex)
+			{
+				for (size_t j = i; j < Size - 1; ++j)
+				{
+					ArrPtr[j] = ArrPtr[j + 1];
+				}
+				--Size;
+				return;
+			}
+		}
+	}
+
+	bool Contains(T InIndex) const
+	{
+		for (size_t i = 0; i < Size; ++i)
+		{
+			if (ArrPtr[i] == InIndex)
+				return true;
+		}
+		return false;
+	}
+
+
 	void Reserve(size_t NewMemSize)
 	{
+		if (NewMemSize <= MemSize)
+			return;
+
 		T* NewArrPtr = new T[NewMemSize];
 
-		for (int i = 0; i < Size; i++)
+		for (size_t i = 0; i < Size; i++)
 		{
 			NewArrPtr[i] = ArrPtr[i];
 		}
 
 		delete[] ArrPtr;
-		ArrPtr = nullptr;
-
 		ArrPtr = NewArrPtr;
-		
-		MemSize = MemSize;
+
+		MemSize = NewMemSize;
 	}
+
 
 	void Resize(size_t NewSize)
 	{
@@ -70,7 +99,10 @@ public:
 
 	T& operator[](const unsigned int& Index)
 	{
-		return ArrPtr[Index];
+		if (Index < Size)
+		{
+			return ArrPtr[Index];
+		}
 	}
 
 	TArray(const TArray& Other)

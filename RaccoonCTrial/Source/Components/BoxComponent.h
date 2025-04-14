@@ -4,5 +4,7 @@
 
 class UBoxComponent : public UPrimitiveComponent, public ICollisionInterface
 {
+public:
+	virtual bool CheckOverlap(ICollisionInterface* InCollisionInterface) override;
 };
 

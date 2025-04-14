@@ -1,10 +1,19 @@
 #include "Monster.h"
 #include "random"
 #include "World/World.h"
+#include "Components/StaticMeshComponent.h"
+#include "Components/BoxComponent.h"
 
-string AMonster::GetScreenString()
+AMonster::AMonster()
 {
-    return "M";
+	RootComponent = AddOwnedComponent<UStaticMeshComponent>();
+	AddOwnedComponent<UBoxComponent>();
+
+	UStaticMeshComponent* StaticMeshComponent = dynamic_cast<UStaticMeshComponent*>(RootComponent);
+	if (StaticMeshComponent)
+	{
+		StaticMeshComponent->SetScreenString("M");
+	}
 }
 
 void AMonster::RandomMove()
@@ -18,18 +27,18 @@ void AMonster::RandomMove()
 	switch (MonsterValue)
 	{
 	case 0:
-		TargetVector = FVector2(this->GetLocation().X, this->GetLocation().Y - 1);
+		TargetVector = FVector2(RootComponent->GetLocation().X, RootComponent->GetLocation().Y - 1);
 		break;
 	case 1:
-		TargetVector = FVector2(this->GetLocation().X - 1, this->GetLocation().Y);
+		TargetVector = FVector2(RootComponent->GetLocation().X - 1, RootComponent->GetLocation().Y);
 		break;
 	case 2:
-		TargetVector = FVector2(this->GetLocation().X, this->GetLocation().Y + 1);
+		TargetVector = FVector2(RootComponent->GetLocation().X, RootComponent->GetLocation().Y + 1);
 		break;
 	case 3:
-		TargetVector = FVector2(this->GetLocation().X + 1, this->GetLocation().Y);
+		TargetVector = FVector2(RootComponent->GetLocation().X + 1, RootComponent->GetLocation().Y);
 		break;
 	}
 
-	World->MoveRenderTarger(this->GetLocation(), TargetVector);
+	World->MoveRenderTarger(RootComponent->GetLocation(), TargetVector);
 }

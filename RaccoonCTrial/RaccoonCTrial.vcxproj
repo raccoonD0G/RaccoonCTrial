@@ -128,6 +128,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Interfaces\IWorldServiceInterface.cpp" />
+    <ClCompile Include="Source\World\CollisionSystem.cpp" />
     <ClCompile Include="Source\Core\Container\Pair.cpp" />
     <ClCompile Include="Source\Core\Container\UnorderedMap.cpp" />
     <ClCompile Include="Source\Core\Container\UnorderedSet.cpp" />
@@ -158,6 +160,8 @@
     <ClCompile Include="Source\Core\Math\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Interfaces\IWorldServiceInterface.h" />
+    <ClInclude Include="Source\World\CollisionSystem.h" />
     <ClInclude Include="Source\Core\Container\Pair.h" />
     <ClInclude Include="Source\Core\Container\UnorderedMap.h" />
     <ClInclude Include="Source\Core\Container\UnorderedSet.h" />

@@ -2,8 +2,6 @@
 #include "SceneComponent.h"
 #include "string"
 
-class UWorld;
-
 using namespace std;
 
 class UPrimitiveComponent : public USceneComponent

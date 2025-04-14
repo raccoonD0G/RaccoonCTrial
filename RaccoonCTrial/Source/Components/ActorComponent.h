@@ -4,7 +4,7 @@
 
 class AActor;
 
-class UActorComponent : public UObject, public IWorldInterface
+class UActorComponent : public UObject
 {
 private:
 	AActor* Owner = nullptr;
