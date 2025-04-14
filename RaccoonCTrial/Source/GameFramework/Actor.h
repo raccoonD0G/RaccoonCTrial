@@ -35,7 +35,7 @@ private:
 
 public:
     template<typename T>
-    T* AddComponent()
+    T* AddOwnedComponent()
     {
         static_assert(is_base_of<UActorComponent, T>::value, "T must be derived from UActorComponent");
 
@@ -52,7 +52,7 @@ public:
     }
 
     template<typename T>
-    UActorComponent* GetComponents()
+    UActorComponent* GetComponentByClass()
     {
         static_assert(is_base_of<UActorComponent, T>::value, "T must be derived from UActorComponent");
 
@@ -66,7 +66,5 @@ public:
 
         return nullptr;
     }
-
-
 };
 
