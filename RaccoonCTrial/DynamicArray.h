@@ -1,6 +1,8 @@
 #pragma once
+#include "Object.h"
+
 template<typename T>
-class TArray
+class TArray : public UObject
 {
 private:
 	T* ArrPtr;

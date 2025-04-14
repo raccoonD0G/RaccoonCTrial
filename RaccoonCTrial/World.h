@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class UWorld
+class UWorld : public UObject
 {
 public:
 	UWorld(size_t InSizeX, size_t InSizeY) : SizeX(InSizeX), SizeY(InSizeY)

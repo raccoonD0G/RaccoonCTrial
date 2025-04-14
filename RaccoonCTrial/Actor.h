@@ -1,9 +1,10 @@
 #pragma once
 #include "IRenderInterface.h"
+#include "Object.h"
 
 class UWorld;
 
-class AActor : public IRenderInterface
+class AActor : public UObject, public IRenderInterface
 {
 protected:
     FVector2 CurrentLocation;

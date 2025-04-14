@@ -129,16 +129,19 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="Class.cpp" />
     <ClCompile Include="DynamicArray.cpp" />
     <ClCompile Include="EndPoint.cpp" />
     <ClCompile Include="ILocationInterface.cpp" />
     <ClCompile Include="IRenderIterface.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SmartPointer\SharedPtr.cpp" />
     <ClCompile Include="SmartPointer\UniquePtr.cpp" />
+    <ClCompile Include="UnorderedSet.cpp" />
     <ClCompile Include="UnorderedSet\UnorderedSet.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="World.cpp" />
@@ -146,16 +149,18 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Character.h" />
+    <ClInclude Include="Class.h" />
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="EndPoint.h" />
     <ClInclude Include="ILocationInterface.h" />
     <ClInclude Include="IRenderInterface.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SmartPointer\SharedPtr.h" />
     <ClInclude Include="SmartPointer\UniquePtr.h" />
-    <ClInclude Include="UnorderedSet\UnorderedSet.h" />
+    <ClInclude Include="UnorderedSet.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

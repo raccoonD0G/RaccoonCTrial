@@ -1,8 +1,9 @@
 #pragma once
 #include "IRenderInterface.h"
 #include "DynamicArray.h"
+#include "Object.h"
 
-class URenderer
+class URenderer : public UObject
 {
 private:
 	TArray<IRenderInterface*> RenderTargets;

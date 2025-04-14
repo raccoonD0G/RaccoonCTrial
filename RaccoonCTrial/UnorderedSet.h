@@ -1,13 +1,14 @@
 #pragma once
 
-#include <vector>
-#include <cstdlib>
-#include <ctime>  
+#include "vector"
+#include "cstdlib"
+#include "ctime"
+#include "Object.h"
 
 using namespace std;
 
 template<typename T>
-struct SetIndex
+struct SetIndex : public UObject
 {
 public:
 	SetIndex(T NewIndex) : Index(NewIndex), NextIndex(nullptr) { ; };
@@ -19,7 +20,7 @@ public:
 
 
 template<typename T>
-class TSet
+class TSet : public UObejct
 {
 public:
 	TSet() : BucketSize(32)
