@@ -128,6 +128,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Core\Container\Pair.cpp" />
+    <ClCompile Include="Source\Core\Container\UnorderedMap.cpp" />
+    <ClCompile Include="Source\Core\Container\UnorderedSet.cpp" />
+    <ClCompile Include="Source\Core\Math\Box.cpp" />
+    <ClCompile Include="Source\Interfaces\ICollisionInterface.cpp" />
+    <ClCompile Include="Source\Interfaces\IWorldInterface.cpp" />
+    <ClCompile Include="Source\Components\BoxComponent.cpp" />
     <ClCompile Include="Source\Character\Character.cpp" />
     <ClCompile Include="Source\Components\ActorComponent.cpp" />
     <ClCompile Include="Source\Components\PrimitiveComponent.cpp" />
@@ -137,7 +144,6 @@
     <ClCompile Include="Source\Core\Object.cpp" />
     <ClCompile Include="Source\Core\SharedPtr.cpp" />
     <ClCompile Include="Source\Core\UniquePtr.cpp" />
-    <ClCompile Include="Source\Core\UnorderedSet.cpp" />
     <ClCompile Include="Source\GameFramework\Actor.cpp" />
     <ClCompile Include="Source\Interfaces\ILocationInterface.cpp" />
     <ClCompile Include="Source\Interfaces\IRenderIterface.cpp" />
@@ -148,8 +154,17 @@
     <ClCompile Include="Source\RaccoonCTrial\main.cpp" />
     <ClCompile Include="Source\Rendering\Renderer.cpp" />
     <ClCompile Include="Source\World\World.cpp" />
+    <ClCompile Include="Source\Components\StaticMeshComponent.cpp" />
+    <ClCompile Include="Source\Core\Math\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Core\Container\Pair.h" />
+    <ClInclude Include="Source\Core\Container\UnorderedMap.h" />
+    <ClInclude Include="Source\Core\Container\UnorderedSet.h" />
+    <ClInclude Include="Source\Core\Math\Box.h" />
+    <ClInclude Include="Source\Interfaces\ICollisionInterface.h" />
+    <ClInclude Include="Source\Interfaces\IWorldInterface.h" />
+    <ClInclude Include="Source\Components\BoxComponent.h" />
     <ClInclude Include="Source\Character\Character.h" />
     <ClInclude Include="Source\Components\ActorComponent.h" />
     <ClInclude Include="Source\Components\PrimitiveComponent.h" />
@@ -159,7 +174,6 @@
     <ClInclude Include="Source\Core\Object.h" />
     <ClInclude Include="Source\Core\SharedPtr.h" />
     <ClInclude Include="Source\Core\UniquePtr.h" />
-    <ClInclude Include="Source\Core\UnorderedSet.h" />
     <ClInclude Include="Source\GameFramework\Actor.h" />
     <ClInclude Include="Source\Interfaces\ILocationInterface.h" />
     <ClInclude Include="Source\Interfaces\IRenderInterface.h" />
@@ -169,6 +183,8 @@
     <ClInclude Include="Source\RaccoonCTrial\Gimmick\Wall.h" />
     <ClInclude Include="Source\Rendering\Renderer.h" />
     <ClInclude Include="Source\World\World.h" />
+    <ClInclude Include="Source\Components\StaticMeshComponent.h" />
+    <ClInclude Include="Source\Core\Math\Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

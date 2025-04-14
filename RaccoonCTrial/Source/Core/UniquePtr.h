@@ -3,24 +3,24 @@
 using namespace std;
 
 template<typename T>
-class UniquePtr
+class TUniquePtr
 {
 private:
 	T* Pointer;
 
 public:
-	explicit UniquePtr()
+	explicit TUniquePtr()
 	{
 		Pointer = nullptr;
 	}
 
-	explicit UniquePtr(UniquePtr&& Other)
+	explicit TUniquePtr(TUniquePtr&& Other)
 	{
 		Pointer = Other.Pointer;
 		Other.Pointer = nullptr;
 	}
 
-	UniquePtr& operator=(UniquePtr&& Other)
+	TUniquePtr& operator=(TUniquePtr&& Other)
 	{
 		if (this != &Other)
 		{
@@ -31,10 +31,10 @@ public:
 		return *this;
 	}
 
-	UniquePtr(const UniquePtr&) = delete;
-	UniquePtr& operator=(const UniquePtr&) = delete;
+	TUniquePtr(const TUniquePtr&) = delete;
+	TUniquePtr& operator=(const TUniquePtr&) = delete;
 
-	~UniquePtr()
+	~TUniquePtr()
 	{
 		delete Pointer;
 	}

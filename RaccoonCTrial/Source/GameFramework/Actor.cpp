@@ -16,7 +16,12 @@ void AActor::SetLocation(FVector2 NewLocation)
     CurrentLocation = NewLocation;
 }
 
-void AActor::SetOwningMap(UWorld* InOwningMap)
+void AActor::SetWorld(UWorld* InOwningMap)
 {
-    OwningMap = InOwningMap;
+    World = InOwningMap;
+}
+
+UWorld* AActor::GetWorld()
+{
+    return World;
 }

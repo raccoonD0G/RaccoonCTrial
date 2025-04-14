@@ -8,5 +8,5 @@ string APlayer::GetScreenString()
 
 void APlayer::Move(FVector2 Destination)
 {
-    OwningMap->MoveRenderTarger(this->GetLocation(), Destination);
+    World->MoveRenderTarger(this->GetLocation(), Destination);
 }

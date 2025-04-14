@@ -3,32 +3,32 @@
 using namespace std;
 
 template<typename T>
-class SharedPtr
+class TSharedPtr
 {
 private:
 	T* Pointer;
 
 public:
-	explicit SharedPtr()
+	explicit TSharedPtr()
 	{
 		Pointer = nullptr;
 		RefCount = nullptr;
 	}
 
-	SharedPtr(T* NewPointer)
+	TSharedPtr(T* NewPointer)
 	{
 		this->Pointer = NewPointer;
 		IncreaseRefCount();
 	}
 
-	SharedPtr(const SharedPtr& Other)
+	TSharedPtr(const TSharedPtr& Other)
 	{
 		this->Pointer = Other.Pointer;
 		this->RefCount = Other.RefCount;
 		IncreaseRefCount();
 	}
 
-	SharedPtr& operator=(const SharedPtr& Other)
+	TSharedPtr& operator=(const TSharedPtr& Other)
 	{
 		this->DecreaseRefCount();
 		this->Pointer = Other.Pointer;
@@ -38,7 +38,7 @@ public:
 		return *this;
 	}
 
-	SharedPtr& operator=(SharedPtr&& Other) noexcept
+	TSharedPtr& operator=(TSharedPtr&& Other) noexcept
 	{
 		this->DecreaseRefCount();
 		this->Pointer = Other.Pointer;
@@ -49,7 +49,7 @@ public:
 		return *this;
 	}
 
-	SharedPtr(SharedPtr&& Other)
+	TSharedPtr(TSharedPtr&& Other)
 	{
 		this->Pointer = Other.Pointer;
 		this->RefCount = Other.RefCount;
@@ -58,7 +58,7 @@ public:
 		Other.RefCount = nullptr;
 	}
 
-	~SharedPtr()
+	~TSharedPtr()
 	{
 		DecreaseRefCount();
 	}

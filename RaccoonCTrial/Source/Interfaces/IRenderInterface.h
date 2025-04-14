@@ -10,6 +10,6 @@ class IRenderInterface : public ILocationInterface
 {
 public:
 	virtual string GetScreenString() = 0;
-	virtual void SetOwningMap(UWorld* InOwningMap) = 0;
+	virtual void SetWorld(UWorld* InOwningMap) = 0;
 };
 

@@ -45,7 +45,7 @@ public:
 				Printer->GetScreenPrints().PushBack(RenderInterface);
 			}
 			RenderInterfaces[SpawnLocation.X][SpawnLocation.Y] = RenderInterface;
-			RenderInterface->SetOwningMap(this);
+			RenderInterface->SetWorld(this);
 			return Target;
 		}
 		else

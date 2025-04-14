@@ -31,5 +31,5 @@ void AMonster::RandomMove()
 		break;
 	}
 
-	OwningMap->MoveRenderTarger(this->GetLocation(), TargetVector);
+	World->MoveRenderTarger(this->GetLocation(), TargetVector);
 }
