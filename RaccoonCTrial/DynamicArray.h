@@ -1,6 +1,6 @@
 #pragma once
 template<typename T>
-class DynamicArray
+class TArray
 {
 private:
 	T* ArrPtr;
@@ -9,14 +9,14 @@ private:
 	size_t MemSize;
 
 public:
-	DynamicArray()
+	TArray()
 	{
 		ArrPtr = new T[2];
 		Size = 0;
 		MemSize = 2;
 	}
 
-	~DynamicArray()
+	~TArray()
 	{
 		delete[] ArrPtr;
 		ArrPtr = nullptr;
@@ -70,7 +70,7 @@ public:
 		return ArrPtr[Index];
 	}
 
-	DynamicArray(const DynamicArray& Other)
+	TArray(const TArray& Other)
 	{
 		Size = Other.Size;
 		MemSize = Other.MemSize;
@@ -82,7 +82,7 @@ public:
 		}
 	}
 
-	DynamicArray& operator=(const DynamicArray& Other)
+	TArray& operator=(const TArray& Other)
 	{
 		if (this == &Other)
 			return *this;

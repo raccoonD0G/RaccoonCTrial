@@ -1,6 +1,6 @@
 #include "Character.h"
 
-string Character::GetScreenString()
+string ACharacter::GetScreenString()
 {
 	return "C";
 }

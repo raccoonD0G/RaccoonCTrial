@@ -1,17 +1,17 @@
 #pragma once
-#include "IScreenPrintInterface.h"
-#include "Map.h"
+#include "IRenderInterface.h"
+#include "World.h"
 
-class Actor : public IScreenPrintInterface
+class AActor : public IRenderInterface
 {
 protected:
-    Vector2 CurrentLocation;
-    Map* OwningMap;
+    FVector2 CurrentLocation;
+    UWorld* OwningMap;
 
 public:
     virtual string GetScreenString() override;
-    virtual Vector2 GetLocation() override;
-    virtual void SetLocation(Vector2 NewLocation) override;
-    virtual void SetOwningMap(Map* InOwningMap) override;
+    virtual FVector2 GetLocation() override;
+    virtual void SetLocation(FVector2 NewLocation) override;
+    virtual void SetOwningMap(UWorld* InOwningMap) override;
 };
 

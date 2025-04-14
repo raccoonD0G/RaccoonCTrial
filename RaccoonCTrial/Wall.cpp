@@ -1,6 +1,6 @@
 #include "Wall.h"
 
-string Wall::GetScreenString()
+string AWall::GetScreenString()
 {
     return "*";
 }

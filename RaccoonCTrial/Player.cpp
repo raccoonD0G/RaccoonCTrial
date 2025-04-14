@@ -1,11 +1,11 @@
 #include "Player.h"
 
-string Player::GetScreenString()
+string APlayer::GetScreenString()
 {
     return "P";
 }
 
-void Player::Move(Vector2 Destination)
+void APlayer::Move(FVector2 Destination)
 {
     OwningMap->MoveScreenPrintTarget(this->GetLocation(), Destination);
 }

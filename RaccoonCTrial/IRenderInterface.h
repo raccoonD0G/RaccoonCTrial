@@ -2,14 +2,14 @@
 #include "ILocationInterface.h"
 #include "string"
 
-class Map;
+class UWorld;
 
 using namespace std;
 
-class IScreenPrintInterface : public ILocationInterface
+class IRenderInterface : public ILocationInterface
 {
 public:
 	virtual string GetScreenString() = 0;
-	virtual void SetOwningMap(Map* InOwningMap) = 0;
+	virtual void SetOwningMap(UWorld* InOwningMap) = 0;
 };
 

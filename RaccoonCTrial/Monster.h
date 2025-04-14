@@ -3,7 +3,7 @@
 #include "string"
 
 using namespace std;
-class Monster : public Character
+class AMonster : public ACharacter
 {
 
 // Screen Print Section

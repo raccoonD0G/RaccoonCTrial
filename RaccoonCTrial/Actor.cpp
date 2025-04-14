@@ -1,21 +1,21 @@
 #include "Actor.h"
 
-string Actor::GetScreenString()
+string AActor::GetScreenString()
 {
     return "A";
 }
 
-Vector2 Actor::GetLocation()
+FVector2 AActor::GetLocation()
 {
     return CurrentLocation;
 }
 
-void Actor::SetLocation(Vector2 NewLocation)
+void AActor::SetLocation(FVector2 NewLocation)
 {
     CurrentLocation = NewLocation;
 }
 
-void Actor::SetOwningMap(Map* InOwningMap)
+void AActor::SetOwningMap(UWorld* InOwningMap)
 {
     OwningMap = InOwningMap;
 }

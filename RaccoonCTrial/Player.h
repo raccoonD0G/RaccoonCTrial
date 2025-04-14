@@ -3,10 +3,10 @@
 
 using namespace std;
 
-class Player : public Character
+class APlayer : public ACharacter
 {
 public:
-	Player() : Character() { ; }
+	APlayer() : ACharacter() { ; }
 
 // Screen Print Section
 public:
@@ -14,7 +14,7 @@ public:
 
 // Move Section
 public:
-	void Move(Vector2 Destination);
+	void Move(FVector2 Destination);
 
 };
 

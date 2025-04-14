@@ -1,10 +1,10 @@
 #pragma once
 #include "Actor.h"
 
-class Wall : public Actor
+class AWall : public AActor
 {
 public:
-	Wall() { ; }
+	AWall() { ; }
 
 public:
 	virtual string GetScreenString() override;
