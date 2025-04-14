@@ -8,7 +8,7 @@
 using namespace std;
 
 template<typename T>
-struct SetIndex : public UObject
+struct SetIndex
 {
 public:
 	SetIndex(T NewIndex) : Index(NewIndex), NextIndex(nullptr) { ; };
@@ -20,7 +20,7 @@ public:
 
 
 template<typename T>
-class TSet : public UObejct
+class TSet : public UObject
 {
 public:
 	TSet() : BucketSize(32)

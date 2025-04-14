@@ -18,9 +18,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UnorderedSet\UnorderedSet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SmartPointer\SharedPtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
