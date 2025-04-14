@@ -12,5 +12,9 @@ public:
 public:
 	virtual string GetScreenString() override;
 
+// Move Section
+public:
+	void Move(Vector2 Destination);
+
 };
 

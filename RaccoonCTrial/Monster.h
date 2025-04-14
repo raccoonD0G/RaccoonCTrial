@@ -9,5 +9,9 @@ class Monster : public Character
 // Screen Print Section
 public:
 	virtual string GetScreenString() override;
+
+// AI Section
+public:
+	void RandomMove();
 };
 

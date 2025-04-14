@@ -45,6 +45,7 @@ public:
 				Printer->GetScreenPrints().PushBack(ScreenPrintInterface);
 			}
 			ScreenPrintInterfaces[SpawnLocation.X][SpawnLocation.Y] = ScreenPrintInterface;
+			ScreenPrintInterface->SetOwningMap(this);
 			return Target;
 		}
 		else

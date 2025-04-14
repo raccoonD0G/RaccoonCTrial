@@ -1,12 +1,6 @@
 #include "Character.h"
 
-
-Vector2 Character::GetLocation()
+string Character::GetScreenString()
 {
-    return CurrentLocation;
-}
-
-void Character::SetLocation(Vector2 NewLocation)
-{
-    CurrentLocation = NewLocation;
+	return "C";
 }

@@ -1,17 +1,12 @@
 #pragma once
-#include "IScreenPrintInterface.h"
+#include "Actor.h"
 
-class Wall : public IScreenPrintInterface
+class Wall : public Actor
 {
 public:
 	Wall() { ; }
 
-private:
-	Vector2 CurrentLocation;
-
 public:
 	virtual string GetScreenString() override;
-	virtual Vector2 GetLocation() override;
-	virtual void SetLocation(Vector2 NewLocation) override;
 };
 

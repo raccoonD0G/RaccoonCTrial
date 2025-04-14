@@ -8,6 +8,7 @@
 #include "Wall.h"
 #include "Map.h"
 
+
 using namespace std;
 
 int main()
@@ -68,11 +69,17 @@ int main()
 				break;
 			}
 			
-			CurrentMap->MoveScreenPrintTarget(Player0->GetLocation(), TargetVector);
+			Player0->Move(TargetVector);
 
 		}
 
 		// Tick
+
+		Monster0->RandomMove();
+		Monster1->RandomMove();
+		Monster2->RandomMove();
+		Monster3->RandomMove();
+
 
 		// Render
 		system("cls");
