@@ -14,10 +14,9 @@ int main()
 	UWorld* CurrentWorld = new UWorld();
 
 	APlayer* Player0 = CurrentWorld->SpawnActor<APlayer>(FVector2(4, 4));
-	
+
 	CurrentWorld->SpawnActor<AMonster>(FVector2(1, 7));
 	CurrentWorld->SpawnActor<AMonster>(FVector2(3, 8));
-	
 	CurrentWorld->SpawnActor<AEndPoint>(FVector2(8, 8));
 	
 	
@@ -79,7 +78,7 @@ int main()
 		}
 
 		// Tick
-		CurrentWorld->Tick(200);
+		CurrentWorld->Tick(0.2);
 
 		// Render
 		system("cls");
