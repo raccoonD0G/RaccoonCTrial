@@ -27,10 +27,10 @@ void UWorld::BeginPlay()
 
 void UWorld::Tick(float DeltaSeconds)
 {
-	CollisionSystem->PerformCollisionChecks();
-
 	for (int i = 0; i < Actors.Num(); i++)
 	{
 		Actors[i]->Tick(DeltaSeconds);
 	}
+
+	CollisionSystem->PerformCollisionChecks();
 }

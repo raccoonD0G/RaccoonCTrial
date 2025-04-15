@@ -86,6 +86,6 @@ public:
     // Location Section
 public:
     inline FVector2 GetActorLocation() { return RootComponent ? RootComponent->GetLocation() : FVector2(); }
-    void SetActorLocation(FVector2 NewLocation);
+    inline void SetActorLocation(FVector2 NewLocation) { if (RootComponent) RootComponent->SetLocation(NewLocation); }
 };
 

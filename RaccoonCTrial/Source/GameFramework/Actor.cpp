@@ -50,35 +50,3 @@ UWorld* AActor::GetWorld()
 {
     return World;
 }
-
-void AActor::SetActorLocation(FVector2 NewLocation)
-{
-    UBoxComponent* Box = GetComponentByClass<UBoxComponent>();
-    if (Box)
-    {
-        FVector2 OldLocation = RootComponent->GetLocation();
-
-        RootComponent->SetLocation(NewLocation);
-
-        for (int i = 0; i < World->GetAllActors().Num(); i++)
-        {
-            AActor* Other = World->GetAllActors()[i];
-
-            if (Other == this) continue;
-
-            if (UBoxComponent* OtherBox = Other->GetComponentByClass<UBoxComponent>())
-            {
-                if (Box->CheckOverlap(OtherBox) && Box->ShouldBlock(OtherBox))
-                {
-                    RootComponent->SetLocation(OldLocation);
-                    Box->OnBlock(Other);
-                    return;
-                }
-            }
-        }
-    }
-    else
-    {
-        RootComponent->SetLocation(NewLocation);
-    }
-}
