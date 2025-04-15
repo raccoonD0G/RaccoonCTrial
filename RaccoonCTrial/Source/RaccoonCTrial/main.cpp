@@ -3,10 +3,12 @@
 #include "windows.h"
 #include "World/World.h"
 #include "RaccoonCTrial/Character/Player.h"
-#include "RaccoonCTrial/Character/Monster.h"
 #include "RaccoonCTrial/Gimmick/Wall.h"
 #include "RaccoonCTrial/Gimmick/EndPoint.h"
 #include "Core/Container/DynamicArray.h"
+#include "Character/Boar.h"
+#include "Character/Slime.h"
+#include "Character/Goblin.h"
 
 int main()
 {
@@ -14,8 +16,9 @@ int main()
 
 	APlayer* Player0 = CurrentWorld->SpawnActor<APlayer>(FVector2(4, 4));
 
-	CurrentWorld->SpawnActor<AMonster>(FVector2(1, 7));
-	CurrentWorld->SpawnActor<AMonster>(FVector2(3, 8));
+	CurrentWorld->SpawnActor<ABoar>(FVector2(1, 7));
+	CurrentWorld->SpawnActor<ASlime>(FVector2(3, 8));
+	CurrentWorld->SpawnActor<AGoblin>(FVector2(7, 6));
 	CurrentWorld->SpawnActor<AEndPoint>(FVector2(8, 8));
 	
 	

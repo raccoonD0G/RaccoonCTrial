@@ -12,3 +12,11 @@ ACharacter::ACharacter()
 		StaticMeshComponent->SetRenderString("C");
 	}
 }
+
+void ACharacter::GetDamaged(IFightInterface* Other)
+{
+}
+
+void ACharacter::DoAttack(IFightInterface* Target)
+{
+}

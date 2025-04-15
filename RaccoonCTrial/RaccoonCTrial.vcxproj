@@ -133,6 +133,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Interfaces\IFightInterface.cpp" />
+    <ClCompile Include="Source\RaccoonCTrial\Character\Boar.cpp" />
+    <ClCompile Include="Source\RaccoonCTrial\Character\Goblin.cpp" />
+    <ClCompile Include="Source\RaccoonCTrial\Character\Slime.cpp" />
     <ClCompile Include="Source\Core\Container\DynamicArray.cpp" />
     <ClCompile Include="Source\World\CollisionSystem.cpp" />
     <ClCompile Include="Source\Core\Container\Pair.cpp" />
@@ -162,8 +166,13 @@
     <ClCompile Include="Source\World\World.cpp" />
     <ClCompile Include="Source\Components\StaticMeshComponent.cpp" />
     <ClCompile Include="Source\Core\Math\Vector2.cpp" />
+    <ClCompile Include="Source\Components\StatComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Interfaces\IFightInterface.h" />
+    <ClInclude Include="Source\RaccoonCTrial\Character\Boar.h" />
+    <ClInclude Include="Source\RaccoonCTrial\Character\Goblin.h" />
+    <ClInclude Include="Source\RaccoonCTrial\Character\Slime.h" />
     <ClInclude Include="Source\Core\Collision\CollisionChannel.h" />
     <ClInclude Include="Source\Core\Container\DynamicArray.h" />
     <ClInclude Include="Source\Core\Container\Hash.h" />
@@ -194,6 +203,7 @@
     <ClInclude Include="Source\World\World.h" />
     <ClInclude Include="Source\Components\StaticMeshComponent.h" />
     <ClInclude Include="Source\Core\Math\Vector2.h" />
+    <ClInclude Include="Source\Components\StatComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

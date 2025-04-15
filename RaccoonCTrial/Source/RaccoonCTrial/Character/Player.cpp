@@ -2,6 +2,7 @@
 #include "World/World.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h"
+#include "Components/StatComponent.h"
 
 APlayer::APlayer()
 {
@@ -18,6 +19,12 @@ APlayer::APlayer()
 		BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::Monster, ECollisionResponse::Block);
 		BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::Wall, ECollisionResponse::Block);
 
+	}
+
+	UStatComponent* StatComponent = this->AddOwnedComponent<UStatComponent>();
+	if (StatComponent)
+	{
+		;
 	}
 }
 
