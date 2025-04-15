@@ -10,7 +10,6 @@
 
 int main()
 {
-	// Begin Play
 	UWorld* CurrentWorld = new UWorld();
 
 	APlayer* Player0 = CurrentWorld->SpawnActor<APlayer>(FVector2(4, 4));
@@ -39,6 +38,7 @@ int main()
 		}
 	}
 	
+	// Begin Play
 	CurrentWorld->BeginPlay();
 
 	system("cls");
