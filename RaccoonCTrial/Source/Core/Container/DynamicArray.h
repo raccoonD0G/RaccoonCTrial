@@ -173,4 +173,25 @@ public:
 			MemSize = 0;
 		}
 	}
+
+	T* begin()
+	{
+		return ArrPtr;
+	}
+
+	T* end()
+	{
+		return ArrPtr + Size;
+	}
+
+
+	const T* begin() const
+	{
+		return ArrPtr;
+	}
+
+	const T* end() const
+	{
+		return ArrPtr + Size;
+	}
 };

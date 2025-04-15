@@ -1,11 +1,10 @@
 #pragma once
 #include "Core/Container/DynamicArray.h"
-#include "Interfaces/IRenderInterface.h"
 #include "Rendering/Renderer.h"
 #include "CollisionSystem.h"
 #include "GameFramework/Actor.h"
-#include "Components/StaticMeshComponent.h"
-#include "Components/BoxComponent.h"
+#include "Components/MeshComponent.h"
+#include "Components/ShapeComponent.h"
 
 class UWorld : public UObject
 {
@@ -43,10 +42,11 @@ public:
 		ActorTarget->SetActorLocation(SpawnLocation);
 		Actors.Add(ActorTarget);
 
-		UStaticMeshComponent* StaticMeshComponent = ActorTarget->GetComponentByClass<UStaticMeshComponent>();
-		if (StaticMeshComponent)
+		TArray<UMeshComponent*> MeshComponents;
+		ActorTarget->GetComponents<UMeshComponent>(MeshComponents);
+		for (int i = 0; i < MeshComponents.Num(); i++)
 		{
-			IRenderInterface* RenderInterface = dynamic_cast<IRenderInterface*>(StaticMeshComponent);
+			IRenderInterface* RenderInterface = dynamic_cast<IRenderInterface*>(MeshComponents[i]);
 			if (RenderInterface)
 			{
 				if (Renderer)
@@ -56,15 +56,16 @@ public:
 			}
 		}
 
-		UBoxComponent* BoxComponent = ActorTarget->GetComponentByClass<UBoxComponent>();
-		if (BoxComponent)
+		TArray<UShapeComponent*> BoxComponents;
+		ActorTarget->GetComponents<UShapeComponent>(BoxComponents);
+		for (int i = 0; i < BoxComponents.Num(); i++)
 		{
-			ICollisionInterface* CollisionInterface = dynamic_cast<ICollisionInterface*>(BoxComponent);
+			ICollisionInterface* CollisionInterface = dynamic_cast<ICollisionInterface*>(BoxComponents[i]);
 			if (CollisionInterface)
 			{
 				if (CollisionSystem)
 				{
-					CollisionSystem->Register(CollisionInterface);
+					CollisionSystem->RegisterCollisionTarget(CollisionInterface);
 				}
 			}
 		}

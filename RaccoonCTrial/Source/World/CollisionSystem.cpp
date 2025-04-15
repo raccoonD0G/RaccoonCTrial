@@ -10,7 +10,7 @@ UCollisionSystem::~UCollisionSystem()
     ;
 }
 
-void UCollisionSystem::Register(ICollisionInterface* CollisionObject)
+void UCollisionSystem::RegisterCollisionTarget(ICollisionInterface* CollisionObject)
 {
     if (CollisionObject && !CollisionInterfaces.Contains(CollisionObject))
     {

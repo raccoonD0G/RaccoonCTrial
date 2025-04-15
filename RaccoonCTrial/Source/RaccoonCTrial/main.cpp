@@ -1,5 +1,7 @@
 #include "iostream"
 #include "conio.h"
+#include "cstdlib"
+#include "ctime"
 #include "windows.h"
 #include "World/World.h"
 #include "RaccoonCTrial/Character/Player.h"
@@ -14,30 +16,48 @@ int main()
 {
 	UWorld* CurrentWorld = new UWorld();
 
-	APlayer* Player0 = CurrentWorld->SpawnActor<APlayer>(FVector2(4, 4));
+	APlayer* Player0 = CurrentWorld->SpawnActor<APlayer>(FVector2(25, 12));
 
-	CurrentWorld->SpawnActor<ABoar>(FVector2(1, 7));
-	CurrentWorld->SpawnActor<ASlime>(FVector2(3, 8));
-	CurrentWorld->SpawnActor<AGoblin>(FVector2(7, 6));
-	CurrentWorld->SpawnActor<AEndPoint>(FVector2(8, 8));
-	
-	
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 50; i++)
 	{
-		for (int j = 0; j < 10; j++)
+		for (int j = 0; j < 50; j++)
 		{
-			if (i == 0 || i == 9)
+			if (i == 0 || i == 49 || j == 0 || j == 49)
 			{
 				CurrentWorld->SpawnActor<AWall>(FVector2(i, j));
 			}
+		}
+	}
 
-			if (i >= 1 && i <= 8)
-			{
-				if (j == 0 || j == 9)
-				{
-					CurrentWorld->SpawnActor<AWall>(FVector2(i, j));
-				}
-			}
+	std::srand(static_cast<unsigned int>(std::time(nullptr)));
+
+	int MonsterCount = 8 + (std::rand() % 8);
+
+	TArray<FVector2> UsedPositions;
+	UsedPositions.Add(FVector2(25, 12));
+
+	for (int i = 0; i < MonsterCount; ++i)
+	{
+		FVector2 SpawnPos;
+
+		int x = 1 + std::rand() % 48;
+		int y = 1 + std::rand() % 48;
+		SpawnPos = FVector2(x, y);
+
+		UsedPositions.Add(SpawnPos);
+
+		int Type = std::rand() % 3;
+		switch (Type)
+		{
+		case 0:
+			CurrentWorld->SpawnActor<ASlime>(SpawnPos);
+			break;
+		case 1:
+			CurrentWorld->SpawnActor<AGoblin>(SpawnPos);
+			break;
+		case 2:
+			CurrentWorld->SpawnActor<ABoar>(SpawnPos);
+			break;
 		}
 	}
 	

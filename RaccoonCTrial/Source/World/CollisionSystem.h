@@ -11,7 +11,7 @@ public:
     ~UCollisionSystem();
 
 public:
-    void Register(ICollisionInterface* CollisionObject);
+    void RegisterCollisionTarget(ICollisionInterface* CollisionObject);
     void Unregister(ICollisionInterface* CollisionObject);
     void PerformCollisionChecks();
 

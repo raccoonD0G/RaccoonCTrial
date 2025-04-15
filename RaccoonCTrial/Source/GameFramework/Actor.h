@@ -83,7 +83,29 @@ public:
         return nullptr;
     }
 
-    // Location Section
+    template<typename T>
+    void GetComponents(TArray<T*>& OutComponents)
+    {
+        static_assert(std::is_base_of<UActorComponent, T>::value, "T must be derived from UActorComponent");
+
+        for (int i = 0; i < SceneComponents.Num(); ++i)
+        {
+            if (T* Casted = dynamic_cast<T*>(SceneComponents[i]))
+            {
+                OutComponents.Add(Casted);
+            }
+        }
+
+        for (int i = 0; i < ActorComponents.Num(); ++i)
+        {
+            if (T* Casted = dynamic_cast<T*>(ActorComponents[i]))
+            {
+                OutComponents.Add(Casted);
+            }
+        }
+    }
+
+// Location Section
 public:
     inline FVector2 GetActorLocation() { return RootComponent ? RootComponent->GetLocation() : FVector2(); }
     inline void SetActorLocation(FVector2 NewLocation) { if (RootComponent) RootComponent->SetLocation(NewLocation); }

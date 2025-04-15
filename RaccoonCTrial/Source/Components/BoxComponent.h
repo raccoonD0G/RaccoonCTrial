@@ -1,12 +1,11 @@
 #pragma once
-#include "PrimitiveComponent.h"
-#include "Interfaces/ICollisionInterface.h"
+#include "Components/ShapeComponent.h"
 #include "Core/Math/Box.h"
 #include "functional"
 #include "Core/Collision/CollisionChannel.h"
 #include "Core/Container/UnorderedMap.h"
 
-class UBoxComponent : public UPrimitiveComponent, public ICollisionInterface
+class UBoxComponent : public UShapeComponent
 {
 public:
 	UBoxComponent();

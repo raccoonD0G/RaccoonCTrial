@@ -133,11 +133,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\GameFramework\PlayerState.cpp" />
+    <ClCompile Include="Source\GameFramework\GameStateBase.cpp" />
+    <ClCompile Include="Source\GameFramework\GameModeBase.cpp" />
+    <ClCompile Include="Source\Components\MeshComponent.cpp" />
+    <ClCompile Include="Source\Components\ShapeComponent.cpp" />
     <ClCompile Include="Source\Interfaces\IFightInterface.cpp" />
     <ClCompile Include="Source\RaccoonCTrial\Character\Boar.cpp" />
     <ClCompile Include="Source\RaccoonCTrial\Character\Goblin.cpp" />
     <ClCompile Include="Source\RaccoonCTrial\Character\Slime.cpp" />
     <ClCompile Include="Source\Core\Container\DynamicArray.cpp" />
+    <ClCompile Include="Source\RaccoonCTrial\Game\RCGameMode.cpp" />
+    <ClCompile Include="Source\RaccoonCTrial\Game\RCGameState.cpp" />
+    <ClCompile Include="Source\RaccoonCTrial\Game\RCPlayerState.cpp" />
     <ClCompile Include="Source\World\CollisionSystem.cpp" />
     <ClCompile Include="Source\Core\Container\Pair.cpp" />
     <ClCompile Include="Source\Core\Container\UnorderedMap.cpp" />
@@ -169,6 +177,11 @@
     <ClCompile Include="Source\Components\StatComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\GameFramework\PlayerState.h" />
+    <ClInclude Include="Source\GameFramework\GameStateBase.h" />
+    <ClInclude Include="Source\GameFramework\GameModeBase.h" />
+    <ClInclude Include="Source\Components\MeshComponent.h" />
+    <ClInclude Include="Source\Components\ShapeComponent.h" />
     <ClInclude Include="Source\Interfaces\IFightInterface.h" />
     <ClInclude Include="Source\RaccoonCTrial\Character\Boar.h" />
     <ClInclude Include="Source\RaccoonCTrial\Character\Goblin.h" />
@@ -176,6 +189,9 @@
     <ClInclude Include="Source\Core\Collision\CollisionChannel.h" />
     <ClInclude Include="Source\Core\Container\DynamicArray.h" />
     <ClInclude Include="Source\Core\Container\Hash.h" />
+    <ClInclude Include="Source\RaccoonCTrial\Game\RCGameMode.h" />
+    <ClInclude Include="Source\RaccoonCTrial\Game\RCGameState.h" />
+    <ClInclude Include="Source\RaccoonCTrial\Game\RCPlayerState.h" />
     <ClInclude Include="Source\World\CollisionSystem.h" />
     <ClInclude Include="Source\Core\Container\Pair.h" />
     <ClInclude Include="Source\Core\Container\UnorderedMap.h" />

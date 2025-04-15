@@ -1,8 +1,7 @@
 #pragma once
-#include "PrimitiveComponent.h"
-#include "Interfaces/IRenderInterface.h"
+#include "Components/MeshComponent.h"
 
-class UStaticMeshComponent : public UPrimitiveComponent, public IRenderInterface
+class UStaticMeshComponent : public UMeshComponent
 {
 private:
 	std::string ScreenString;
