@@ -5,6 +5,7 @@ enum class ECollisionChannel
 	Player,
 	Monster,
 	Wall,
+	EndPoint,
 	None
 };
 
