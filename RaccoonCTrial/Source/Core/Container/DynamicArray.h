@@ -16,9 +16,9 @@ private:
 public:
 	TArray()
 	{
-		ArrPtr = new T[100];
+		ArrPtr = new T[2];
 		Size = 0;
-		MemSize = 100;
+		MemSize = 2;
 	}
 
 	~TArray()
@@ -33,8 +33,7 @@ public:
 	{
 		if (Size >= MemSize)
 		{
-			MemSize *= 2;
-			Reserve(MemSize);
+			Reserve(MemSize * 2);
 		}
 
 		ArrPtr[Size] = NewIndex;
