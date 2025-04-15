@@ -27,9 +27,6 @@
     <ClCompile Include="Source\Core\Class.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Core\DynamicArray.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Core\Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -102,7 +99,7 @@
     <ClCompile Include="Source\World\CollisionSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Interfaces\IWorldServiceInterface.cpp">
+    <ClCompile Include="Source\Core\Container\DynamicArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -117,9 +114,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Core\Class.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Core\DynamicArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Components\ActorComponent.h">
@@ -191,7 +185,13 @@
     <ClInclude Include="Source\World\CollisionSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Interfaces\IWorldServiceInterface.h">
+    <ClInclude Include="Source\Core\Collision\CollisionChannel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\Container\DynamicArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\Container\Hash.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

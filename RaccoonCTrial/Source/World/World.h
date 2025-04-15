@@ -1,50 +1,47 @@
 #pragma once
-#include "Core/DynamicArray.h"
+#include "Core/Container/DynamicArray.h"
 #include "Interfaces/IRenderInterface.h"
 #include "Rendering/Renderer.h"
-#include "iostream"
 #include "CollisionSystem.h"
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h"
-
-using namespace std;
+#include "Components/BoxComponent.h"
 
 class UWorld : public UObject
 {
 public:
-	UWorld(size_t InSizeX, size_t InSizeY) : SizeX(InSizeX), SizeY(InSizeY)
-	{
-		CollisionSystem = new UCollisionSystem();
-		Printer = new URenderer();
-		RenderInterfaces.Resize(SizeX);
-		for (int i = 0; i < SizeX; i++)
-		{
-			RenderInterfaces[i].Reserve(SizeY);
-		}
-	}
+	UWorld();
+	~UWorld();
+
+public:
+	void BeginPlay();
 
 private:
-	TArray<TArray<IRenderInterface*>> RenderInterfaces;
-	size_t SizeX;
-	size_t SizeY;
+	TArray<AActor*> Actors;
 
-	URenderer* Printer;
+public:
+	inline const TArray<AActor*>& GetAllActors() { return Actors; }
 
 // Printer Section
 public:
-	inline const URenderer* GetScreenPrinter() { return Printer; };
+	inline const URenderer& GetRenderer() const { return *Renderer; };
+
+private:
+	URenderer* Renderer;
 
 // Spawn Section
 public:
 	template<typename T>
 	T* SpawnActor(const FVector2& SpawnLocation)
 	{
-		static_assert(is_base_of<AActor, T>::value, "T must be derived from Actor");
+		static_assert(std::is_base_of<AActor, T>::value, "T must be derived from Actor");
 
 		T* Target = new T();
 
 		AActor* ActorTarget = dynamic_cast<AActor*>(Target);
 		ActorTarget->SetWorld(this);
+		ActorTarget->SetActorLocation(SpawnLocation);
+		Actors.Add(ActorTarget);
 
 		UStaticMeshComponent* StaticMeshComponent = ActorTarget->GetComponentByClass<UStaticMeshComponent>();
 		if (StaticMeshComponent)
@@ -52,21 +49,30 @@ public:
 			IRenderInterface* RenderInterface = dynamic_cast<IRenderInterface*>(StaticMeshComponent);
 			if (RenderInterface)
 			{
-				RenderInterface->SetLocation(SpawnLocation);
-				if (Printer)
+				if (Renderer)
 				{
-					Printer->GetScreenPrints().Add(RenderInterface);
+					Renderer->RegisterRenderTargets(RenderInterface);
 				}
-				RenderInterfaces[SpawnLocation.X][SpawnLocation.Y] = RenderInterface;
-				return Target;
 			}
 		}
-	}
 
-// Move Section
-public:
-	inline bool IsEmpty(int InX, int InY) { return (RenderInterfaces[InX][InY] == nullptr); }
-	void MoveRenderTarger(FVector2 Target, FVector2 Destination);
+		UBoxComponent* BoxComponent = ActorTarget->GetComponentByClass<UBoxComponent>();
+		if (BoxComponent)
+		{
+			ICollisionInterface* CollisionInterface = dynamic_cast<ICollisionInterface*>(BoxComponent);
+			if (CollisionInterface)
+			{
+				if (CollisionSystem)
+				{
+					CollisionSystem->Register(CollisionInterface);
+				}
+			}
+		}
+
+		ActorTarget->PostInitializeComponents();
+
+		return Target;
+	}
 
 // Tick Section
 public:

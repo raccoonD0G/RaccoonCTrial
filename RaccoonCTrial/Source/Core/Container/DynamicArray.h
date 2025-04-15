@@ -1,5 +1,8 @@
 #pragma once
-#include "Object.h"
+#include "Core/Object.h"
+#include "cstddef"
+#include "type_traits"
+#include "stdexcept"
 
 template<typename T>
 class TArray : public UObject
@@ -7,29 +10,26 @@ class TArray : public UObject
 private:
 	T* ArrPtr;
 
-	size_t Size;
-	size_t MemSize;
+	std::size_t Size;
+	std::size_t MemSize;
 
 public:
 	TArray()
 	{
-		ArrPtr = new T[2];
+		ArrPtr = new T[100];
 		Size = 0;
-		MemSize = 2;
+		MemSize = 100;
 	}
 
 	~TArray()
 	{
-		delete[] ArrPtr;
-		ArrPtr = nullptr;
+		this->Clear();
 	}
 
-	inline const T& GetByIndex(int Index) const { return ArrPtr[Index]; }
+	inline std::size_t Num() const { return Size; }
+	inline std::size_t Capacity() const { return MemSize; }
 
-	inline size_t Num() const { return Size; }
-	inline size_t Capacity() const { return MemSize; }
-
-	void Add(T NewIndex)
+	void Add(const T& NewIndex)
 	{
 		if (Size >= MemSize)
 		{
@@ -43,11 +43,11 @@ public:
 
 	void Remove(T InIndex)
 	{
-		for (size_t i = 0; i < Size; ++i)
+		for (std::size_t i = 0; i < Size; ++i)
 		{
 			if (ArrPtr[i] == InIndex)
 			{
-				for (size_t j = i; j < Size - 1; ++j)
+				for (std::size_t j = i; j < Size - 1; ++j)
 				{
 					ArrPtr[j] = ArrPtr[j + 1];
 				}
@@ -59,23 +59,27 @@ public:
 
 	bool Contains(T InIndex) const
 	{
-		for (size_t i = 0; i < Size; ++i)
+		for (std::size_t i = 0; i < Size; ++i)
 		{
 			if (ArrPtr[i] == InIndex)
+			{
 				return true;
+			}
 		}
 		return false;
 	}
 
 
-	void Reserve(size_t NewMemSize)
+	void Reserve(std::size_t NewMemSize)
 	{
 		if (NewMemSize <= MemSize)
+		{
 			return;
+		}
 
 		T* NewArrPtr = new T[NewMemSize];
 
-		for (size_t i = 0; i < Size; i++)
+		for (std::size_t i = 0; i < Size; i++)
 		{
 			NewArrPtr[i] = ArrPtr[i];
 		}
@@ -87,7 +91,7 @@ public:
 	}
 
 
-	void Resize(size_t NewSize)
+	void Resize(std::size_t NewSize)
 	{
 		Reserve(NewSize);
 		for (int i = Size; i < NewSize; i++)
@@ -97,11 +101,27 @@ public:
 		}
 	}
 
-	T& operator[](const unsigned int& Index)
+	T& operator[](const std::size_t& Index)
 	{
 		if (Index < Size)
 		{
 			return ArrPtr[Index];
+		}
+		else
+		{
+			throw std::out_of_range("Index out of bounds");
+		}
+	}
+
+	const T& operator[](const std::size_t& Index) const
+	{
+		if (Index < Size)
+		{
+			return ArrPtr[Index];
+		}
+		else
+		{
+			throw std::out_of_range("Index out of bounds");
 		}
 	}
 
@@ -111,16 +131,19 @@ public:
 		MemSize = Other.MemSize;
 		ArrPtr = new T[MemSize];
 
-		for (size_t i = 0; i < Size; i++)
+		for (std::size_t i = 0; i < Size; i++)
 		{
 			ArrPtr[i] = Other.ArrPtr[i];
 		}
 	}
 
+
 	TArray& operator=(const TArray& Other)
 	{
 		if (this == &Other)
+		{
 			return *this;
+		}
 
 		delete[] ArrPtr;
 
@@ -128,11 +151,27 @@ public:
 		MemSize = Other.MemSize;
 		ArrPtr = new T[MemSize];
 
-		for (size_t i = 0; i < Size; i++)
+		for (std::size_t i = 0; i < Size; i++)
 		{
 			ArrPtr[i] = Other.ArrPtr[i];
 		}
 
 		return *this;
+	}
+
+	bool IsEmpty() const
+	{
+		return Size == 0;
+	}
+
+	void Clear()
+	{
+		if (!this->IsEmpty())
+		{
+			delete[] ArrPtr;
+			ArrPtr = nullptr;
+			Size = 0;
+			MemSize = 0;
+		}
 	}
 };

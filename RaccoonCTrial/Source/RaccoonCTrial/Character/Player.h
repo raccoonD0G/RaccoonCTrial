@@ -1,16 +1,21 @@
 #pragma once
 #include "Character/Character.h"
 
-using namespace std;
-
 class APlayer : public ACharacter
 {
 public:
 	APlayer();
 
-// Move Section
-public:
-	void Move(FVector2 Destination);
+protected:
+	virtual void PostInitializeComponents() override;
+	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaSeconds) override;
 
+// Controll Section
+private:
+	FVector2 ControlledLocation;
+
+public:
+	inline void SetControlledLocation(const FVector2& NewControlledLocation) { ControlledLocation = NewControlledLocation; }
 };
 

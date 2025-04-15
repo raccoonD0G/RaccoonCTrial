@@ -5,17 +5,37 @@
 
 APlayer::APlayer()
 {
-	RootComponent = AddOwnedComponent<UStaticMeshComponent>();
-	AddOwnedComponent<UBoxComponent>();
-
-	UStaticMeshComponent* StaticMeshComponent = dynamic_cast<UStaticMeshComponent*>(RootComponent);
+	UStaticMeshComponent* StaticMeshComponent = this->GetComponentByClass<UStaticMeshComponent>();
 	if (StaticMeshComponent)
 	{
-		StaticMeshComponent->SetScreenString("P");
+		StaticMeshComponent->SetRenderString("P");
+	}
+
+	UBoxComponent* BoxComponent = this->GetComponentByClass<UBoxComponent>();
+	if (BoxComponent)
+	{
+		BoxComponent->SetCollisionChannel(ECollisionChannel::Player);
+		BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::Monster, ECollisionResponse::Block);
+		BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::Wall, ECollisionResponse::Block);
+
 	}
 }
 
-void APlayer::Move(FVector2 Destination)
+void APlayer::PostInitializeComponents()
 {
-    World->MoveRenderTarger(RootComponent->GetLocation(), Destination);
+	AActor::PostInitializeComponents();
+}
+
+void APlayer::BeginPlay()
+{
+	AActor::BeginPlay();
+
+	ControlledLocation = GetActorLocation();
+}
+
+void APlayer::Tick(float DeltaSeconds)
+{
+	AActor::Tick(DeltaSeconds);
+
+	SetActorLocation(ControlledLocation);
 }

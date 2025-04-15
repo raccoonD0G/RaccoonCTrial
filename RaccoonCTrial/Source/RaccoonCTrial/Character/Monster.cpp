@@ -6,21 +6,32 @@
 
 AMonster::AMonster()
 {
-	RootComponent = AddOwnedComponent<UStaticMeshComponent>();
-	AddOwnedComponent<UBoxComponent>();
-
-	UStaticMeshComponent* StaticMeshComponent = dynamic_cast<UStaticMeshComponent*>(RootComponent);
+	UStaticMeshComponent* StaticMeshComponent = this->GetComponentByClass<UStaticMeshComponent>();
 	if (StaticMeshComponent)
 	{
-		StaticMeshComponent->SetScreenString("M");
+		StaticMeshComponent->SetRenderString("M");
 	}
+
+	UBoxComponent* BoxComponent = this->GetComponentByClass<UBoxComponent>();
+	if (BoxComponent)
+	{
+		BoxComponent->SetCollisionChannel(ECollisionChannel::Monster);
+		BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::Player, ECollisionResponse::Block);
+		BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::Wall, ECollisionResponse::Block);
+	}
+}
+
+void AMonster::Tick(float DeltaSeconds)
+{
+	AActor::Tick(DeltaSeconds);
+	RandomMove();
 }
 
 void AMonster::RandomMove()
 {
-	random_device RandomDevice;
-	mt19937 Generator(RandomDevice());
-	uniform_int_distribution<> Distribution(0, 3);
+	std::random_device RandomDevice;
+	std::mt19937 Generator(RandomDevice());
+	std::uniform_int_distribution<> Distribution(0, 3);
 	int MonsterValue = Distribution(Generator);
 
 	FVector2 TargetVector;
@@ -40,5 +51,5 @@ void AMonster::RandomMove()
 		break;
 	}
 
-	World->MoveRenderTarger(RootComponent->GetLocation(), TargetVector);
+	SetActorLocation(TargetVector);
 }

@@ -2,12 +2,12 @@
 #include "ILocationInterface.h"
 #include "string"
 
-using namespace std;
 
-class IRenderInterface : public virtual ILocationInterface
+class IRenderInterface
 {
 public:
-	virtual string GetScreenString() = 0;
-	virtual void SetScreenString(string NewScreenString) = 0;
+	virtual ~IRenderInterface() { ; }
+	virtual std::string GetRenderString() = 0;
+	virtual void SetRenderString(const std::string& NewScreenString) = 0;
 };
 

@@ -1,11 +1,11 @@
 #include "StaticMeshComponent.h"
 
-string UStaticMeshComponent::GetScreenString()
+std::string UStaticMeshComponent::GetRenderString()
 {
 	return ScreenString;
 }
 
-void UStaticMeshComponent::SetScreenString(string NewScreenString)
+void UStaticMeshComponent::SetRenderString(const std::string& NewScreenString)
 {
 	ScreenString = NewScreenString;
 }

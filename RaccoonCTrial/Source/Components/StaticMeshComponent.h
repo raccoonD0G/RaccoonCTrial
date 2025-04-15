@@ -5,10 +5,10 @@
 class UStaticMeshComponent : public UPrimitiveComponent, public IRenderInterface
 {
 private:
-	string ScreenString;
+	std::string ScreenString;
 
 public:
-	virtual string GetScreenString() override;
-	virtual void SetScreenString(string NewScreenString) override;
+	virtual std::string GetRenderString() override;
+	virtual void SetRenderString(const std::string& NewScreenString) override;
 };
 

@@ -104,6 +104,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Source</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <LanguageStandard_C>Default</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -119,6 +123,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)\Source</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,7 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Interfaces\IWorldServiceInterface.cpp" />
+    <ClCompile Include="Source\Core\Container\DynamicArray.cpp" />
     <ClCompile Include="Source\World\CollisionSystem.cpp" />
     <ClCompile Include="Source\Core\Container\Pair.cpp" />
     <ClCompile Include="Source\Core\Container\UnorderedMap.cpp" />
@@ -142,7 +147,6 @@
     <ClCompile Include="Source\Components\PrimitiveComponent.cpp" />
     <ClCompile Include="Source\Components\SceneComponent.cpp" />
     <ClCompile Include="Source\Core\Class.cpp" />
-    <ClCompile Include="Source\Core\DynamicArray.cpp" />
     <ClCompile Include="Source\Core\Object.cpp" />
     <ClCompile Include="Source\Core\SharedPtr.cpp" />
     <ClCompile Include="Source\Core\UniquePtr.cpp" />
@@ -160,7 +164,9 @@
     <ClCompile Include="Source\Core\Math\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Interfaces\IWorldServiceInterface.h" />
+    <ClInclude Include="Source\Core\Collision\CollisionChannel.h" />
+    <ClInclude Include="Source\Core\Container\DynamicArray.h" />
+    <ClInclude Include="Source\Core\Container\Hash.h" />
     <ClInclude Include="Source\World\CollisionSystem.h" />
     <ClInclude Include="Source\Core\Container\Pair.h" />
     <ClInclude Include="Source\Core\Container\UnorderedMap.h" />
@@ -174,7 +180,6 @@
     <ClInclude Include="Source\Components\PrimitiveComponent.h" />
     <ClInclude Include="Source\Components\SceneComponent.h" />
     <ClInclude Include="Source\Core\Class.h" />
-    <ClInclude Include="Source\Core\DynamicArray.h" />
     <ClInclude Include="Source\Core\Object.h" />
     <ClInclude Include="Source\Core\SharedPtr.h" />
     <ClInclude Include="Source\Core\UniquePtr.h" />

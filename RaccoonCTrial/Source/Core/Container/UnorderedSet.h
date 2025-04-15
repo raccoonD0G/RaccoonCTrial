@@ -3,157 +3,135 @@
 #include "vector"
 #include "cstdlib"
 #include "ctime"
+#include "functional"
 #include "Core/Object.h"
-
-using namespace std;
+#include "Core/Container/DynamicArray.h"
+#include "Hash.h"
 
 template<typename T>
 struct SetIndex
 {
 public:
-	SetIndex(T NewIndex) : Index(NewIndex), NextIndex(nullptr) { ; };
+    SetIndex(T NewIndex) : Index(NewIndex), NextIndex(nullptr) { }
 
 public:
-	T Index;
-	SetIndex<T>* NextIndex;
+    T Index;
+    SetIndex<T>* NextIndex;
 };
-
 
 template<typename T>
 class TSet : public UObject
 {
 public:
-	TSet() : BucketSize(32)
-	{
-		Container.resize(BucketSize);
-	}
+    TSet() : BucketSize(32)
+    {
+        Container.Resize(BucketSize);
+    }
 
-	void Add(T NewIndex)
-	{
-		if (this->Contains(NewIndex))
-		{
-			return;
-		}
+    void Add(T NewIndex)
+    {
+        if (this->Contains(NewIndex))
+            return;
 
-		int HashNum = Hash(NewIndex) % BucketSize;
-		SetIndex<T>* CheckingIndex = Container[HashNum];
+        int HashNum = Hash<T>()(NewIndex) % BucketSize;
+        SetIndex<T>* CheckingIndex = Container[HashNum];
 
-		if (CheckingIndex == nullptr)
-		{
-			Container[HashNum] = new SetIndex<T>(NewIndex);
-			return;
-		}
-		else
-		{
-			while (CheckingIndex->NextIndex != nullptr)
-			{
-				CheckingIndex = CheckingIndex->NextIndex;
-			}
+        if (CheckingIndex == nullptr)
+        {
+            Container[HashNum] = new SetIndex<T>(NewIndex);
+            return;
+        }
+        else
+        {
+            while (CheckingIndex->NextIndex != nullptr)
+            {
+                CheckingIndex = CheckingIndex->NextIndex;
+            }
 
-			CheckingIndex->NextIndex = new SetIndex<T>(NewIndex);
-			return;
-		}
-	}
+            CheckingIndex->NextIndex = new SetIndex<T>(NewIndex);
+            return;
+        }
+    }
 
-	bool Remove(T NewIndex)
-	{
-		if (this->Contains(NewIndex) == false)
-		{
-			return false;
-		}
+    bool Remove(T NewIndex)
+    {
+        if (!this->Contains(NewIndex))
+            return false;
 
-		
-		int HashNum = Hash(NewIndex) % BucketSize;
-		SetIndex<T>* CheckingIndex = Container[HashNum];
-		SetIndex<T>* BeforeCheckingIndex = nullptr;
+        int HashNum = Hash<T>()(NewIndex) % BucketSize;
+        SetIndex<T>* CheckingIndex = Container[HashNum];
+        SetIndex<T>* BeforeCheckingIndex = nullptr;
 
-		// No index in vector.
-		if (CheckingIndex == nullptr)
-		{
-			return false;
-		}
-		else
-		{
-			
-			while (CheckingIndex->NextIndex != nullptr)
-			{
-				if (CheckingIndex->Index == NewIndex)
-				{
-					break;
-				}
-				BeforeCheckingIndex = CheckingIndex;
-				CheckingIndex = CheckingIndex->NextIndex;
-			}
+        while (CheckingIndex != nullptr)
+        {
+            if (CheckingIndex->Index == NewIndex)
+                break;
 
-			// First index is what we find.
-			if (BeforeCheckingIndex == nullptr)
-			{
-				delete CheckingIndex;
-				Container[HashNum] = nullptr;
-			}
-			else
-			{
-				BeforeCheckingIndex->NextIndex = CheckingIndex->NextIndex;
-				delete CheckingIndex;
-			}
+            BeforeCheckingIndex = CheckingIndex;
+            CheckingIndex = CheckingIndex->NextIndex;
+        }
 
-			return true;
-		}
-	}
+        if (BeforeCheckingIndex == nullptr)
+        {
+            Container[HashNum] = CheckingIndex->NextIndex;
+        }
+        else
+        {
+            BeforeCheckingIndex->NextIndex = CheckingIndex->NextIndex;
+        }
 
-	bool Contains(T InIndex) const
-	{
-		SetIndex<T>* CheckingIndex = Container[Hash(InIndex)];
-		while (CheckingIndex != nullptr)
-		{
-			if (CheckingIndex->Index == InIndex)
-			{
-				return true;
-			}
-			CheckingIndex = CheckingIndex->NextIndex;
-		}
+        delete CheckingIndex;
+        return true;
+    }
 
-		return false;
-	}
+    bool Contains(T InIndex) const
+    {
+        int HashNum = Hash<T>()(InIndex) % BucketSize;
+        SetIndex<T>* CheckingIndex = Container[HashNum];
 
-	T* Find(const T& InIndex)
-	{
-		if (!this->Contains(InIndex))
-		{
-			return nullptr;
-		}
-		
-		int HashNum = Hash(InIndex) % BucketSize;
-		SetIndex<T>* CheckingIndex = Container[HashNum];
+        while (CheckingIndex != nullptr)
+        {
+            if (CheckingIndex->Index == InIndex)
+                return true;
 
-		while (CheckingIndex != nullptr)
-		{
-			if (CheckingIndex->Index == InIndex)
-			{
-				return &(CheckingIndex->Index);
-			}
-			CheckingIndex = CheckingIndex->NextIndex;
-		}
+            CheckingIndex = CheckingIndex->NextIndex;
+        }
 
-		return nullptr;
-	}
+        return false;
+    }
 
-	int Hash(const T& key) const
-	{
-		return static_cast<int>(hash<T>{}(key) % BucketSize);
-	}
+    T* Find(const T& InIndex) const
+    {
+        if (!this->Contains(InIndex))
+            return nullptr;
 
-	bool IsEmpty() const
-	{
-		for (const auto& bucket : Container)
-		{
-			if (bucket != nullptr) return false;
-		}
-		return true;
-	}
+        int HashNum = Hash<T>()(InIndex) % BucketSize;
+        SetIndex<T>* CheckingIndex = Container[HashNum];
+
+        while (CheckingIndex != nullptr)
+        {
+            if (CheckingIndex->Index == InIndex)
+                return &(CheckingIndex->Index);
+
+            CheckingIndex = CheckingIndex->NextIndex;
+        }
+
+        return nullptr;
+    }
+
+    bool IsEmpty() const
+    {
+        for (int i = 0; i < Container.Num(); i++)
+        {
+            if (Container[i] != nullptr)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 
 private:
-	vector<SetIndex<T>*> Container;
-	int BucketSize;
+    TArray<SetIndex<T>*> Container;
+    int BucketSize;
 };
-

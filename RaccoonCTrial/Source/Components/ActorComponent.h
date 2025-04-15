@@ -6,6 +6,13 @@ class AActor;
 
 class UActorComponent : public UObject
 {
+public:
+	UActorComponent();
+	~UActorComponent();
+
+public:
+	virtual void TickComponent(float DeltaTime);
+
 private:
 	AActor* Owner = nullptr;
 

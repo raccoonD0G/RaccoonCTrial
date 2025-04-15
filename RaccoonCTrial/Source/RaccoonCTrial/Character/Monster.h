@@ -1,12 +1,13 @@
 #pragma once
 #include "Character/Character.h"
-#include "string"
 
-using namespace std;
 class AMonster : public ACharacter
 {
 public:
 	AMonster();
+
+protected:
+	virtual void Tick(float DeltaSeconds) override;
 
 // AI Section
 public:

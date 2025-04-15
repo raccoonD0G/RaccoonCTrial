@@ -1,16 +1,36 @@
 #include "World.h"
 
-void UWorld::MoveRenderTarger(FVector2 Target, FVector2 Destination)
+UWorld::UWorld()
 {
-	if (IsEmpty(Destination.X, Destination.Y))
+	CollisionSystem = new UCollisionSystem();
+	Renderer = new URenderer();
+}
+
+UWorld::~UWorld()
+{
+	for (int i = 0; i < Actors.Num(); i++)
 	{
-		RenderInterfaces[Destination.X][Destination.Y] = RenderInterfaces[Target.X][Target.Y];
-		RenderInterfaces[Destination.X][Destination.Y]->SetLocation(Destination);
-		RenderInterfaces[Target.X][Target.Y] = nullptr;
-	}	
+		delete Actors[i];
+	}
+
+	delete Renderer;
+	delete CollisionSystem;
+}
+
+void UWorld::BeginPlay()
+{
+	for (int i = 0; i < Actors.Num(); i++)
+	{
+		Actors[i]->BeginPlay();
+	}
 }
 
 void UWorld::Tick(float DeltaSeconds)
 {
 	CollisionSystem->PerformCollisionChecks();
+
+	for (int i = 0; i < Actors.Num(); i++)
+	{
+		Actors[i]->Tick(DeltaSeconds);
+	}
 }

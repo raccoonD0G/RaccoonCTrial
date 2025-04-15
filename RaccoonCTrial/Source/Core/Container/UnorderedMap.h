@@ -1,58 +1,65 @@
 #pragma once
-#include "UnorderedSet.h"
-#include "Pair.h"
 
-template<typename Key, typename Value>
+#include "Pair.h"
+#include "UnorderedSet.h"
+
+template<typename KeyType, typename ValueType>
 class TMap
 {
 private:
-	TSet<TPair<Key, Value>> Pairs;
+	using PairType = TPair<KeyType, ValueType>;
+	TSet<PairType> Pairs;
 
 public:
-	void Add(Key InKey, Value InValue)
+	void Add(const KeyType& InKey, const ValueType& InValue)
 	{
-		this->Remove(InKey);
-		this->Pairs.Add(TPair<Key, Value>(InKey, InValue));
+		Remove(InKey);
+		Pairs.Add(PairType(InKey, InValue));
 	}
 
-	bool Remove(Key InKey)
+	bool Remove(const KeyType& InKey)
 	{
-		return this->Pairs.Remove(TPair<Key, Value>(InKey, Value()));
+		return Pairs.Remove(PairType(InKey, ValueType()));
 	}
 
-	bool Contains(Key InKey) const
+	bool Contains(const KeyType& InKey) const
 	{
-		return this->Pairs.Contains(TPair<Key, Value>(InKey, Value()));
+		return Pairs.Contains(PairType(InKey, ValueType()));
 	}
 
-	Value* Find(const Key& InKey)
+	ValueType* Find(const KeyType& InKey)
 	{
-		return &(this->Pairs.Find(InKey)->CurrentValue);
+		PairType* Found = Pairs.Find(PairType(InKey, ValueType()));
+		return Found ? &Found->Value : nullptr;
 	}
 
-	Value& operator[](const Key& InKeykey)
+	const ValueType* Find(const KeyType& InKey) const
 	{
-		if (!this->Pairs.Contains(InKeykey))
+		const PairType* Found = Pairs.Find(PairType(InKey, ValueType()));
+		return Found ? &Found->Value : nullptr;
+	}
+
+	ValueType& operator[](const KeyType& InKey)
+	{
+		if (!Contains(InKey))
 		{
-			this->Add(TPair<Key, Value>(InKeykey, Value()));
+			Add(InKey, ValueType());
 		}
-
-		return *(this->Pairs.Find(InKeykey));
+		return *Find(InKey);
 	}
 
 	bool IsEmpty() const
 	{
-		return this->Pairs.IsEmpty();
+		return Pairs.IsEmpty();
 	}
 
 	void Clear()
 	{
-		return this->Pairs.Clear();
+		Pairs.Clear();
 	}
 
 	int Num() const
 	{
-		return this->Pairs.Num();
+		return Pairs.Num();
 	}
 };
-

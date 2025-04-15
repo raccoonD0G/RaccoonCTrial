@@ -1,6 +1,14 @@
 #include "CollisionSystem.h"
-#include "Core/DynamicArray.h"
-#include "Interfaces/ICollisionInterface.h"
+
+UCollisionSystem::UCollisionSystem()
+{
+    ;
+}
+
+UCollisionSystem::~UCollisionSystem()
+{
+    ;
+}
 
 void UCollisionSystem::Register(ICollisionInterface* CollisionObject)
 {
@@ -28,11 +36,19 @@ void UCollisionSystem::PerformCollisionChecks()
             {
                 if (A->CheckOverlap(B))
                 {
-
+                    A->OnOverlap(B->GetSelfActor());
+                    if (A->ShouldBlock(B) && B->ShouldBlock(A))
+                    {
+                        A->OnBlock(B->GetSelfActor());
+                    }
                 }
                 if (B->CheckOverlap(A))
                 {
-
+                    B->OnOverlap(A->GetSelfActor());
+                    if (B->ShouldBlock(A) && A->ShouldBlock(B))
+                    {
+                        B->OnBlock(A->GetSelfActor());
+                    }
                 }
             }
         }

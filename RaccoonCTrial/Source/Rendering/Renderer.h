@@ -1,17 +1,22 @@
 #pragma once
 #include "Interfaces/IRenderInterface.h"
-#include "Core/DynamicArray.h"
+#include "Core/Container/DynamicArray.h"
 #include "Core/Object.h"
 
 class URenderer : public UObject
 {
+public:
+	URenderer();
+	~URenderer();
+
 private:
 	TArray<IRenderInterface*> RenderTargets;
 
-	void PrintOnScreen(IRenderInterface* InScreenPrintInterface) const;
-
 public:
-	void PrintAllOnScreen() const;
-	inline TArray<IRenderInterface*>& GetScreenPrints() { return RenderTargets; }
+	void RenderAll() const;
+	inline void RegisterRenderTargets(IRenderInterface* InRenderInterface) { RenderTargets.Add(InRenderInterface); }
+
+private:
+	void Render(IRenderInterface* InScreenPrintInterface) const;
 };
 

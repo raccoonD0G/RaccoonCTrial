@@ -6,23 +6,20 @@
 #include "RaccoonCTrial/Character/Monster.h"
 #include "RaccoonCTrial/Gimmick/Wall.h"
 #include "RaccoonCTrial/Gimmick/EndPoint.h"
-
-
-
-using namespace std;
+#include "Core/Container/DynamicArray.h"
 
 int main()
 {
 	// Begin Play
-	UWorld* CurrentWorld = new UWorld(10, 10);
+	UWorld* CurrentWorld = new UWorld();
 
-	APlayer* Player0 = CurrentWorld->SpawnActor<APlayer>(FVector2(1, 1));
-	AMonster* Monster0 = CurrentWorld->SpawnActor<AMonster>(FVector2(1, 2));
-	AMonster* Monster1 = CurrentWorld->SpawnActor<AMonster>(FVector2(4, 5));
-	AMonster* Monster2 = CurrentWorld->SpawnActor<AMonster>(FVector2(1, 7));
-	AMonster* Monster3 = CurrentWorld->SpawnActor<AMonster>(FVector2(3, 8));
-
-	AEndPoint* EndPoint = CurrentWorld->SpawnActor<AEndPoint>(FVector2(8, 8));
+	APlayer* Player0 = CurrentWorld->SpawnActor<APlayer>(FVector2(4, 4));
+	
+	CurrentWorld->SpawnActor<AMonster>(FVector2(1, 7));
+	CurrentWorld->SpawnActor<AMonster>(FVector2(3, 8));
+	
+	CurrentWorld->SpawnActor<AEndPoint>(FVector2(8, 8));
+	
 	
 	for (int i = 0; i < 10; i++)
 	{
@@ -42,21 +39,22 @@ int main()
 			}
 		}
 	}
-
-
+	
+	CurrentWorld->BeginPlay();
 
 	system("cls");
-	CurrentWorld->GetScreenPrinter()->PrintAllOnScreen();
+	CurrentWorld->GetRenderer().RenderAll();
 
+	bool bShouldExit = false;
 	
-	while (true)
+	while (!bShouldExit)
 	{
 		// Input
 		if (_kbhit())
 		{
 			char Input = _getch();
 			
-			FVector2 TargetVector;
+			FVector2 TargetVector = Player0->GetActorLocation();
 			switch (Input)
 			{
 			case 'w':
@@ -71,25 +69,25 @@ int main()
 			case 'd':
 				TargetVector = FVector2(Player0->GetActorLocation().X + 1, Player0->GetActorLocation().Y);
 				break;
+			case 27:
+				bShouldExit = true;
+				break;
 			}
 			
-			Player0->Move(TargetVector);
+			Player0->SetControlledLocation(TargetVector);
 
 		}
 
 		// Tick
-
-		Monster0->RandomMove();
-		Monster1->RandomMove();
-		Monster2->RandomMove();
-		Monster3->RandomMove();
-
+		CurrentWorld->Tick(200);
 
 		// Render
 		system("cls");
-		CurrentWorld->GetScreenPrinter()->PrintAllOnScreen();
+		CurrentWorld->GetRenderer().RenderAll();
 
-		Sleep(100);
+		Sleep(200);
 
 	}
+
+	delete CurrentWorld;
 }

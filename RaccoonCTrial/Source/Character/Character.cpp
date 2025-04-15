@@ -4,12 +4,11 @@
 
 ACharacter::ACharacter()
 {
-	RootComponent = AddOwnedComponent<UStaticMeshComponent>();
-	AddOwnedComponent<UBoxComponent>();
+	RootComponent = AddOwnedComponent<UBoxComponent>();
 
-	UStaticMeshComponent* StaticMeshComponent = dynamic_cast<UStaticMeshComponent*>(RootComponent);
+	UStaticMeshComponent* StaticMeshComponent = AddOwnedComponent<UStaticMeshComponent>();
 	if (StaticMeshComponent)
 	{
-		StaticMeshComponent->SetScreenString("M");
+		StaticMeshComponent->SetRenderString("C");
 	}
 }

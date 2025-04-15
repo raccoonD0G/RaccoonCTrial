@@ -5,11 +5,18 @@
 AWall::AWall()
 {
 	RootComponent = AddOwnedComponent<UStaticMeshComponent>();
-	AddOwnedComponent<UBoxComponent>();
 
 	UStaticMeshComponent* StaticMeshComponent = dynamic_cast<UStaticMeshComponent*>(RootComponent);
 	if (StaticMeshComponent)
 	{
-		StaticMeshComponent->SetScreenString("*");
+		StaticMeshComponent->SetRenderString("*");
+	}
+
+	UBoxComponent* BoxComponent = AddOwnedComponent<UBoxComponent>();
+	if (BoxComponent)
+	{
+		BoxComponent->SetCollisionChannel(ECollisionChannel::Wall);
+		BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::Player, ECollisionResponse::Block);
+		BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::Monster, ECollisionResponse::Block);
 	}
 }

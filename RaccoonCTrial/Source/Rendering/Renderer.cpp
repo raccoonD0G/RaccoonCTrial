@@ -2,22 +2,46 @@
 #include "windows.h"
 #include "iostream"
 
-using namespace std;
-
-void URenderer::PrintOnScreen(IRenderInterface* InRenderInterface) const
+URenderer::URenderer()
 {
-    COORD Pos;
-    Pos.X = InRenderInterface->GetLocation().X;
-    Pos.Y = InRenderInterface->GetLocation().Y;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
-    cout << InRenderInterface->GetScreenString() << flush;
 
 }
 
-void URenderer::PrintAllOnScreen() const
+URenderer::~URenderer()
+{
+    ;
+}
+
+void URenderer::Render(IRenderInterface* InRenderInterface) const
+{
+    if (!InRenderInterface)
+    {
+        return;
+    }
+    ILocationInterface* LocationInterface = dynamic_cast<ILocationInterface*>(InRenderInterface);
+
+    if (!LocationInterface)
+    {
+        return;
+    }
+
+    FVector2 loc = LocationInterface->GetWorldLocation();
+
+    COORD Pos;
+    Pos.X = loc.X;
+    Pos.Y = loc.Y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
+    std::cout << InRenderInterface->GetRenderString() << std::flush;
+}
+
+void URenderer::RenderAll() const
 {
     for (int i = 0; i < RenderTargets.Num(); i++)
     {
-        PrintOnScreen(RenderTargets.GetByIndex(i));
+        IRenderInterface* RenderTarget = RenderTargets[i];
+        if (RenderTarget)
+        {
+            Render(RenderTarget);
+        }
     }
 }
