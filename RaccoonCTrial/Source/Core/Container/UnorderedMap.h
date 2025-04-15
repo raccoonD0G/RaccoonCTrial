@@ -3,6 +3,9 @@
 #include "Pair.h"
 #include "UnorderedSet.h"
 
+/*
+* TODO: 인터넷 보고 배낌, 다시 공부 할것
+*/
 template<typename KeyType, typename ValueType>
 class TMap
 {
