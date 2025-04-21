@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/Object.h"
+#include "UObject/Object.h"
 #include "Interfaces/IWorldInterface.h"
 
 class AActor;

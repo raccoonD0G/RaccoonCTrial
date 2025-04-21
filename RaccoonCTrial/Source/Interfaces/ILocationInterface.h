@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Math/Vector2.h"
+#include "CoreMinimal.h"
 
 class ILocationInterface
 {

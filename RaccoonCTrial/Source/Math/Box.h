@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/Math/Vector2.h"
+#include "Math/Vector2.h"
 
 struct FBox
 {

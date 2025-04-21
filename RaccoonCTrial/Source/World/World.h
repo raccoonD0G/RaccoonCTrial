@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/Container/DynamicArray.h"
+#include "CoreMinimal.h"
 #include "Rendering/Renderer.h"
 #include "CollisionSystem.h"
 #include "GameFramework/Actor.h"

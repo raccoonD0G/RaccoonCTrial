@@ -3,12 +3,12 @@
 struct FVector2
 {
 public:
-	int X;
-	int Y;
+	float X;
+	float Y;
 
 public:
 	FVector2() : X(0), Y(0) {}
-	FVector2(int NewX, int NewY) : X(NewX), Y(NewY) {}
+	FVector2(float NewX, float NewY) : X(NewX), Y(NewY) {}
 
 	FVector2(const FVector2& Other)
 	{

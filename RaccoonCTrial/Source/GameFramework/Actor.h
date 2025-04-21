@@ -1,8 +1,8 @@
 #pragma once
+#include "CoreMinimal.h"
 #include "Interfaces/IRenderInterface.h"
 #include "Interfaces/IWorldInterface.h"
-#include "Core/Object.h"
-#include "Core/Container/DynamicArray.h"
+#include "UObject/Object.h"
 #include "Components/ActorComponent.h"
 #include "Components/SceneComponent.h"
 

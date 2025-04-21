@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Core/Object.h"
-#include "Core/Container/DynamicArray.h"
+#include "CoreMinimal.h"
+#include "UObject/Object.h"
 #include "Interfaces/ICollisionInterface.h"
 
 class UCollisionSystem : public UObject

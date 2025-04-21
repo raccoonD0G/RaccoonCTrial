@@ -7,7 +7,6 @@
 #include "RaccoonCTrial/Character/Player.h"
 #include "RaccoonCTrial/Gimmick/Wall.h"
 #include "RaccoonCTrial/Gimmick/EndPoint.h"
-#include "Core/Container/DynamicArray.h"
 #include "Character/Boar.h"
 #include "Character/Slime.h"
 #include "Character/Goblin.h"
@@ -24,7 +23,7 @@ int main()
 		{
 			if (i == 0 || i == 49 || j == 0 || j == 49)
 			{
-				CurrentWorld->SpawnActor<AWall>(FVector2(i, j));
+				CurrentWorld->SpawnActor<AWall>(FVector2((float)i, (float)j));
 			}
 		}
 	}
@@ -40,8 +39,8 @@ int main()
 	{
 		FVector2 SpawnPos;
 
-		int x = 1 + std::rand() % 48;
-		int y = 1 + std::rand() % 48;
+		float x = 1 + std::rand() % 48;
+		float y = 1 + std::rand() % 48;
 		SpawnPos = FVector2(x, y);
 
 		UsedPositions.Add(SpawnPos);

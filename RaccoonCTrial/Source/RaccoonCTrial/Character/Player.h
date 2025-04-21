@@ -1,4 +1,5 @@
 #pragma once
+#include "CoreMinimal.h"
 #include "Character/Character.h"
 
 class APlayer : public ACharacter

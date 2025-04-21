@@ -1,9 +1,8 @@
 #pragma once
+#include "CoreMinimal.h"
 #include "Components/ShapeComponent.h"
-#include "Core/Math/Box.h"
 #include "functional"
 #include "Core/Collision/CollisionChannel.h"
-#include "Core/Container/UnorderedMap.h"
 
 class UBoxComponent : public UShapeComponent
 {

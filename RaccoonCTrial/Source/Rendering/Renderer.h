@@ -1,7 +1,7 @@
 #pragma once
+#include "CoreMinimal.h"
+#include "UObject/Object.h"
 #include "Interfaces/IRenderInterface.h"
-#include "Core/Container/DynamicArray.h"
-#include "Core/Object.h"
 
 class URenderer : public UObject
 {
