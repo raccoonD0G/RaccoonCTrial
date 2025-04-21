@@ -7,14 +7,14 @@ class URenderer : public UObject
 {
 public:
 	URenderer();
-	~URenderer();
-
-private:
-	TArray<IRenderInterface*> RenderTargets;
+	virtual ~URenderer();
 
 public:
 	void RenderAll() const;
 	inline void RegisterRenderTargets(IRenderInterface* InRenderInterface) { RenderTargets.Add(InRenderInterface); }
+
+private:
+	TArray<IRenderInterface*> RenderTargets;
 
 private:
 	void Render(IRenderInterface* InScreenPrintInterface) const;

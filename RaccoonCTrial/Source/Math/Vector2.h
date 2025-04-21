@@ -3,12 +3,9 @@
 struct FVector2
 {
 public:
-	float X;
-	float Y;
-
-public:
-	FVector2() : X(0), Y(0) {}
-	FVector2(float NewX, float NewY) : X(NewX), Y(NewY) {}
+	FVector2() : X(0), Y(0) { ; }
+	FVector2(float NewX, float NewY) : X(NewX), Y(NewY) { ; }
+	virtual ~FVector2() { ; }
 
 	FVector2(const FVector2& Other)
 	{
@@ -27,4 +24,8 @@ public:
 	{
 		return FVector2(this->X + Other.X, this->Y + Other.Y);
 	}
+
+public:
+	float X;
+	float Y;
 };

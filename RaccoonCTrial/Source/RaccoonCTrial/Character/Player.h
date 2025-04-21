@@ -13,10 +13,10 @@ protected:
 	virtual void Tick(float DeltaSeconds) override;
 
 // Controll Section
-private:
-	FVector2 ControlledLocation;
-
 public:
 	inline void SetControlledLocation(const FVector2& NewControlledLocation) { ControlledLocation = NewControlledLocation; }
+
+private:
+	FVector2 ControlledLocation;
 };
 

@@ -3,17 +3,15 @@
 template<typename T>
 class TSharedPtr
 {
-private:
-	T* Pointer;
 
 public:
-	explicit TSharedPtr()
+	TSharedPtr()
 	{
 		Pointer = nullptr;
 		RefCount = nullptr;
 	}
 
-	TSharedPtr(T* NewPointer)
+	explicit TSharedPtr(T* NewPointer)
 	{
 		this->Pointer = NewPointer;
 		IncreaseRefCount();
@@ -24,6 +22,20 @@ public:
 		this->Pointer = Other.Pointer;
 		this->RefCount = Other.RefCount;
 		IncreaseRefCount();
+	}
+
+	TSharedPtr(TSharedPtr&& Other)
+	{
+		this->Pointer = Other.Pointer;
+		this->RefCount = Other.RefCount;
+
+		Other.Pointer = nullptr;
+		Other.RefCount = nullptr;
+	}
+
+	~TSharedPtr()
+	{
+		DecreaseRefCount();
 	}
 
 	TSharedPtr& operator=(const TSharedPtr& Other)
@@ -47,21 +59,13 @@ public:
 		return *this;
 	}
 
-	TSharedPtr(TSharedPtr&& Other)
-	{
-		this->Pointer = Other.Pointer;
-		this->RefCount = Other.RefCount;
-
-		Other.Pointer = nullptr;
-		Other.RefCount = nullptr;
-	}
-
-	~TSharedPtr()
-	{
-		DecreaseRefCount();
-	}
+private:
+	T* Pointer;
 
 // Count Reference Section
+public:
+	inline int GetRefCount() const { return *RefCount; }
+
 private:
 	int* RefCount;
 
@@ -89,8 +93,4 @@ private:
 			RefCount = new int(1);
 		}
 	}
-
-public:
-	inline int GetRefCount() const { return *RefCount; }
-
 };

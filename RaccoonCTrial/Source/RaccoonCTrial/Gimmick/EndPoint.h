@@ -6,6 +6,7 @@ class AEndPoint : public AActor
 {
 public:
 	AEndPoint();
+	virtual ~AEndPoint() { ; }
 
 public:
 	void OnOverlap(AActor* OtherActor);

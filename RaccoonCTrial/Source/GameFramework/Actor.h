@@ -13,7 +13,7 @@ class AActor : public UObject, public IWorldInterface
 
 public:
     AActor();
-    ~AActor();
+    virtual ~AActor();
 
 public:
     virtual void PostInitializeComponents();
@@ -29,13 +29,6 @@ public:
     virtual UWorld* GetWorld() override;
 
 // Component Section
-protected:
-    USceneComponent* RootComponent = nullptr;
-
-private:
-    TArray<UActorComponent*> ActorComponents;
-    TArray<USceneComponent*> SceneComponents;
-
 public:
     inline const USceneComponent* GetRootComponent() const { return RootComponent; }
 
@@ -79,7 +72,7 @@ public:
                 return Casted;
             }
         }
-        
+
         return nullptr;
     }
 
@@ -105,6 +98,12 @@ public:
         }
     }
 
+protected:
+    USceneComponent* RootComponent = nullptr;
+
+private:
+    TArray<UActorComponent*> ActorComponents;
+    TArray<USceneComponent*> SceneComponents;
 // Location Section
 public:
     inline FVector2 GetActorLocation() { return RootComponent ? RootComponent->GetLocation() : FVector2(); }

@@ -4,12 +4,9 @@
 struct FBox
 {
 public:
-	FVector2 Min;
-    FVector2 Max;
-
-public:
-	FBox() : Min(0, 0), Max(0, 0) { ; }
-	FBox(const FVector2& InMin, const FVector2& InMax) : Min(InMin), Max(InMax) { ; }
+    FBox() : Min(0, 0), Max(0, 0) { ; }
+    FBox(const FVector2& InMin, const FVector2& InMax) : Min(InMin), Max(InMax) { ; }
+    virtual ~FBox() { ; }
 
     bool IsInside(const FVector2& Point) const
     {
@@ -18,8 +15,11 @@ public:
 
     bool Intersects(const FBox& Other) const
     {
-        return !(Max.X < Other.Min.X || Min.X > Other.Max.X ||  Max.Y < Other.Min.Y || Min.Y > Other.Max.Y);
+        return !(Max.X < Other.Min.X || Min.X > Other.Max.X || Max.Y < Other.Min.Y || Min.Y > Other.Max.Y);
     }
 
+public:
+	FVector2 Min;
+    FVector2 Max;
 };
 

@@ -15,11 +15,11 @@ public:
 public:
 	void BeginPlay();
 
-private:
-	TArray<AActor*> Actors;
-
 public:
 	inline const TArray<AActor*>& GetAllActors() { return Actors; }
+
+private:
+	TArray<AActor*> Actors;
 
 // Printer Section
 public:

@@ -6,5 +6,6 @@ class AWall : public AActor
 {
 public:
 	AWall();
+	virtual ~AWall() { ; }
 };
 

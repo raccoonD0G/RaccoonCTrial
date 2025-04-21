@@ -13,12 +13,12 @@ struct TPair
 		;
 	}
 
-	~TPair()
+	explicit TPair(const KeyType& InKey, const ValueType& InValue) : Key(InKey), Value(InValue)
 	{
 		;
 	}
 
-	TPair(const KeyType& InKey, const ValueType& InValue) : Key(InKey), Value(InValue)
+	~TPair()
 	{
 		;
 	}

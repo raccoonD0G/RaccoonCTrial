@@ -8,7 +8,7 @@ class UCollisionSystem : public UObject
 {
 public:
     UCollisionSystem();
-    ~UCollisionSystem();
+    virtual ~UCollisionSystem();
 
 public:
     void RegisterCollisionTarget(ICollisionInterface* CollisionObject);

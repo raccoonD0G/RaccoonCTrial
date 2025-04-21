@@ -5,19 +5,24 @@ using namespace std;
 template<typename T>
 class TUniquePtr
 {
-private:
-	T* Pointer;
 
 public:
-	explicit TUniquePtr()
+	TUniquePtr()
 	{
 		Pointer = nullptr;
 	}
 
-	explicit TUniquePtr(TUniquePtr&& Other)
+	TUniquePtr(const TUniquePtr&) = delete;
+
+	TUniquePtr(TUniquePtr&& Other)
 	{
 		Pointer = Other.Pointer;
 		Other.Pointer = nullptr;
+	}
+
+	~TUniquePtr()
+	{
+		delete Pointer;
 	}
 
 	TUniquePtr& operator=(TUniquePtr&& Other)
@@ -31,13 +36,7 @@ public:
 		return *this;
 	}
 
-	TUniquePtr(const TUniquePtr&) = delete;
 	TUniquePtr& operator=(const TUniquePtr&) = delete;
-
-	~TUniquePtr()
-	{
-		delete Pointer;
-	}
 
 	T* operator->() const
 	{
@@ -48,7 +47,7 @@ public:
 	{
 		return *Pointer;
 	}
-	
+
 	T* Get() const
 	{
 		return Pointer;
@@ -62,5 +61,8 @@ public:
 		}
 		Pointer = NewPointer;
 	}
+
+private:
+	T* Pointer;
 };
 
