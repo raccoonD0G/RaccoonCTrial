@@ -106,7 +106,7 @@ private:
     TArray<USceneComponent*> SceneComponents;
 // Location Section
 public:
-    inline FVector2 GetActorLocation() { return RootComponent ? RootComponent->GetLocation() : FVector2(); }
-    inline void SetActorLocation(FVector2 NewLocation) { if (RootComponent) RootComponent->SetLocation(NewLocation); }
+    inline FVector2D GetActorLocation() { return RootComponent ? RootComponent->GetLocation() : FVector2D(); }
+    inline void SetActorLocation(FVector2D NewLocation) { if (RootComponent) RootComponent->SetLocation(NewLocation); }
 };
 

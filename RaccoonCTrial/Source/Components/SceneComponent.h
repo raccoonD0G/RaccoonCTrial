@@ -8,11 +8,11 @@ public:
 	virtual void TickComponent(float DeltaTime) override;
 
 private:
-	FVector2 CurrentLocation;
+	FVector2D CurrentLocation;
 
 public:
-	virtual FVector2 GetLocation() const override;
-	virtual FVector2 GetWorldLocation() const override;
-	virtual void SetLocation(const FVector2& NewLocation) override;
+	virtual FVector2D GetLocation() const override;
+	virtual FVector2D GetWorldLocation() const override;
+	virtual void SetLocation(const FVector2D& NewLocation) override;
 };
 

@@ -25,7 +25,7 @@ void URenderer::Render(IRenderInterface* InRenderInterface) const
         return;
     }
 
-    FVector2 loc = LocationInterface->GetWorldLocation();
+    FVector2D loc = LocationInterface->GetWorldLocation();
 
     COORD Pos;
     Pos.X = loc.X;

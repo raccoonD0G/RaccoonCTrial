@@ -5,7 +5,7 @@
 
 UBoxComponent::UBoxComponent()
 {
-	SetBoxSize(FVector2(0, 0));
+	SetBoxSize(FVector2D(0, 0));
 }
 
 UBoxComponent::~UBoxComponent()
@@ -18,11 +18,11 @@ void UBoxComponent::TickComponent(float DeltaTime)
 	PreviousLocation = GetOwner()->GetActorLocation();
 }
 
-void UBoxComponent::SetBoxSize(const FVector2& InSize)
+void UBoxComponent::SetBoxSize(const FVector2D& InSize)
 {
-	FVector2 Center = this->GetLocation();
-	BoundingBox.Min = FVector2(Center.X - InSize.X / 2.0f, Center.Y - InSize.Y / 2.0f);
-	BoundingBox.Max = FVector2(Center.X + InSize.X / 2.0f, Center.Y + InSize.Y / 2.0f);
+	FVector2D Center = this->GetLocation();
+	BoundingBox.Min = FVector2D(Center.X - InSize.X / 2.0f, Center.Y - InSize.Y / 2.0f);
+	BoundingBox.Max = FVector2D(Center.X + InSize.X / 2.0f, Center.Y + InSize.Y / 2.0f);
 }
 
 AActor* UBoxComponent::GetSelfActor() const
@@ -34,8 +34,8 @@ bool UBoxComponent::CheckOverlap(ICollisionInterface* InCollisionInterface) cons
 {
 	if (UBoxComponent* OtherBox = dynamic_cast<UBoxComponent*>(InCollisionInterface))
 	{
-		FVector2 MyPos = this->GetWorldLocation();
-		FVector2 OtherPos = OtherBox->GetWorldLocation();
+		FVector2D MyPos = this->GetWorldLocation();
+		FVector2D OtherPos = OtherBox->GetWorldLocation();
 
 		FBox MyBox = FBox(
 			BoundingBox.Min + MyPos,

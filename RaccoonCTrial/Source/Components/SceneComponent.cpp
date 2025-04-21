@@ -5,12 +5,12 @@ void USceneComponent::TickComponent(float DeltaTime)
 	UActorComponent::TickComponent(DeltaTime);
 }
 
-FVector2 USceneComponent::GetLocation() const
+FVector2D USceneComponent::GetLocation() const
 {
 	return CurrentLocation;
 }
 
-FVector2 USceneComponent::GetWorldLocation() const
+FVector2D USceneComponent::GetWorldLocation() const
 {
 	if (this != GetOwner()->GetRootComponent())
 	{
@@ -22,7 +22,7 @@ FVector2 USceneComponent::GetWorldLocation() const
 	}
 }
 
-void USceneComponent::SetLocation(const FVector2& NewLocation)
+void USceneComponent::SetLocation(const FVector2D& NewLocation)
 {
 	CurrentLocation = NewLocation;
 }

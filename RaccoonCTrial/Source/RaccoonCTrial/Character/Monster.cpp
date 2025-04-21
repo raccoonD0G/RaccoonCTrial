@@ -34,20 +34,20 @@ void AMonster::RandomMove()
 	std::uniform_int_distribution<> Distribution(0, 3);
 	int MonsterValue = Distribution(Generator);
 
-	FVector2 TargetVector;
+	FVector2D TargetVector;
 	switch (MonsterValue)
 	{
 	case 0:
-		TargetVector = FVector2(RootComponent->GetLocation().X, RootComponent->GetLocation().Y - 1);
+		TargetVector = FVector2D(RootComponent->GetLocation().X, RootComponent->GetLocation().Y - 1);
 		break;
 	case 1:
-		TargetVector = FVector2(RootComponent->GetLocation().X - 1, RootComponent->GetLocation().Y);
+		TargetVector = FVector2D(RootComponent->GetLocation().X - 1, RootComponent->GetLocation().Y);
 		break;
 	case 2:
-		TargetVector = FVector2(RootComponent->GetLocation().X, RootComponent->GetLocation().Y + 1);
+		TargetVector = FVector2D(RootComponent->GetLocation().X, RootComponent->GetLocation().Y + 1);
 		break;
 	case 3:
-		TargetVector = FVector2(RootComponent->GetLocation().X + 1, RootComponent->GetLocation().Y);
+		TargetVector = FVector2D(RootComponent->GetLocation().X + 1, RootComponent->GetLocation().Y);
 		break;
 	}
 

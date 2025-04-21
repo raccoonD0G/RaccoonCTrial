@@ -6,8 +6,8 @@ class ILocationInterface
 {
 public:
 	virtual ~ILocationInterface() { ; }
-	virtual FVector2 GetLocation() const = 0;
-	virtual FVector2 GetWorldLocation() const = 0;
-	virtual void SetLocation(const FVector2& NewLocation) = 0;
+	virtual FVector2D GetLocation() const = 0;
+	virtual FVector2D GetWorldLocation() const = 0;
+	virtual void SetLocation(const FVector2D& NewLocation) = 0;
 };
 

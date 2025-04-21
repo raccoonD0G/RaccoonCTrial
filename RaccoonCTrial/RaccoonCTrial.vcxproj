@@ -143,14 +143,14 @@
     <ClCompile Include="Source\Components\MeshComponent.cpp" />
     <ClCompile Include="Source\Components\ShapeComponent.cpp" />
     <ClCompile Include="Source\Interfaces\IFightInterface.cpp" />
-    <ClCompile Include="Source\Math\Box.cpp" />
-    <ClCompile Include="Source\Math\Vector2.cpp" />
     <ClCompile Include="Source\RaccoonCTrial\Character\Boar.cpp" />
     <ClCompile Include="Source\RaccoonCTrial\Character\Goblin.cpp" />
     <ClCompile Include="Source\RaccoonCTrial\Character\Slime.cpp" />
     <ClCompile Include="Source\RaccoonCTrial\Game\RCGameMode.cpp" />
     <ClCompile Include="Source\RaccoonCTrial\Game\RCGameState.cpp" />
     <ClCompile Include="Source\RaccoonCTrial\Game\RCPlayerState.cpp" />
+    <ClCompile Include="Source\Templates\SharedPtr.cpp" />
+    <ClCompile Include="Source\Templates\UniquePtr.cpp" />
     <ClCompile Include="Source\UObject\Object.cpp" />
     <ClCompile Include="Source\World\CollisionSystem.cpp" />
     <ClCompile Include="Source\Interfaces\ICollisionInterface.cpp" />
@@ -160,9 +160,6 @@
     <ClCompile Include="Source\Components\ActorComponent.cpp" />
     <ClCompile Include="Source\Components\PrimitiveComponent.cpp" />
     <ClCompile Include="Source\Components\SceneComponent.cpp" />
-    <ClCompile Include="Source\Core\Class.cpp" />
-    <ClCompile Include="Source\Core\SharedPtr.cpp" />
-    <ClCompile Include="Source\Core\UniquePtr.cpp" />
     <ClCompile Include="Source\GameFramework\Actor.cpp" />
     <ClCompile Include="Source\Interfaces\ILocationInterface.cpp" />
     <ClCompile Include="Source\Interfaces\IRenderIterface.cpp" />
@@ -189,8 +186,7 @@
     <ClInclude Include="Source\Components\MeshComponent.h" />
     <ClInclude Include="Source\Components\ShapeComponent.h" />
     <ClInclude Include="Source\Interfaces\IFightInterface.h" />
-    <ClInclude Include="Source\Math\Box.h" />
-    <ClInclude Include="Source\Math\Vector2.h" />
+    <ClInclude Include="Source\Math\MathFwd.h" />
     <ClInclude Include="Source\RaccoonCTrial\Character\Boar.h" />
     <ClInclude Include="Source\RaccoonCTrial\Character\Goblin.h" />
     <ClInclude Include="Source\RaccoonCTrial\Character\Slime.h" />
@@ -198,6 +194,8 @@
     <ClInclude Include="Source\RaccoonCTrial\Game\RCGameMode.h" />
     <ClInclude Include="Source\RaccoonCTrial\Game\RCGameState.h" />
     <ClInclude Include="Source\RaccoonCTrial\Game\RCPlayerState.h" />
+    <ClInclude Include="Source\Templates\SharedPtr.h" />
+    <ClInclude Include="Source\Templates\UniquePtr.h" />
     <ClInclude Include="Source\UObject\Object.h" />
     <ClInclude Include="Source\World\CollisionSystem.h" />
     <ClInclude Include="Source\Core\Math\Box.h" />
@@ -208,9 +206,6 @@
     <ClInclude Include="Source\Components\ActorComponent.h" />
     <ClInclude Include="Source\Components\PrimitiveComponent.h" />
     <ClInclude Include="Source\Components\SceneComponent.h" />
-    <ClInclude Include="Source\Core\Class.h" />
-    <ClInclude Include="Source\Core\SharedPtr.h" />
-    <ClInclude Include="Source\Core\UniquePtr.h" />
     <ClInclude Include="Source\GameFramework\Actor.h" />
     <ClInclude Include="Source\Interfaces\ILocationInterface.h" />
     <ClInclude Include="Source\Interfaces\IRenderInterface.h" />

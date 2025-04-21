@@ -14,9 +14,9 @@ protected:
 
 // Controll Section
 public:
-	inline void SetControlledLocation(const FVector2& NewControlledLocation) { ControlledLocation = NewControlledLocation; }
+	inline void SetControlledLocation(const FVector2D& NewControlledLocation) { ControlledLocation = NewControlledLocation; }
 
 private:
-	FVector2 ControlledLocation;
+	FVector2D ControlledLocation;
 };
 

@@ -17,7 +17,7 @@ private:
 	FBox BoundingBox;
 
 public:
-	void SetBoxSize(const FVector2& InSize);
+	void SetBoxSize(const FVector2D& InSize);
 	inline const FBox& GetBoundingBox() const { return BoundingBox; }
 
 // Actor Section
@@ -35,7 +35,7 @@ public:
 
 // Block Section
 private:
-	FVector2 PreviousLocation;
+	FVector2D PreviousLocation;
 
 public:
 	virtual bool ShouldBlock(ICollisionInterface* Other) const override;

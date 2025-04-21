@@ -15,7 +15,7 @@ int main()
 {
 	UWorld* CurrentWorld = new UWorld();
 
-	APlayer* Player0 = CurrentWorld->SpawnActor<APlayer>(FVector2(25, 12));
+	APlayer* Player0 = CurrentWorld->SpawnActor<APlayer>(FVector2D(25, 12));
 
 	for (int i = 0; i < 50; i++)
 	{
@@ -23,7 +23,7 @@ int main()
 		{
 			if (i == 0 || i == 49 || j == 0 || j == 49)
 			{
-				CurrentWorld->SpawnActor<AWall>(FVector2((float)i, (float)j));
+				CurrentWorld->SpawnActor<AWall>(FVector2D((float)i, (float)j));
 			}
 		}
 	}
@@ -32,16 +32,16 @@ int main()
 
 	int MonsterCount = 8 + (std::rand() % 8);
 
-	TArray<FVector2> UsedPositions;
-	UsedPositions.Add(FVector2(25, 12));
+	TArray<FVector2D> UsedPositions;
+	UsedPositions.Add(FVector2D(25, 12));
 
 	for (int i = 0; i < MonsterCount; ++i)
 	{
-		FVector2 SpawnPos;
+		FVector2D SpawnPos;
 
 		float x = 1 + std::rand() % 48;
 		float y = 1 + std::rand() % 48;
-		SpawnPos = FVector2(x, y);
+		SpawnPos = FVector2D(x, y);
 
 		UsedPositions.Add(SpawnPos);
 
@@ -75,20 +75,20 @@ int main()
 		{
 			char Input = _getch();
 			
-			FVector2 TargetVector = Player0->GetActorLocation();
+			FVector2D TargetVector = Player0->GetActorLocation();
 			switch (Input)
 			{
 			case 'w':
-				TargetVector = FVector2(Player0->GetActorLocation().X, Player0->GetActorLocation().Y - 1);
+				TargetVector = FVector2D(Player0->GetActorLocation().X, Player0->GetActorLocation().Y - 1);
 				break;
 			case 'a':
-				TargetVector = FVector2(Player0->GetActorLocation().X - 1, Player0->GetActorLocation().Y);
+				TargetVector = FVector2D(Player0->GetActorLocation().X - 1, Player0->GetActorLocation().Y);
 				break;
 			case 's':
-				TargetVector = FVector2(Player0->GetActorLocation().X, Player0->GetActorLocation().Y + 1);
+				TargetVector = FVector2D(Player0->GetActorLocation().X, Player0->GetActorLocation().Y + 1);
 				break;
 			case 'd':
-				TargetVector = FVector2(Player0->GetActorLocation().X + 1, Player0->GetActorLocation().Y);
+				TargetVector = FVector2D(Player0->GetActorLocation().X + 1, Player0->GetActorLocation().Y);
 				break;
 			case 27:
 				bShouldExit = true;

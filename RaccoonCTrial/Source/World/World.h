@@ -31,7 +31,7 @@ private:
 // Spawn Section
 public:
 	template<typename T>
-	T* SpawnActor(const FVector2& SpawnLocation)
+	T* SpawnActor(const FVector2D& SpawnLocation)
 	{
 		static_assert(std::is_base_of<AActor, T>::value, "T must be derived from Actor");
 
