@@ -1,5 +1,7 @@
 #pragma once
 
+#include <algorithm>
+
 struct FVector2D
 {
 public:
@@ -34,7 +36,12 @@ struct FBox
 {
 public:
     FBox() : Min(0, 0), Max(0, 0) { ; }
-    FBox(const FVector2D& InMin, const FVector2D& InMax) : Min(InMin), Max(InMax) { ; }
+	FBox(const FVector2D& InA, const FVector2D& InB)
+	{
+		Min = FVector2D(std::min(InA.X, InB.X), std::min(InA.Y, InB.Y));
+		Max = FVector2D(std::max(InA.X, InB.X), std::max(InA.Y, InB.Y));
+	}
+
     virtual ~FBox() { ; }
 
     bool IsInside(const FVector2D& Point) const

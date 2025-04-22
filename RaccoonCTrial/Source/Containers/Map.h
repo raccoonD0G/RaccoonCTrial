@@ -2,6 +2,9 @@
 
 #include "Set.h"
 #include "Pair.h"
+#include "iostream"
+
+#include "Core/Collision/CollisionChannel.h"
 
 template<typename KeyType, typename ValueType>
 class TMap
@@ -16,9 +19,27 @@ public:
         ;
     }
 
-    virtual ~TMap()
+    TMap(const TMap& Other) : Pairs(Other.Pairs) { }
+
+    TMap(TMap&& Other) noexcept : Pairs(std::move(Other.Pairs)) { }
+    
+    ~TMap()
     {
         ;
+    }
+
+    TMap& operator=(const TMap& Other)
+    {
+        if (this != &Other)
+            Pairs = Other.Pairs;
+        return *this;
+    }
+
+    TMap& operator=(TMap&& Other) noexcept
+    {
+        if (this != &Other)
+            Pairs = std::move(Other.Pairs);
+        return *this;
     }
 
     void Add(const KeyType& InKey, const ValueType& InValue)
@@ -54,6 +75,7 @@ public:
         ValueType* Found = Find(InKey);
         if (!Found)
         {
+            std::cout << "Cant Find" << std::endl;
             Add(InKey, ValueType());
             Found = Find(InKey);
         }

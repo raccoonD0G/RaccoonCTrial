@@ -12,11 +12,9 @@ AWall::AWall()
 		StaticMeshComponent->SetRenderString("*");
 	}
 
-	UBoxComponent* BoxComponent = AddOwnedComponent<UBoxComponent>();
+	UBoxComponent* BoxComponent = this->AddOwnedComponent<UBoxComponent>();
 	if (BoxComponent)
 	{
-		BoxComponent->SetCollisionChannel(ECollisionChannel::Wall);
-		BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::Player, ECollisionResponse::Block);
-		BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::Monster, ECollisionResponse::Block);
+		BoxComponent->SetCollisionProfileName(FCollisionProfileName("Wall"));
 	}
 }

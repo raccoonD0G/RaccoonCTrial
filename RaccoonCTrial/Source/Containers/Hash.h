@@ -2,6 +2,7 @@
 
 #include "functional"
 #include "Containers/Pair.h"
+#include "string"
 
 template<typename T>
 struct Hash

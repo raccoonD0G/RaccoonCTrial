@@ -1,11 +1,10 @@
 #include "BoxComponent.h"
 #include "GameFramework/Actor.h"
-#include "Core/Collision/CollisionChannel.h"
-
+#include "Engine/CollisionProfile.h"
 
 UBoxComponent::UBoxComponent()
 {
-	SetBoxSize(FVector2D(0, 0));
+    SetBoxSize(FVector2D(1, 1));
 }
 
 UBoxComponent::~UBoxComponent()
@@ -14,101 +13,52 @@ UBoxComponent::~UBoxComponent()
 
 void UBoxComponent::TickComponent(float DeltaTime)
 {
-	UPrimitiveComponent::TickComponent(DeltaTime);
-	PreviousLocation = GetOwner()->GetActorLocation();
+    UPrimitiveComponent::TickComponent(DeltaTime);
 }
 
 void UBoxComponent::SetBoxSize(const FVector2D& InSize)
 {
-	FVector2D Center = this->GetLocation();
-	BoundingBox.Min = FVector2D(Center.X - InSize.X / 2.0f, Center.Y - InSize.Y / 2.0f);
-	BoundingBox.Max = FVector2D(Center.X + InSize.X / 2.0f, Center.Y + InSize.Y / 2.0f);
+    FVector2D Center = this->GetLocation();
+    BoundingBox.Min = FVector2D(Center.X - InSize.X / 2.0f, Center.Y - InSize.Y / 2.0f);
+    BoundingBox.Max = FVector2D(Center.X + InSize.X / 2.0f, Center.Y + InSize.Y / 2.0f);
 }
 
-AActor* UBoxComponent::GetSelfActor() const
+bool UBoxComponent::ShouldOverlap(UPrimitiveComponent* Other) const
 {
-	return GetOwner();
+    UPrimitiveComponent::ShouldOverlap(Other);
+
+    UBoxComponent* OtherBox = dynamic_cast<UBoxComponent*>(Other);
+    if (!OtherBox) return false;
+
+    FVector2D MyPos = GetWorldLocation();
+    FVector2D OtherPos = OtherBox->GetWorldLocation();
+
+    FBox MyBox(BoundingBox.Min + MyPos, BoundingBox.Max + MyPos);
+    FBox OtherBoxBounds(OtherBox->GetBoundingBox().Min + OtherPos, OtherBox->GetBoundingBox().Max + OtherPos);
+
+    if (!MyBox.Intersects(OtherBoxBounds)) return false;
+
+    ECollisionChannel OtherChannel = OtherBox->GetCollisionChannel();
+    return GetResponseToChannel(OtherChannel) == ECollisionResponse::Overlap;
 }
 
-bool UBoxComponent::CheckOverlap(ICollisionInterface* InCollisionInterface) const
+bool UBoxComponent::ShouldBlock(UPrimitiveComponent* Other) const
 {
-	if (UBoxComponent* OtherBox = dynamic_cast<UBoxComponent*>(InCollisionInterface))
-	{
-		FVector2D MyPos = this->GetWorldLocation();
-		FVector2D OtherPos = OtherBox->GetWorldLocation();
+    UPrimitiveComponent::ShouldBlock(Other);
 
-		FBox MyBox = FBox(
-			BoundingBox.Min + MyPos,
-			BoundingBox.Max + MyPos
-		);
+    UBoxComponent* OtherBox = dynamic_cast<UBoxComponent*>(Other);
+    if (!OtherBox) return false;
 
-		FBox OtherBoxBounds = FBox(
-			OtherBox->GetBoundingBox().Min + OtherPos,
-			OtherBox->GetBoundingBox().Max + OtherPos
-		);
+    FVector2D MyPos = GetWorldLocation();
+    FVector2D OtherPos = OtherBox->GetWorldLocation();
 
-		return !(MyBox.Max.X < OtherBoxBounds.Min.X ||
-			MyBox.Min.X > OtherBoxBounds.Max.X ||
-			MyBox.Max.Y < OtherBoxBounds.Min.Y ||
-			MyBox.Min.Y > OtherBoxBounds.Max.Y);
-	}
+    FBox MyBox(BoundingBox.Min + MyPos, BoundingBox.Max + MyPos);
+    FBox OtherBoxBounds(OtherBox->GetBoundingBox().Min + OtherPos, OtherBox->GetBoundingBox().Max + OtherPos);
 
-	return false;
+    if (!MyBox.Intersects(OtherBoxBounds)) return false;
+
+    ECollisionChannel OtherChannel = OtherBox->GetCollisionChannel();
+
+    return GetResponseToChannel(OtherChannel) == ECollisionResponse::Block;
 }
 
-
-void UBoxComponent::OnOverlap(AActor* OtherActor)
-{
-	if (OnOverlapDelegate)
-	{
-		OnOverlapDelegate(OtherActor);
-	}
-}
-
-bool UBoxComponent::ShouldBlock(ICollisionInterface* Other) const
-{
-	UBoxComponent* OtherBox = dynamic_cast<UBoxComponent*>(Other);
-	if (!OtherBox)
-	{
-		return false;
-	}
-
-	ECollisionChannel OtherChannel = OtherBox->GetCollisionChannel();
-
-	return GetResponseToChannel(OtherChannel) == ECollisionResponse::Block;
-}
-
-void UBoxComponent::OnBlock(AActor* OtherActor)
-{
-	GetOwner()->SetActorLocation(PreviousLocation);
-	if (OnBlockDelegate)
-	{
-		OnBlockDelegate(OtherActor);
-	}
-}
-
-void UBoxComponent::SetCollisionChannel(ECollisionChannel InChannel)
-{
-	CollisionChannel = InChannel;
-}
-
-ECollisionChannel UBoxComponent::GetCollisionChannel() const
-{
-	return CollisionChannel;
-}
-
-void UBoxComponent::SetCollisionResponseToChannel(ECollisionChannel TargetChannel, ECollisionResponse Response)
-{
-	ChannelResponses[TargetChannel] = Response;
-}
-
-ECollisionResponse UBoxComponent::GetResponseToChannel(ECollisionChannel TargetChannel) const
-{
-	const ECollisionResponse* Found = ChannelResponses.Find(TargetChannel);
-	if (Found)
-	{
-		return *Found;
-	}
-
-	return ECollisionResponse::Ignore;
-}

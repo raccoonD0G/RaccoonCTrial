@@ -2,13 +2,15 @@
 
 #include "utility"
 
+#include "Core/Collision/CollisionChannel.h"
+
 template<typename KeyType, typename ValueType>
 struct TPair
 {
 	KeyType Key;
 	ValueType Value;
 
-	TPair()
+	TPair() : Key(KeyType()), Value(ValueType())
 	{
 		;
 	}
@@ -23,6 +25,9 @@ struct TPair
 		;
 	}
 
+	TPair(const TPair& Other) = default;
+	TPair(TPair&& Other) noexcept = default;
+
 	TPair& operator=(const TPair& Other)
 	{
 		this->Key = Other.Key;
@@ -36,13 +41,14 @@ struct TPair
 		;
 	}
 
-	TPair& operator=(const TPair&& Other) noexcept
+	TPair& operator=(TPair&& Other) noexcept
 	{
-		this->Key = Other.Key;
-		this->Value = Other.Value;
+		Key = std::move(Other.Key);
+		Value = std::move(Other.Value);
 
 		return *this;
 	}
+
 
 	bool operator==(const TPair& Other) const
 	{

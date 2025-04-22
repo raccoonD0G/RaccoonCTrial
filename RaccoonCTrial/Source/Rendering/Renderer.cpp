@@ -1,5 +1,8 @@
-#include "Renderer.h"
+
+#define NOMINMAX
 #include "windows.h"
+
+#include "Renderer.h"
 #include "iostream"
 
 URenderer::URenderer()

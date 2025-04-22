@@ -2,7 +2,7 @@
 #include "Components/PrimitiveComponent.h"
 #include "Interfaces/ICollisionInterface.h"
 
-class UShapeComponent : public UPrimitiveComponent, public ICollisionInterface
+class UShapeComponent : public UPrimitiveComponent
 {
 };
 

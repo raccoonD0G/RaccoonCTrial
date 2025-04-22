@@ -21,13 +21,13 @@ AEndPoint::AEndPoint()
 		BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::Player, ECollisionResponse::Overlap);
 		BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::Monster, ECollisionResponse::Block);
 
-		BoxComponent->OnOverlapDelegate = [this](AActor* OtherActor) { this->OnOverlap(OtherActor); };
+		BoxComponent->OnOverlapDelegate = [this](UPrimitiveComponent* Other) { this->OnOverlap(Other); };
 	}
 }
 
-void AEndPoint::OnOverlap(AActor* OtherActor)
+void AEndPoint::OnOverlap(UPrimitiveComponent* Other)
 {
-	APlayer* Player = dynamic_cast<APlayer*>(OtherActor);
+	APlayer* Player = dynamic_cast<APlayer*>(Other->GetOwner());
 	if (Player)
 	{
 		std::cout << "Game End";

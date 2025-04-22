@@ -15,18 +15,12 @@ APlayer::APlayer()
 	UBoxComponent* BoxComponent = this->GetComponentByClass<UBoxComponent>();
 	if (BoxComponent)
 	{
-		BoxComponent->SetCollisionChannel(ECollisionChannel::Player);
-		BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::Monster, ECollisionResponse::Block);
-		BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::Wall, ECollisionResponse::Block);
-
+		BoxComponent->SetCollisionProfileName(FCollisionProfileName("Player"));
 	}
 
 	UStatComponent* StatComponent = this->AddOwnedComponent<UStatComponent>();
-	if (StatComponent)
-	{
-		;
-	}
 }
+
 
 void APlayer::PostInitializeComponents()
 {

@@ -2,8 +2,26 @@
 
 UWorld::UWorld()
 {
-	CollisionSystem = new UCollisionSystem();
+	PhysScene = new FPhysScene();
 	Renderer = new URenderer();
+
+	FCollisionResponseContainer PlayerProfile(ECollisionChannel::Player);
+	PlayerProfile.SetResponseToChannel(ECollisionChannel::Monster, ECollisionResponse::Block);
+	PlayerProfile.SetResponseToChannel(ECollisionChannel::Wall, ECollisionResponse::Block);
+
+	UCollisionProfile::Get().AddProfile("Player", PlayerProfile);
+
+	FCollisionResponseContainer MonsterProfile(ECollisionChannel::Monster);
+	MonsterProfile.SetResponseToChannel(ECollisionChannel::Player, ECollisionResponse::Block);
+	MonsterProfile.SetResponseToChannel(ECollisionChannel::Wall, ECollisionResponse::Block);
+
+	UCollisionProfile::Get().AddProfile("Monster", MonsterProfile);
+
+	FCollisionResponseContainer WallProfile(ECollisionChannel::Wall);
+	WallProfile.SetResponseToChannel(ECollisionChannel::Monster, ECollisionResponse::Block);
+	WallProfile.SetResponseToChannel(ECollisionChannel::Player, ECollisionResponse::Block);
+
+	UCollisionProfile::Get().AddProfile("Wall", WallProfile);
 }
 
 UWorld::~UWorld()
@@ -14,7 +32,7 @@ UWorld::~UWorld()
 	}
 
 	delete Renderer;
-	delete CollisionSystem;
+	delete PhysScene;
 }
 
 void UWorld::BeginPlay()
@@ -32,5 +50,5 @@ void UWorld::Tick(float DeltaSeconds)
 		Actors[i]->Tick(DeltaSeconds);
 	}
 
-	CollisionSystem->PerformCollisionChecks();
+	PhysScene->PerformCollisionChecks();
 }

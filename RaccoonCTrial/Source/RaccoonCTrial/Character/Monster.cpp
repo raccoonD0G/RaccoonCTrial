@@ -15,9 +15,7 @@ AMonster::AMonster()
 	UBoxComponent* BoxComponent = this->GetComponentByClass<UBoxComponent>();
 	if (BoxComponent)
 	{
-		BoxComponent->SetCollisionChannel(ECollisionChannel::Monster);
-		BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::Player, ECollisionResponse::Block);
-		BoxComponent->SetCollisionResponseToChannel(ECollisionChannel::Wall, ECollisionResponse::Block);
+		BoxComponent->SetCollisionProfileName(FCollisionProfileName("Monster"));
 	}
 }
 

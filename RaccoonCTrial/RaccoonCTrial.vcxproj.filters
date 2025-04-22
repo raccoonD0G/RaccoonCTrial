@@ -15,16 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Core\SharedPtr.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Core\UniquePtr.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\RaccoonCTrial\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Core\Class.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Components\ActorComponent.cpp">
@@ -78,7 +69,7 @@
     <ClCompile Include="Source\Interfaces\ICollisionInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\World\CollisionSystem.cpp">
+    <ClCompile Include="Source\PhysicsInterfaceDeclaresCore.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Components\StatComponent.cpp">
@@ -141,17 +132,11 @@
     <ClCompile Include="Source\Templates\UniquePtr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Engine\CollisionProfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Core\UniquePtr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Core\SharedPtr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Core\Class.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Components\ActorComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -209,7 +194,7 @@
     <ClInclude Include="Source\Core\Math\Box.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\World\CollisionSystem.h">
+    <ClInclude Include="Source\PhysicsInterfaceDeclaresCore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Core\Collision\CollisionChannel.h">
@@ -282,6 +267,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Templates\UniquePtr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\EngineTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\CollisionProfile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

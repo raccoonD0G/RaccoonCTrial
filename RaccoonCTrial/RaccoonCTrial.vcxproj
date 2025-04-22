@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Engine\CollisionProfile.cpp" />
     <ClCompile Include="Source\Containers\Array.cpp" />
     <ClCompile Include="Source\Containers\Map.cpp" />
     <ClCompile Include="Source\Containers\Pair.cpp" />
@@ -152,7 +153,7 @@
     <ClCompile Include="Source\Templates\SharedPtr.cpp" />
     <ClCompile Include="Source\Templates\UniquePtr.cpp" />
     <ClCompile Include="Source\UObject\Object.cpp" />
-    <ClCompile Include="Source\World\CollisionSystem.cpp" />
+    <ClCompile Include="Source\PhysicsInterfaceDeclaresCore.cpp" />
     <ClCompile Include="Source\Interfaces\ICollisionInterface.cpp" />
     <ClCompile Include="Source\Interfaces\IWorldInterface.cpp" />
     <ClCompile Include="Source\Components\BoxComponent.cpp" />
@@ -180,6 +181,8 @@
     <ClInclude Include="Source\Containers\Pair.h" />
     <ClInclude Include="Source\Containers\Set.h" />
     <ClInclude Include="Source\CoreMinimal.h" />
+    <ClInclude Include="Source\Engine\CollisionProfile.h" />
+    <ClInclude Include="Source\Engine\EngineTypes.h" />
     <ClInclude Include="Source\GameFramework\PlayerState.h" />
     <ClInclude Include="Source\GameFramework\GameStateBase.h" />
     <ClInclude Include="Source\GameFramework\GameModeBase.h" />
@@ -197,7 +200,7 @@
     <ClInclude Include="Source\Templates\SharedPtr.h" />
     <ClInclude Include="Source\Templates\UniquePtr.h" />
     <ClInclude Include="Source\UObject\Object.h" />
-    <ClInclude Include="Source\World\CollisionSystem.h" />
+    <ClInclude Include="Source\PhysicsInterfaceDeclaresCore.h" />
     <ClInclude Include="Source\Core\Math\Box.h" />
     <ClInclude Include="Source\Interfaces\ICollisionInterface.h" />
     <ClInclude Include="Source\Interfaces\IWorldInterface.h" />

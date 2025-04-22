@@ -1,8 +1,10 @@
+#define NOMINMAX
+#include "windows.h"
+
 #include "iostream"
 #include "conio.h"
 #include "cstdlib"
 #include "ctime"
-#include "windows.h"
 #include "World/World.h"
 #include "RaccoonCTrial/Character/Player.h"
 #include "RaccoonCTrial/Gimmick/Wall.h"
@@ -17,6 +19,7 @@ int main()
 
 	APlayer* Player0 = CurrentWorld->SpawnActor<APlayer>(FVector2D(25, 12));
 
+	
 	for (int i = 0; i < 50; i++)
 	{
 		for (int j = 0; j < 50; j++)
@@ -60,6 +63,7 @@ int main()
 		}
 	}
 	
+
 	// Begin Play
 	CurrentWorld->BeginPlay();
 

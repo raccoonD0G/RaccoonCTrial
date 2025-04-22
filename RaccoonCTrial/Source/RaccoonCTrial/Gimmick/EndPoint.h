@@ -2,6 +2,8 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 
+class UPrimitiveComponent;
+
 class AEndPoint : public AActor
 {
 public:
@@ -9,6 +11,6 @@ public:
 	virtual ~AEndPoint() { ; }
 
 public:
-	void OnOverlap(AActor* OtherActor);
+	void OnOverlap(UPrimitiveComponent* Other);
 };
 

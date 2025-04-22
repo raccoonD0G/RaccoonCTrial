@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Rendering/Renderer.h"
-#include "CollisionSystem.h"
+#include "PhysicsInterfaceDeclaresCore.h"
 #include "GameFramework/Actor.h"
 #include "Components/MeshComponent.h"
 #include "Components/ShapeComponent.h"
@@ -10,7 +10,7 @@ class UWorld : public UObject
 {
 public:
 	UWorld();
-	~UWorld();
+	virtual ~UWorld();
 
 public:
 	void BeginPlay();
@@ -60,12 +60,12 @@ public:
 		ActorTarget->GetComponents<UShapeComponent>(BoxComponents);
 		for (int i = 0; i < BoxComponents.Num(); i++)
 		{
-			ICollisionInterface* CollisionInterface = dynamic_cast<ICollisionInterface*>(BoxComponents[i]);
-			if (CollisionInterface)
+			UPrimitiveComponent* PrimitiveComponent = dynamic_cast<UPrimitiveComponent*>(BoxComponents[i]);
+			if (PrimitiveComponent)
 			{
-				if (CollisionSystem)
+				if (PhysScene)
 				{
-					CollisionSystem->RegisterCollisionTarget(CollisionInterface);
+					PhysScene->RegisterPrimitiveComponent(PrimitiveComponent);
 				}
 			}
 		}
@@ -81,6 +81,6 @@ public:
 
 // Collison Section
 private:
-	UCollisionSystem* CollisionSystem;
+	FPhysScene* PhysScene;
 };
 

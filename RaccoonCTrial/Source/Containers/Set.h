@@ -5,21 +5,75 @@
 #include "utility"
 #include "cassert"
 #include "Hash.h"
+#include "iostream"
+
+#include "Core/Collision/CollisionChannel.h"
 
 template<typename T>
 class TSet
 {
 public:
-	TSet()
-		: CurrentSize(0), CurrentCapacity(32)
+	TSet() : CurrentSize(0), CurrentCapacity(32)
 	{
 		Data = new Slot[CurrentCapacity];
 	}
 
-	virtual ~TSet()
+	TSet(const TSet& Other) : CurrentSize(Other.CurrentSize), CurrentCapacity(Other.CurrentCapacity)
+	{
+		Data = new Slot[CurrentCapacity];
+		for (std::size_t i = 0; i < CurrentCapacity; ++i)
+		{
+			Data[i] = Other.Data[i];
+		}
+	}
+
+	TSet(TSet&& Other) noexcept : Data(Other.Data), CurrentSize(Other.CurrentSize), CurrentCapacity(Other.CurrentCapacity)
+	{
+		Other.Data = nullptr;
+		Other.CurrentSize = 0;
+		Other.CurrentCapacity = 0;
+	}
+
+	~TSet()
 	{
 		delete[] Data;
 	}
+
+
+	TSet& operator=(const TSet& Other)
+	{
+		if (this == &Other) return *this;
+
+		delete[] Data;
+
+		CurrentSize = Other.CurrentSize;
+		CurrentCapacity = Other.CurrentCapacity;
+		Data = new Slot[CurrentCapacity];
+		for (std::size_t i = 0; i < CurrentCapacity; ++i)
+		{
+			Data[i] = Other.Data[i];
+		}
+
+		return *this;
+	}
+
+	TSet& operator=(TSet&& Other) noexcept
+	{
+		if (this == &Other) return *this;
+
+		delete[] Data;
+
+		Data = Other.Data;
+		CurrentSize = Other.CurrentSize;
+		CurrentCapacity = Other.CurrentCapacity;
+
+		Other.Data = nullptr;
+		Other.CurrentSize = 0;
+		Other.CurrentCapacity = 0;
+
+		return *this;
+	}
+
 
 	bool Add(const T& Item)
 	{
@@ -28,6 +82,7 @@ public:
 			return false;
 		}
 
+		
 		if (LoadFactor() > 0.7f)
 		{
 			Resize(CurrentCapacity * 2);
@@ -35,7 +90,7 @@ public:
 
 		std::size_t HashIndex = Hash<T>()(Item) % CurrentCapacity;
 
-		for (std::size_t i = 0; i < CurrentCapacity; ++i)
+		for (std::size_t i = 0; i < CurrentCapacity; i++)
 		{
 			std::size_t Index = (HashIndex + i) % CurrentCapacity;
 			if (Data[Index].CurrentState == SlotState::Empty || Data[Index].CurrentState == SlotState::Deleted)
@@ -104,7 +159,7 @@ private:
 	public:
 		Slot() : CurrentState(SlotState::Empty)
 		{
-
+			;
 		}
 	};
 
@@ -114,6 +169,7 @@ private:
 
 private:
 	inline float LoadFactor() const { return static_cast<float>(CurrentSize) / static_cast<float>(CurrentCapacity); }
+
 	void Resize(std::size_t NewCapacity)
 	{
 		Slot* OldData = Data;
@@ -143,6 +199,7 @@ private:
 			std::size_t Index = (HashIndex + i) % CurrentCapacity;
 			const Slot& SlotRef = Data[Index];
 
+			// std::cout << *Data[Index] << std::endl;
 			if (SlotRef.CurrentState == SlotState::Empty)
 				return CurrentCapacity;
 

@@ -1,21 +1,24 @@
 #pragma once
 
-class AActor;
 enum class ECollisionChannel;
 enum class ECollisionResponse;
+struct FCollisionProfileName;
+class UPrimitiveComponent;
 
 class ICollisionInterface
 {
 public:
 	virtual ~ICollisionInterface() { ; }
 
-	virtual AActor* GetSelfActor() const = 0;
+	virtual const FCollisionProfileName& GetCollisionProfileName() const = 0;
 
-	virtual bool CheckOverlap(ICollisionInterface* InCollisionInterface) const = 0;
-	virtual void OnOverlap(AActor* OtherActor) = 0;
+	virtual void SetCollisionProfileName(const FCollisionProfileName& ProfileName) = 0;
 
-	virtual bool ShouldBlock(ICollisionInterface* Other) const = 0; 
-	virtual void OnBlock(AActor* OtherActor) = 0;
+	virtual bool ShouldOverlap(UPrimitiveComponent* Other) const = 0;
+	virtual void OnOverlap(UPrimitiveComponent* Other) = 0;
+
+	virtual bool ShouldBlock(UPrimitiveComponent* Other) const = 0;
+	virtual void OnBlock(UPrimitiveComponent* Other) = 0;
 
 	virtual void SetCollisionChannel(ECollisionChannel InChannel) = 0;
 	virtual ECollisionChannel GetCollisionChannel() const = 0;
