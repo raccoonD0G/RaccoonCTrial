@@ -8,20 +8,24 @@ UWorld::UWorld()
 	FCollisionResponseContainer PlayerProfile(ECollisionChannel::Player);
 	PlayerProfile.SetResponseToChannel(ECollisionChannel::Monster, ECollisionResponse::Block);
 	PlayerProfile.SetResponseToChannel(ECollisionChannel::Wall, ECollisionResponse::Block);
-
 	UCollisionProfile::Get().AddProfile("Player", PlayerProfile);
 
 	FCollisionResponseContainer MonsterProfile(ECollisionChannel::Monster);
 	MonsterProfile.SetResponseToChannel(ECollisionChannel::Player, ECollisionResponse::Block);
 	MonsterProfile.SetResponseToChannel(ECollisionChannel::Wall, ECollisionResponse::Block);
-
 	UCollisionProfile::Get().AddProfile("Monster", MonsterProfile);
 
 	FCollisionResponseContainer WallProfile(ECollisionChannel::Wall);
 	WallProfile.SetResponseToChannel(ECollisionChannel::Monster, ECollisionResponse::Block);
 	WallProfile.SetResponseToChannel(ECollisionChannel::Player, ECollisionResponse::Block);
-
 	UCollisionProfile::Get().AddProfile("Wall", WallProfile);
+
+	FCollisionResponseContainer MeshProfile(ECollisionChannel::Mesh);
+	MeshProfile.SetResponseToChannel(ECollisionChannel::Monster, ECollisionResponse::Ignore);
+	MeshProfile.SetResponseToChannel(ECollisionChannel::Player, ECollisionResponse::Ignore);
+	MeshProfile.SetResponseToChannel(ECollisionChannel::Wall, ECollisionResponse::Ignore);
+	MeshProfile.SetResponseToChannel(ECollisionChannel::Mesh, ECollisionResponse::Ignore);
+	UCollisionProfile::Get().AddProfile("Mesh", MeshProfile);
 }
 
 UWorld::~UWorld()

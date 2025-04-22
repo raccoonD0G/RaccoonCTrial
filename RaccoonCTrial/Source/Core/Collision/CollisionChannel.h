@@ -6,6 +6,7 @@ enum class ECollisionChannel
 	Monster,
 	Wall,
 	EndPoint,
+	Mesh,
 	None
 };
 
