@@ -4,6 +4,7 @@
 
 #include "Renderer.h"
 #include "iostream"
+#include "Components/PrimitiveComponent.h"
 
 URenderer::URenderer()
 {
@@ -15,36 +16,31 @@ URenderer::~URenderer()
     ;
 }
 
-void URenderer::Render(IRenderInterface* InRenderInterface) const
+
+void URenderer::RenderAll() const
 {
-    if (!InRenderInterface)
+    for (int i = 0; i < VisiblePrimitiveComponents.Num(); i++)
+    {
+        UPrimitiveComponent* VisiblePrimitiveComponent = VisiblePrimitiveComponents[i];
+        if (VisiblePrimitiveComponent)
+        {
+            Render(VisiblePrimitiveComponent);
+        }
+    }
+}
+
+void URenderer::Render(UPrimitiveComponent* InPrimitiveComponent) const
+{
+    if (!InPrimitiveComponent)
     {
         return;
     }
-    ILocationInterface* LocationInterface = dynamic_cast<ILocationInterface*>(InRenderInterface);
 
-    if (!LocationInterface)
-    {
-        return;
-    }
-
-    FVector2D loc = LocationInterface->GetWorldLocation();
+    FVector2D loc = InPrimitiveComponent->GetWorldLocation();
 
     COORD Pos;
     Pos.X = loc.X;
     Pos.Y = loc.Y;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Pos);
-    std::cout << InRenderInterface->GetRenderString() << std::flush;
-}
-
-void URenderer::RenderAll() const
-{
-    for (int i = 0; i < RenderTargets.Num(); i++)
-    {
-        IRenderInterface* RenderTarget = RenderTargets[i];
-        if (RenderTarget)
-        {
-            Render(RenderTarget);
-        }
-    }
+    std::cout << InPrimitiveComponent->GetRenderString() << std::flush;
 }

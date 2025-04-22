@@ -104,13 +104,11 @@ int main()
 		}
 
 		// Tick
-		CurrentWorld->Tick(0.2);
+		CurrentWorld->Tick(0.0);
 
 		// Render
 		system("cls");
 		CurrentWorld->GetRenderer().RenderAll();
-
-		Sleep(200);
 
 	}
 

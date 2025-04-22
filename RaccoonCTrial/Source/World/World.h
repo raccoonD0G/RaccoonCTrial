@@ -3,8 +3,7 @@
 #include "Rendering/Renderer.h"
 #include "PhysicsInterfaceDeclaresCore.h"
 #include "GameFramework/Actor.h"
-#include "Components/MeshComponent.h"
-#include "Components/ShapeComponent.h"
+#include "Components/PrimitiveComponent.h"
 
 class UWorld : public UObject
 {
@@ -42,30 +41,26 @@ public:
 		ActorTarget->SetActorLocation(SpawnLocation);
 		Actors.Add(ActorTarget);
 
-		TArray<UMeshComponent*> MeshComponents;
-		ActorTarget->GetComponents<UMeshComponent>(MeshComponents);
-		for (int i = 0; i < MeshComponents.Num(); i++)
+		TArray<UPrimitiveComponent*> PrimitiveComponents;
+		ActorTarget->GetComponents<UPrimitiveComponent>(PrimitiveComponents);
+		for (int i = 0; i < PrimitiveComponents.Num(); i++)
 		{
-			IRenderInterface* RenderInterface = dynamic_cast<IRenderInterface*>(MeshComponents[i]);
-			if (RenderInterface)
+			if (PrimitiveComponents[i]->IsVisible())
 			{
 				if (Renderer)
 				{
-					Renderer->RegisterRenderTargets(RenderInterface);
+					Renderer->RegisterVisiblePrimitiveComponent(PrimitiveComponents[i]);
 				}
 			}
 		}
 
-		TArray<UShapeComponent*> BoxComponents;
-		ActorTarget->GetComponents<UShapeComponent>(BoxComponents);
-		for (int i = 0; i < BoxComponents.Num(); i++)
+		for (int i = 0; i < PrimitiveComponents.Num(); i++)
 		{
-			UPrimitiveComponent* PrimitiveComponent = dynamic_cast<UPrimitiveComponent*>(BoxComponents[i]);
-			if (PrimitiveComponent)
+			if (PrimitiveComponents[i])
 			{
 				if (PhysScene)
 				{
-					PhysScene->RegisterPrimitiveComponent(PrimitiveComponent);
+					PhysScene->RegisterPrimitiveComponent(PrimitiveComponents[i]);
 				}
 			}
 		}

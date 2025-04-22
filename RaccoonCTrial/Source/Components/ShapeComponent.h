@@ -4,5 +4,8 @@
 
 class UShapeComponent : public UPrimitiveComponent
 {
+
+public:
+	UShapeComponent();
 };
 

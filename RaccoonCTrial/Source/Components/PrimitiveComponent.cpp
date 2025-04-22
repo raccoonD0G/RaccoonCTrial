@@ -74,3 +74,12 @@ ECollisionResponse UPrimitiveComponent::GetResponseToChannel(ECollisionChannel T
     return CollisionResponses.GetResponseToChannel(TargetChannel);
 }
 
+std::string UPrimitiveComponent::GetRenderString()
+{
+    return ScreenString;
+}
+
+void UPrimitiveComponent::SetRenderString(const std::string& NewScreenString)
+{
+    ScreenString = NewScreenString;
+}

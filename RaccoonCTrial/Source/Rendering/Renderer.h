@@ -1,7 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
-#include "Interfaces/IRenderInterface.h"
+
+class UPrimitiveComponent;
 
 class URenderer : public UObject
 {
@@ -11,12 +12,12 @@ public:
 
 public:
 	void RenderAll() const;
-	inline void RegisterRenderTargets(IRenderInterface* InRenderInterface) { RenderTargets.Add(InRenderInterface); }
+	inline void RegisterVisiblePrimitiveComponent(UPrimitiveComponent* PrimitiveComponent) { VisiblePrimitiveComponents.Add(PrimitiveComponent); }
 
 private:
-	TArray<IRenderInterface*> RenderTargets;
+	TArray<UPrimitiveComponent*> VisiblePrimitiveComponents;
 
 private:
-	void Render(IRenderInterface* InScreenPrintInterface) const;
+	void Render(UPrimitiveComponent* InPrimitiveComponent) const;
 };
 

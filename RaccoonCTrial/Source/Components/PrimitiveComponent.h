@@ -3,9 +3,10 @@
 #include "Engine/CollisionProfile.h"
 #include "Engine/EngineTypes.h"
 #include "Interfaces/ICollisionInterface.h"
+#include "Interfaces/IRenderInterface.h"
 #include "string"
 
-class UPrimitiveComponent : public USceneComponent, public ICollisionInterface
+class UPrimitiveComponent : public USceneComponent, public ICollisionInterface, public IRenderInterface
 {
 public:
 	UPrimitiveComponent();
@@ -49,5 +50,16 @@ private:
 
 private:
 	FVector2D PreviousLocation;
+
+// Visible Section
+public:
+	inline bool IsVisible() const { return bVisible; };
+	inline void SetVisibility(bool bNewVisiblity) { bVisible = bNewVisiblity; };
+	virtual std::string GetRenderString() override;
+	virtual void SetRenderString(const std::string& NewScreenString) override;
+
+private:
+	bool bVisible;
+	std::string ScreenString;
 };
 
